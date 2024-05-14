@@ -1,0 +1,1768 @@
+﻿<EDResult>
+	<ATXML>
+		<exch:AccountTransferRequest xmlns:exch="http://at.dsh.cms.gov/exchange/1.0" xmlns:ext="http://at.dsh.cms.gov/extension/1.0">
+			<ext:TransferHeader>
+				<ext:TransferActivity>
+					<niem-core:ActivityIdentification xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+						<niem-core:IdentificationID>FFMsittest1020</niem-core:IdentificationID>
+					</niem-core:ActivityIdentification>
+					<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+						<niem-core:DateTime>2017-07-24T03:17:21.211-04:00</niem-core:DateTime>
+					</niem-core:ActivityDate>
+					<ext:TransferActivityReferralQuantity>1</ext:TransferActivityReferralQuantity>
+					<ext:RecipientTransferActivityCode>MedicaidCHIP</ext:RecipientTransferActivityCode>
+					<ext:RecipientTransferActivityStateCode>MI</ext:RecipientTransferActivityStateCode>
+				</ext:TransferActivity>
+			</ext:TransferHeader>
+			<hix-core:Sender xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="Sender">
+				<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+			</hix-core:Sender>
+			<hix-core:Receiver xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="medicaidReceiver">
+				<hix-core:InformationExchangeSystemCategoryCode>MedicaidAgency</hix-core:InformationExchangeSystemCategoryCode>
+				<hix-core:InformationExchangeSystemStateCode>MI</hix-core:InformationExchangeSystemStateCode>
+			</hix-core:Receiver>
+			<hix-ee:InsuranceApplication xmlns:hix-ee="http://hix.cms.gov/0.1/hix-ee">
+				<hix-core:ApplicationCreation xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+					<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+						<niem-core:Date>2017-07-22</niem-core:Date>
+					</niem-core:ActivityDate>
+				</hix-core:ApplicationCreation>
+				<hix-core:ApplicationSubmission xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+					<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+						<niem-core:Date>2017-07-22</niem-core:Date>
+					</niem-core:ActivityDate>
+				</hix-core:ApplicationSubmission>
+				<hix-core:ApplicationUpdate xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+					<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+						<niem-core:Date>2017-07-22</niem-core:Date>
+					</niem-core:ActivityDate>
+				</hix-core:ApplicationUpdate>
+				<NS1:ApplicationUpdate xmlns:NS1="http://hix.cms.gov/0.1/hix-core" xmlns:NS2="http://niem.gov/niem/structures/2.0">
+					<NS3:ActivityIdentification xmlns:NS3="http://niem.gov/niem/niem-core/2.0">
+						<NS3:IdentificationID>FFMsittest323</NS3:IdentificationID>
+						<NS3:IdentificationCategoryText>false</NS3:IdentificationCategoryText>
+					</NS3:ActivityIdentification>
+				</NS1:ApplicationUpdate>
+				<NS1:ApplicationUpdate xmlns:NS1="http://hix.cms.gov/0.1/hix-core" xmlns:NS2="http://niem.gov/niem/structures/2.0" NS2:id="IsFFMBacklogAT">
+					<NS3:ActivityIdentification xmlns:NS3="http://niem.gov/niem/niem-core/2.0">
+						<NS3:IdentificationID>IsFFMBacklogAT</NS3:IdentificationID>
+						<NS3:IdentificationCategoryText>false</NS3:IdentificationCategoryText>
+					</NS3:ActivityIdentification>
+				</NS1:ApplicationUpdate>
+				<hix-core:ApplicationIdentification xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+					<niem-core:IdentificationID xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2254491175</niem-core:IdentificationID>
+					<niem-core:IdentificationCategoryText xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">Exchange</niem-core:IdentificationCategoryText>
+				</hix-core:ApplicationIdentification>
+				<hix-ee:InsuranceApplicant>
+					<hix-core:RoleOfPersonReference xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="pe25655667" />
+					<hix-ee:InsuranceApplicantAbsentParentOrSpouseCode>No</hix-ee:InsuranceApplicantAbsentParentOrSpouseCode>
+					<hix-ee:InsuranceApplicantBlindnessOrDisabilityIndicator>true</hix-ee:InsuranceApplicantBlindnessOrDisabilityIndicator>
+					<hix-ee:InsuranceApplicantCoverageDuringPreviousSixMonthsIndicator>false</hix-ee:InsuranceApplicantCoverageDuringPreviousSixMonthsIndicator>
+					<hix-ee:InsuranceApplicantEligibleITUServicesIndicator>false</hix-ee:InsuranceApplicantEligibleITUServicesIndicator>
+					<hix-ee:InsuranceApplicantFixedAddressIndicator>true</hix-ee:InsuranceApplicantFixedAddressIndicator>
+					<hix-ee:InsuranceApplicantIncarceration xmlns:s="http://niem.gov/niem/structures/2.0" s:metadata="vm102664570">
+						<NS4:IncarcerationIndicator xmlns:NS4="http://hix.cms.gov/0.1/hix-core">false</NS4:IncarcerationIndicator>
+					</hix-ee:InsuranceApplicantIncarceration>
+					<hix-ee:InsuranceApplicantLawfulPresenceStatus>
+						<hix-ee:LawfulPresenceStatusArrivedBefore1996Indicator>false</hix-ee:LawfulPresenceStatusArrivedBefore1996Indicator>
+						<hix-ee:LawfulPresenceStatusEligibility>
+							<hix-ee:EligibilityIndicator>true</hix-ee:EligibilityIndicator>
+						</hix-ee:LawfulPresenceStatusEligibility>
+					</hix-ee:InsuranceApplicantLawfulPresenceStatus>
+					<hix-ee:InsuranceApplicantLongTermCareIndicator>true</hix-ee:InsuranceApplicantLongTermCareIndicator>
+					<hix-ee:InsuranceApplicantNonESICoverageIndicator>false</hix-ee:InsuranceApplicantNonESICoverageIndicator>
+					<hix-ee:InsuranceApplicantNonESIPolicy>
+						<hix-ee:InsuranceMember />
+						<hix-ee:InsurancePremium>
+							<hix-ee:InsurancePremiumAmount>47.2</hix-ee:InsurancePremiumAmount>
+							<hix-ee:InsurancePremiumAPTCAmount>32.0</hix-ee:InsurancePremiumAPTCAmount>
+							<hix-ee:InsurancePremiumSubscriberAmount>5.2</hix-ee:InsurancePremiumSubscriberAmount>
+						</hix-ee:InsurancePremium>
+						<hix-ee:InsurancePlan>
+							<hix-pm:InsurancePlanIdentification xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm">
+								<niem-core:IdentificationID xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">584MI008</niem-core:IdentificationID>
+							</hix-pm:InsurancePlanIdentification>
+							<hix-pm:InsurancePlanRate xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm">
+								<hix-pm:InsurancePlanRateFutureIndicator>false</hix-pm:InsurancePlanRateFutureIndicator>
+							</hix-pm:InsurancePlanRate>
+							<hix-pm:ActuarialValueMetallicTierCode xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm">Silver</hix-pm:ActuarialValueMetallicTierCode>
+							<hix-pm:InsurancePlanProgramCode xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm">QHP</hix-pm:InsurancePlanProgramCode>
+							<hix-pm:Issuer xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm">
+								<hix-pm:IssuerIdentification>
+									<niem-core:IdentificationID xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">58594</niem-core:IdentificationID>
+								</hix-pm:IssuerIdentification>
+								<hix-pm:RolePlayedByOrganization>
+									<niem-core:OrganizationName xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">Meridian Choice</niem-core:OrganizationName>
+								</hix-pm:RolePlayedByOrganization>
+							</hix-pm:Issuer>
+						</hix-ee:InsurancePlan>
+						<hix-ee:InsurancePolicySourceCode>Federal</hix-ee:InsurancePolicySourceCode>
+						<hix-ee:InsurancePolicyAppliedEffectiveDateRange>
+							<niem-core:StartDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-01-01</niem-core:Date>
+							</niem-core:StartDate>
+							<niem-core:EndDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-04-30</niem-core:Date>
+							</niem-core:EndDate>
+						</hix-ee:InsurancePolicyAppliedEffectiveDateRange>
+					</hix-ee:InsuranceApplicantNonESIPolicy>
+					<hix-ee:InsuranceApplicantParentCaretakerIndicator>false</hix-ee:InsuranceApplicantParentCaretakerIndicator>
+					<hix-ee:InsuranceApplicantReceivedITUServicesIndicator>false</hix-ee:InsuranceApplicantReceivedITUServicesIndicator>
+					<hix-ee:InsuranceApplicantRecentMedicalBillsIndicator>false</hix-ee:InsuranceApplicantRecentMedicalBillsIndicator>
+					<hix-ee:InsuranceApplicantStateBenefitsThroughPublicEmployeeIndicator>false</hix-ee:InsuranceApplicantStateBenefitsThroughPublicEmployeeIndicator>
+					<hix-ee:InsuranceApplicantStudentIndicator>false</hix-ee:InsuranceApplicantStudentIndicator>
+					<hix-ee:APTCEligibility xmlns:s="http://niem.gov/niem/structures/2.0" s:id="e79205859">
+						<hix-ee:EligibilityDateRange>
+							<niem-core:StartDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-09-01</niem-core:Date>
+							</niem-core:StartDate>
+						</hix-ee:EligibilityDateRange>
+						<hix-ee:EligibilityDetermination>
+							<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:DateTime>2017-07-22T12:09:44.107-04:00</niem-core:DateTime>
+							</niem-core:ActivityDate>
+						</hix-ee:EligibilityDetermination>
+						<hix-ee:EligibilityReasonText>999</hix-ee:EligibilityReasonText>
+						<hix-ee:EligibilityIndicator>true</hix-ee:EligibilityIndicator>
+						<hix-ee:EligibilityEstablishingSystem>
+							<hix-core:InformationExchangeSystemCategoryCode xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">Exchange</hix-core:InformationExchangeSystemCategoryCode>
+						</hix-ee:EligibilityEstablishingSystem>
+						<hix-ee:APTC>
+							<hix-ee:APTCMaximumAmount>339.0</hix-ee:APTCMaximumAmount>
+						</hix-ee:APTC>
+					</hix-ee:APTCEligibility>
+					<hix-ee:CSREligibility xmlns:s="http://niem.gov/niem/structures/2.0" s:id="e78837892">
+						<hix-ee:EligibilityDateRange>
+							<niem-core:StartDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-09-01</niem-core:Date>
+							</niem-core:StartDate>
+						</hix-ee:EligibilityDateRange>
+						<hix-ee:EligibilityDetermination>
+							<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:DateTime>2017-07-22T12:09:44.108-04:00</niem-core:DateTime>
+							</niem-core:ActivityDate>
+						</hix-ee:EligibilityDetermination>
+						<hix-ee:EligibilityReasonText>999</hix-ee:EligibilityReasonText>
+						<hix-ee:EligibilityIndicator>true</hix-ee:EligibilityIndicator>
+						<hix-ee:EligibilityEstablishingSystem>
+							<hix-core:InformationExchangeSystemCategoryCode xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">Exchange</hix-core:InformationExchangeSystemCategoryCode>
+						</hix-ee:EligibilityEstablishingSystem>
+					</hix-ee:CSREligibility>
+					<hix-ee:ExchangeEligibility xmlns:s="http://niem.gov/niem/structures/2.0" s:id="e79607661">
+						<hix-ee:EligibilityDateRange>
+							<niem-core:StartDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-09-01</niem-core:Date>
+							</niem-core:StartDate>
+						</hix-ee:EligibilityDateRange>
+						<hix-ee:EligibilityDetermination>
+							<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:DateTime>2017-07-22T12:09:39.945-04:00</niem-core:DateTime>
+							</niem-core:ActivityDate>
+						</hix-ee:EligibilityDetermination>
+						<hix-ee:EligibilityReasonText>999</hix-ee:EligibilityReasonText>
+						<hix-ee:EligibilityIndicator>true</hix-ee:EligibilityIndicator>
+						<hix-ee:EligibilityEstablishingSystem>
+							<hix-core:InformationExchangeSystemCategoryCode xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">Exchange</hix-core:InformationExchangeSystemCategoryCode>
+						</hix-ee:EligibilityEstablishingSystem>
+						<hix-ee:ExchangeQHPResidencyEligibilityBasis>
+							<hix-core:StatusIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">true</hix-core:StatusIndicator>
+							<hix-ee:EligibilityBasisStatusCode>Complete</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination>
+								<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+									<niem-core:DateTime>2017-07-22T12:09:39.943-04:00</niem-core:DateTime>
+								</niem-core:ActivityDate>
+							</hix-ee:EligibilityBasisDetermination>
+							<hix-ee:MedicaidResidencyEligibilityBasisCorrectStateIndicator>true</hix-ee:MedicaidResidencyEligibilityBasisCorrectStateIndicator>
+						</hix-ee:ExchangeQHPResidencyEligibilityBasis>
+						<hix-ee:ExchangeVerifiedCitizenshipOrLawfulPresenceEligibilityBasis>
+							<hix-core:StatusIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">true</hix-core:StatusIndicator>
+							<hix-ee:EligibilityBasisStatusCode>Complete</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination>
+								<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+									<niem-core:DateTime>2017-07-22T12:03:38.346-04:00</niem-core:DateTime>
+								</niem-core:ActivityDate>
+							</hix-ee:EligibilityBasisDetermination>
+						</hix-ee:ExchangeVerifiedCitizenshipOrLawfulPresenceEligibilityBasis>
+						<hix-ee:ExchangeIncarcerationEligibilityBasis>
+							<hix-core:StatusIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">true</hix-core:StatusIndicator>
+							<hix-ee:EligibilityBasisStatusCode>Complete</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination>
+								<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+									<niem-core:DateTime>2017-07-22T12:09:39.941-04:00</niem-core:DateTime>
+								</niem-core:ActivityDate>
+							</hix-ee:EligibilityBasisDetermination>
+						</hix-ee:ExchangeIncarcerationEligibilityBasis>
+					</hix-ee:ExchangeEligibility>
+					<hix-ee:MedicaidNonMAGIEligibility xmlns:s="http://niem.gov/niem/structures/2.0" s:id="e79571354">
+						<hix-ee:EligibilityDateRange>
+							<niem-core:StartDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:Date>2017-09-01</niem-core:Date>
+							</niem-core:StartDate>
+						</hix-ee:EligibilityDateRange>
+						<hix-ee:EligibilityDetermination>
+							<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:DateTime>2017-07-22T12:04:53.334-04:00</niem-core:DateTime>
+							</niem-core:ActivityDate>
+						</hix-ee:EligibilityDetermination>
+						<hix-ee:EligibilityReasonText>999</hix-ee:EligibilityReasonText>
+						<hix-ee:EligibilityIndicator>true</hix-ee:EligibilityIndicator>
+						<hix-ee:EligibilityEstablishingSystem>
+							<hix-core:InformationExchangeSystemCategoryCode xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">Exchange</hix-core:InformationExchangeSystemCategoryCode>
+						</hix-ee:EligibilityEstablishingSystem>
+						<hix-ee:MedicaidHouseholdReference s:ref="mh20803856" />
+						<hix-ee:MedicaidNonMAGIMedicareEntitlementEligibilityBasis>
+							<hix-core:StatusIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">false</hix-core:StatusIndicator>
+							<hix-ee:EligibilityBasisStatusCode>Complete</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination />
+						</hix-ee:MedicaidNonMAGIMedicareEntitlementEligibilityBasis>
+						<hix-ee:MedicaidNonMAGIBlindnessOrDisabilityEligibilityBasis>
+							<hix-core:StatusIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">true</hix-core:StatusIndicator>
+							<hix-ee:EligibilityBasisStatusCode>Complete</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination />
+						</hix-ee:MedicaidNonMAGIBlindnessOrDisabilityEligibilityBasis>
+					</hix-ee:MedicaidNonMAGIEligibility>
+					<hix-ee:InsuranceApplicantTemporarilyLivesOutsideApplicationStateIndicator>false</hix-ee:InsuranceApplicantTemporarilyLivesOutsideApplicationStateIndicator>
+					<hix-ee:InsuranceApplicantHadMedicaidDuringFosterCareIndicator>false</hix-ee:InsuranceApplicantHadMedicaidDuringFosterCareIndicator>
+					<hix-ee:InsuranceApplicantLivesWithMinorAgeDependentIndicator>false</hix-ee:InsuranceApplicantLivesWithMinorAgeDependentIndicator>
+					<hix-ee:InsuranceApplicantHouseholdExceptionIndicator>false</hix-ee:InsuranceApplicantHouseholdExceptionIndicator>
+					<hix-ee:ReferralActivity>
+						<niem-core:ActivityIdentification xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+							<niem-core:IdentificationID>FFMFILECL9677</niem-core:IdentificationID>
+						</niem-core:ActivityIdentification>
+						<niem-core:ActivityDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+							<niem-core:DateTime>2017-07-24T03:17:21.211-04:00</niem-core:DateTime>
+						</niem-core:ActivityDate>
+						<hix-ee:ReferralActivitySenderReference xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="Sender" />
+						<hix-ee:ReferralActivityReceiverReference xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="medicaidReceiver" />
+						<hix-ee:ReferralActivityStatus>
+							<hix-ee:ReferralActivityStatusCode>Initiated</hix-ee:ReferralActivityStatusCode>
+							<hix-ee:ReferralActivityOverallVerificationStatusCode>Y</hix-ee:ReferralActivityOverallVerificationStatusCode>
+						</hix-ee:ReferralActivityStatus>
+						<hix-ee:ReferralActivityEligibilityReasonReference xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="e79571354" />
+					</hix-ee:ReferralActivity>
+					<hix-ee:InsuranceApplicantFosterCareIndicator>false</hix-ee:InsuranceApplicantFosterCareIndicator>
+				</hix-ee:InsuranceApplicant>
+				<hix-ee:InsuranceApplicationRequestingFinancialAssistanceIndicator>true</hix-ee:InsuranceApplicationRequestingFinancialAssistanceIndicator>
+				<hix-ee:InsuranceApplicationCoverageRenewalYearQuantity>4</hix-ee:InsuranceApplicationCoverageRenewalYearQuantity>
+				<hix-ee:SSFSigner>
+					<hix-core:RoleOfPersonReference xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="pe25655667" />
+					<hix-ee:Signature>
+						<hix-core:SignatureName xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<niem-core:PersonFullName xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">HI CCK</niem-core:PersonFullName>
+						</hix-core:SignatureName>
+						<hix-core:SignatureDate xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<niem-core:Date xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2017-07-22</niem-core:Date>
+						</hix-core:SignatureDate>
+					</hix-ee:Signature>
+					<hix-ee:SSFAttestation>
+						<hix-ee:SSFAttestationCollectionsAgreementIndicator>false</hix-ee:SSFAttestationCollectionsAgreementIndicator>
+						<hix-ee:SSFAttestationMedicaidObligationsIndicator>false</hix-ee:SSFAttestationMedicaidObligationsIndicator>
+						<hix-ee:SSFAttestationNonPerjuryIndicator>true</hix-ee:SSFAttestationNonPerjuryIndicator>
+						<hix-ee:SSFAttestationNotIncarceratedIndicator>true</hix-ee:SSFAttestationNotIncarceratedIndicator>
+						<hix-ee:SSFAttestationPrivacyAgreementIndicator>true</hix-ee:SSFAttestationPrivacyAgreementIndicator>
+						<hix-ee:SSFAttestationPendingChargesIndicator>false</hix-ee:SSFAttestationPendingChargesIndicator>
+						<hix-ee:SSFAttestationInformationChangesIndicator>true</hix-ee:SSFAttestationInformationChangesIndicator>
+						<hix-ee:SSFAttestationApplicationTermsIndicator>true</hix-ee:SSFAttestationApplicationTermsIndicator>
+					</hix-ee:SSFAttestation>
+				</hix-ee:SSFSigner>
+				<hix-ee:InsuranceApplicationRequestingMedicaidIndicator>false</hix-ee:InsuranceApplicationRequestingMedicaidIndicator>
+				<hix-ee:SSFPrimaryContact>
+					<hix-core:RoleOfPersonReference xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="pe25655667" />
+					<hix-ee:SSFPrimaryContactPreferenceCode>Email</hix-ee:SSFPrimaryContactPreferenceCode>
+				</hix-ee:SSFPrimaryContact>
+				<hix-ee:InsuranceApplicationTaxReturnAccessIndicator>true</hix-ee:InsuranceApplicationTaxReturnAccessIndicator>
+			</hix-ee:InsuranceApplication>
+			<hix-ee:MedicaidHousehold xmlns:hix-ee="http://hix.cms.gov/0.1/hix-ee" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="mh20803856">
+				<hix-ee:HouseholdIncome>
+					<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+						<hix-core:FrequencyCode>Monthly</hix-core:FrequencyCode>
+					</hix-core:IncomeFrequency>
+					<hix-core:IncomeAmount xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">160.00</hix-core:IncomeAmount>
+				</hix-ee:HouseholdIncome>
+				<hix-ee:HouseholdIncome>
+					<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+						<hix-core:FrequencyCode>Annually</hix-core:FrequencyCode>
+					</hix-core:IncomeFrequency>
+					<hix-core:IncomeAmount xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">190.00</hix-core:IncomeAmount>
+				</hix-ee:HouseholdIncome>
+				<hix-ee:HouseholdSizeQuantity>1</hix-ee:HouseholdSizeQuantity>
+				<hix-ee:HouseholdMemberReference s:ref="pe25655667" />
+				<hix-ee:MedicaidHouseholdEffectivePersonQuantity>1</hix-ee:MedicaidHouseholdEffectivePersonQuantity>
+				<hix-ee:MedicaidHouseholdIncomeAboveHighestApplicableMAGIStandardIndicator>true</hix-ee:MedicaidHouseholdIncomeAboveHighestApplicableMAGIStandardIndicator>
+			</hix-ee:MedicaidHousehold>
+			<hix-core:Person xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="pe25655667">
+				<niem-core:PersonAgeMeasure xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+					<niem-core:MeasurePointValue>40</niem-core:MeasurePointValue>
+				</niem-core:PersonAgeMeasure>
+				<niem-core:PersonBirthDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+					<niem-core:Date>1977-02-02</niem-core:Date>
+				</niem-core:PersonBirthDate>
+				<niem-core:PersonLivingIndicator xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">true</niem-core:PersonLivingIndicator>
+				<niem-core:PersonName xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+					<niem-core:PersonGivenName>calo</niem-core:PersonGivenName>
+					<niem-core:PersonSurName>jaxsed</niem-core:PersonSurName>
+				</niem-core:PersonName>
+				<niem-core:PersonRaceText xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">African American</niem-core:PersonRaceText>
+				<niem-core:PersonSexText xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">Male</niem-core:PersonSexText>
+				<niem-core:PersonSSNIdentification xmlns:niem-core="http://niem.gov/niem/niem-core/2.0" s:metadata="vm102339589">
+					<niem-core:IdentificationID>371290475</niem-core:IdentificationID>
+					<niem-core:IdentificationCategoryText>SSN</niem-core:IdentificationCategoryText>
+				</niem-core:PersonSSNIdentification>
+				<niem-core:PersonUSCitizenIndicator xmlns:niem-core="http://niem.gov/niem/niem-core/2.0" s:metadata="vm103229905">true</niem-core:PersonUSCitizenIndicator>
+				<hix-core:TribalAugmentation>
+					<hix-core:PersonRecognizedTribeIndicator>false</hix-core:PersonRecognizedTribeIndicator>
+					<hix-core:PersonAmericanIndianOrAlaskaNativeIndicator>false</hix-core:PersonAmericanIndianOrAlaskaNativeIndicator>
+					<NS5:LocationStateUSPostalServiceCode xmlns:NS5="http://niem.gov/niem/niem-core/2.0">MI</NS5:LocationStateUSPostalServiceCode>
+				</hix-core:TribalAugmentation>
+				<hix-core:PersonAugmentation>
+					<hix-core:PersonContactInformationAssociation>
+						<niem-core:AssociationBeginDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+							<niem-core:Date>2017-07-22</niem-core:Date>
+						</niem-core:AssociationBeginDate>
+						<hix-core:ContactInformation>
+							<niem-core:ContactMailingAddress xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:StructuredAddress>
+									<niem-core:LocationStreet>
+										<niem-core:StreetFullText>1630 Liddesdale St</niem-core:StreetFullText>
+									</niem-core:LocationStreet>
+									<niem-core:LocationCityName>Detroit</niem-core:LocationCityName>
+									<niem-core:LocationCountyName>Wayne</niem-core:LocationCountyName>
+									<niem-core:LocationCountyCode>163</niem-core:LocationCountyCode>
+									<niem-core:LocationStateUSPostalServiceCode>MI</niem-core:LocationStateUSPostalServiceCode>
+									<niem-core:LocationPostalCode>48217-1218</niem-core:LocationPostalCode>
+								</niem-core:StructuredAddress>
+							</niem-core:ContactMailingAddress>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Home</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonContactInformationAssociation>
+						<niem-core:AssociationBeginDate xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+							<niem-core:Date>2017-07-22</niem-core:Date>
+						</niem-core:AssociationBeginDate>
+						<hix-core:ContactInformation>
+							<niem-core:ContactMailingAddress xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">
+								<niem-core:StructuredAddress>
+									<niem-core:LocationStreet>
+										<niem-core:StreetFullText>1630 Liddesdale St</niem-core:StreetFullText>
+									</niem-core:LocationStreet>
+									<niem-core:LocationCityName>Detroit</niem-core:LocationCityName>
+									<niem-core:LocationCountyName>Wayne</niem-core:LocationCountyName>
+									<niem-core:LocationCountyCode>163</niem-core:LocationCountyCode>
+									<niem-core:LocationStateUSPostalServiceCode>MI</niem-core:LocationStateUSPostalServiceCode>
+									<niem-core:LocationPostalCode>48217-1218</niem-core:LocationPostalCode>
+								</niem-core:StructuredAddress>
+							</niem-core:ContactMailingAddress>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Mailing</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonContactInformationAssociation>
+						<hix-core:ContactInformation>
+							<niem-core:ContactEmailID xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">hytrtrtck@gmail.com</niem-core:ContactEmailID>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Self</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonPregnancyStatus>
+						<hix-core:StatusIndicator>false</hix-core:StatusIndicator>
+					</hix-core:PersonPregnancyStatus>
+					<hix-core:PersonIncome>
+						<hix-core:IncomeFrequency>
+							<hix-core:FrequencyCode>Monthly</hix-core:FrequencyCode>
+						</hix-core:IncomeFrequency>
+						<hix-core:IncomeAmount>160</hix-core:IncomeAmount>
+						<hix-core:IncomeCategoryCode>SocialSecurity</hix-core:IncomeCategoryCode>
+						<hix-core:IncomeSubjectToFederalRestrictionsIndicator>false</hix-core:IncomeSubjectToFederalRestrictionsIndicator>
+					</hix-core:PersonIncome>
+					<hix-core:PersonPreferredLanguage>
+						<niem-core:LanguageName xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">English</niem-core:LanguageName>
+						<niem-core:PersonSpeaksLanguageIndicator xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">true</niem-core:PersonSpeaksLanguageIndicator>
+						<niem-core:PersonWritesLanguageIndicator xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">true</niem-core:PersonWritesLanguageIndicator>
+					</hix-core:PersonPreferredLanguage>
+					<hix-core:USNaturalizedCitizenIndicator>false</hix-core:USNaturalizedCitizenIndicator>
+					<hix-core:PersonExpense>
+						<hix-core:ExpenseAmount>0</hix-core:ExpenseAmount>
+						<hix-core:ExpenseCategoryCode>StudentLoanInterest</hix-core:ExpenseCategoryCode>
+						<hix-core:ExpenseFrequency>
+							<hix-core:FrequencyCode>Monthly</hix-core:FrequencyCode>
+						</hix-core:ExpenseFrequency>
+					</hix-core:PersonExpense>
+					<hix-core:PersonMarriedIndicator>false</hix-core:PersonMarriedIndicator>
+					<hix-core:PersonUSVeteranIndicator>false</hix-core:PersonUSVeteranIndicator>
+				</hix-core:PersonAugmentation>
+			</hix-core:Person>
+			<hix-ee:TaxReturn xmlns:hix-ee="http://hix.cms.gov/0.1/hix-ee">
+				<hix-ee:TaxHousehold>
+					<hix-ee:HouseholdIncome>
+						<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<hix-core:FrequencyCode>Annually</hix-core:FrequencyCode>
+						</hix-core:IncomeFrequency>
+						<hix-core:IncomeDate xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<niem-core:Year xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2017</niem-core:Year>
+						</hix-core:IncomeDate>
+						<hix-core:IncomeFederalPovertyLevelPercent xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">161</hix-core:IncomeFederalPovertyLevelPercent>
+						<hix-core:IncomeVariableIndicator xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">false</hix-core:IncomeVariableIndicator>
+					</hix-ee:HouseholdIncome>
+					<hix-ee:HouseholdAGI xmlns:s="http://niem.gov/niem/structures/2.0">
+						<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<hix-core:FrequencyCode>Annually</hix-core:FrequencyCode>
+						</hix-core:IncomeFrequency>
+					</hix-ee:HouseholdAGI>
+					<hix-ee:HouseholdMAGI xmlns:s="http://niem.gov/niem/structures/2.0">
+						<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<hix-core:FrequencyCode>Annually</hix-core:FrequencyCode>
+						</hix-core:IncomeFrequency>
+					</hix-ee:HouseholdMAGI>
+					<hix-ee:HouseholdTaxableSocialSecurityBenefitsIncome xmlns:s="http://niem.gov/niem/structures/2.0">
+						<hix-core:IncomeFrequency xmlns:hix-core="http://hix.cms.gov/0.1/hix-core">
+							<hix-core:FrequencyCode>Annually</hix-core:FrequencyCode>
+						</hix-core:IncomeFrequency>
+					</hix-ee:HouseholdTaxableSocialSecurityBenefitsIncome>
+					<hix-ee:PrimaryTaxFiler>
+						<hix-core:RoleOfPersonReference xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="pe25655667" />
+					</hix-ee:PrimaryTaxFiler>
+				</hix-ee:TaxHousehold>
+				<hix-ee:TaxReturnIncludesDependentIndicator>false</hix-ee:TaxReturnIncludesDependentIndicator>
+			</hix-ee:TaxReturn>
+			<hix-core:VerificationMetadata xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="vm102664570">
+				<hix-core:FFEVerificationCode>N</hix-core:FFEVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>SSA</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<niem-core:DateTime xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2017-07-22T12:09:39.941-04:00</niem-core:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+				<hix-core:VerificationIndicator>true</hix-core:VerificationIndicator>
+				<hix-core:VerificationDescriptionText>Incarceration</hix-core:VerificationDescriptionText>
+				<hix-core:VerificationStatus>
+					<hix-core:VerificationStatusCode>5</hix-core:VerificationStatusCode>
+				</hix-core:VerificationStatus>
+				<hix-core:ResponseCode>999</hix-core:ResponseCode>
+			</hix-core:VerificationMetadata>
+			<hix-core:VerificationMetadata xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="vm102018591">
+				<hix-core:FFEVerificationCode>P</hix-core:FFEVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>SSA</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<niem-core:DateTime xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2017-07-22T12:04:57.554-04:00</niem-core:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+				<hix-core:VerificationIndicator>false</hix-core:VerificationIndicator>
+				<hix-core:VerificationDescriptionText>TitleIIMonthlyIncome</hix-core:VerificationDescriptionText>
+				<hix-core:VerificationStatus>
+					<hix-core:VerificationStatusCode>1</hix-core:VerificationStatusCode>
+				</hix-core:VerificationStatus>
+				<hix-core:VerificationCategoryCode>CurrentIncome</hix-core:VerificationCategoryCode>
+			</hix-core:VerificationMetadata>
+			<hix-core:VerificationMetadata xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="vm102339589">
+				<hix-core:FFEVerificationCode>Y</hix-core:FFEVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>SSA</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<niem-core:DateTime xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2016-01-15T11:02:31.478-05:00</niem-core:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+				<hix-core:DHS-SAVEVerificationSupplement>
+					<hix-core:USCitizenshipVerificationCode>Y</hix-core:USCitizenshipVerificationCode>
+				</hix-core:DHS-SAVEVerificationSupplement>
+				<hix-core:VerificationIndicator>true</hix-core:VerificationIndicator>
+				<hix-core:VerificationDescriptionText>SSN</hix-core:VerificationDescriptionText>
+				<hix-core:VerificationStatus>
+					<hix-core:VerificationStatusCode>5</hix-core:VerificationStatusCode>
+				</hix-core:VerificationStatus>
+				<hix-core:VerificationCategoryCode>SSN</hix-core:VerificationCategoryCode>
+				<hix-core:ResponseCode>A</hix-core:ResponseCode>
+			</hix-core:VerificationMetadata>
+			<hix-core:VerificationMetadata xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="vm103229905">
+				<hix-core:FFEVerificationCode>Y</hix-core:FFEVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>SSA</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<niem-core:DateTime xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2016-01-15T11:02:31.478-05:00</niem-core:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+				<hix-core:VerificationIndicator>true</hix-core:VerificationIndicator>
+				<hix-core:VerificationDescriptionText>Citizenship Status</hix-core:VerificationDescriptionText>
+				<hix-core:VerificationStatus>
+					<hix-core:VerificationStatusCode>5</hix-core:VerificationStatusCode>
+				</hix-core:VerificationStatus>
+				<hix-core:VerificationCategoryCode>Citizenship</hix-core:VerificationCategoryCode>
+				<hix-core:ResponseCode>999</hix-core:ResponseCode>
+			</hix-core:VerificationMetadata>
+			<hix-core:VerificationMetadata xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:s="http://niem.gov/niem/structures/2.0" s:id="vm102628960">
+				<hix-core:FFEVerificationCode>Y</hix-core:FFEVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>CMS</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<niem-core:DateTime xmlns:niem-core="http://niem.gov/niem/niem-core/2.0">2017-07-22T12:03:38.346-04:00</niem-core:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+				<hix-core:VerificationIndicator>true</hix-core:VerificationIndicator>
+				<hix-core:VerificationDescriptionText>CitizenshipLawfulPresence Status</hix-core:VerificationDescriptionText>
+				<hix-core:VerificationStatus>
+					<hix-core:VerificationStatusCode>6</hix-core:VerificationStatusCode>
+				</hix-core:VerificationStatus>
+				<hix-core:VerificationCategoryCode>EligibleImmigrationStatus</hix-core:VerificationCategoryCode>
+				<hix-core:ResponseCode>999</hix-core:ResponseCode>
+			</hix-core:VerificationMetadata>
+			<ext:PhysicalHousehold>
+				<hix-ee:HouseholdMemberReference xmlns:hix-ee="http://hix.cms.gov/0.1/hix-ee" xmlns:s="http://niem.gov/niem/structures/2.0" s:ref="pe25655667" />
+			</ext:PhysicalHousehold>
+		</exch:AccountTransferRequest>
+	</ATXML>
+	<DeterminationsReasons>
+		<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:i18n="http://www.w3.org/2005/09/ws-i18n" xmlns:typ="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types">
+			<SOAP-ENV:Header>
+				<i18n:international>
+					<i18n:locale>en_US</i18n:locale>
+					<i18n:tz>GMT-0500</i18n:tz>
+				</i18n:international>
+			</SOAP-ENV:Header>
+			<SOAP-ENV:Body>
+				<typ:assess-response>
+					<typ:global-instance>
+						<typ:o_g_assessment-date inferred="true" type="date">
+							<typ:date-val>2017-07-22</typ:date-val>
+						</typ:o_g_assessment-date>
+						<typ:o_g_send-tax-filer-notice-R005.020.001 inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_send-tax-filer-notice-R005.020.001>
+						<typ:o_g_transfer-to-exchange inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:o_g_transfer-to-exchange>
+						<typ:o_g_application-pended-primary-applicant-claimed-as-dependent inferred="false" type="boolean">
+							<typ:unknown-val />
+						</typ:o_g_application-pended-primary-applicant-claimed-as-dependent>
+						<typ:io_g_point-of-origin-system inferred="false" type="text">
+							<typ:text-val>Exchange</typ:text-val>
+						</typ:io_g_point-of-origin-system>
+						<typ:rb_g_discrepancy-in-lawful-presence-between-self-attested-and-trusted-sources-per-R005.124.003 inferred="false" type="boolean">
+							<typ:unknown-val />
+						</typ:rb_g_discrepancy-in-lawful-presence-between-self-attested-and-trusted-sources-per-R005.124.003>
+						<typ:o_g_pend-application inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_pend-application>
+						<typ:io_g_application_id inferred="false" type="text">
+							<typ:text-val>FFMsittest1020</typ:text-val>
+						</typ:io_g_application_id>
+						<typ:io_g_number_of_applicants inferred="false" type="number">
+							<typ:number-val>1.0</typ:number-val>
+						</typ:io_g_number_of_applicants>
+						<typ:o_g_the-app-valid-per-R005.123.001 inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:o_g_the-app-valid-per-R005.123.001>
+						<typ:o_g_application-pended-contains-more-than-1-tax-return inferred="false" type="boolean">
+							<typ:unknown-val />
+						</typ:o_g_application-pended-contains-more-than-1-tax-return>
+						<typ:io_g_submission-date inferred="false" type="date">
+							<typ:date-val>2017-07-22</typ:date-val>
+						</typ:io_g_submission-date>
+						<typ:io_g_creation-date inferred="false" type="date">
+							<typ:date-val>2017-07-22</typ:date-val>
+						</typ:io_g_creation-date>
+						<typ:o_g_application-pended-due-to-invalid-relationships inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_application-pended-due-to-invalid-relationships>
+						<typ:o_g_pend-for-determination-of-same-sex-couple-eligibility inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_pend-for-determination-of-same-sex-couple-eligibility>
+						<typ:o_g_required-verification-data-received inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:o_g_required-verification-data-received>
+						<typ:o_g_send-custodial-parent-notice inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_send-custodial-parent-notice>
+						<typ:o_g_pend-to-resolve-error inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_pend-to-resolve-error>
+						<typ:o_g_error-pend-reason inferred="true" type="text">
+							<typ:text-val />
+						</typ:o_g_error-pend-reason>
+						<typ:o_g_rulebase_date_and_version inferred="true" type="text">
+							<typ:text-val>8 February 2022 Release 22.03 Version 1.0</typ:text-val>
+						</typ:o_g_rulebase_date_and_version>
+						<typ:io_g_transfer-date inferred="false" type="date">
+							<typ:date-val>2017-07-24</typ:date-val>
+						</typ:io_g_transfer-date>
+						<typ:io_g_application_id type="text">
+							<typ:text-val>FFMsittest1020</typ:text-val>
+						</typ:io_g_application_id>
+						<typ:io_g_number_of_applicants type="number">
+							<typ:number-val>1.0</typ:number-val>
+						</typ:io_g_number_of_applicants>
+						<typ:io_g_mapper-version type="text">
+							<typ:text-val>MapperV_R21.08_B000</typ:text-val>
+						</typ:io_g_mapper-version>
+						<typ:io_g_submission-date type="date">
+							<typ:date-val>2017-07-22</typ:date-val>
+						</typ:io_g_submission-date>
+						<typ:io_g_point-of-origin-system type="text">
+							<typ:text-val>Exchange</typ:text-val>
+						</typ:io_g_point-of-origin-system>
+						<typ:i_g_application-signature type="text">
+							<typ:text-val>HI CCK</typ:text-val>
+						</typ:i_g_application-signature>
+						<typ:io_g_creation-date type="date">
+							<typ:date-val>2017-07-22</typ:date-val>
+						</typ:io_g_creation-date>
+						<typ:i_g_SSFSigner-ID type="text">
+							<typ:text-val>pe25655667</typ:text-val>
+						</typ:i_g_SSFSigner-ID>
+						<typ:i_g_household-wishes-to-be-eval-Medicaid type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:i_g_household-wishes-to-be-eval-Medicaid>
+						<typ:io_g_transfer-date type="date">
+							<typ:date-val>2017-07-24</typ:date-val>
+						</typ:io_g_transfer-date>
+						<typ:this_State_abbrv type="text">
+							<typ:text-val>MI</typ:text-val>
+						</typ:this_State_abbrv>
+						<typ:list-person inferred="false">
+							<typ:person id="pe25655667">
+								<typ:o_per_attested-income-reasonably-compatible-with-trusted-sources inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_attested-income-reasonably-compatible-with-trusted-sources>
+								<typ:o_per_FPL-best-program inferred="true" type="number">
+									<typ:number-val>15.92</typ:number-val>
+								</typ:o_per_FPL-best-program>
+								<typ:o_per_inc-MAGI-Medicaid-annual inferred="true" type="currency">
+									<typ:number-val>1920.0</typ:number-val>
+								</typ:o_per_inc-MAGI-Medicaid-annual>
+								<typ:o_per_exp-MAGI-Medicaid-monthly inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:o_per_exp-MAGI-Medicaid-monthly>
+								<typ:o_per_post-determination-check-for-existing-insurance inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_post-determination-check-for-existing-insurance>
+								<typ:o_per_lacks-coverage-under-42CFR457.310b2 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_lacks-coverage-under-42CFR457.310b2>
+								<typ:rb_per_age-in-years inferred="true" type="number">
+									<typ:number-val>40.0</typ:number-val>
+								</typ:rb_per_age-in-years>
+								<typ:o_per_is-child-under-42CFR457.10 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_is-child-under-42CFR457.10>
+								<typ:o_per_requires-additional-citizenship-validation-for-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_requires-additional-citizenship-validation-for-Medicaid>
+								<typ:rb_per_cit-qual-alien-usc inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_cit-qual-alien-usc>
+								<typ:o_per_meets-residency-requirement-per-CC945 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-residency-requirement-per-CC945>
+								<typ:o_per_meets-MAGI-MIChild-program inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_meets-MAGI-MIChild-program>
+								<typ:o_per_eligible-for-ESO inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_eligible-for-ESO>
+								<typ:o_per_is-PCR-under-42CFR435.110b inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_is-PCR-under-42CFR435.110b>
+								<typ:rb_per_home-addresss-in-MI inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_home-addresss-in-MI>
+								<typ:rb_per_mailing-address-in-MI inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_mailing-address-in-MI>
+								<typ:o_per_inc-MAGI-FPL_percent inferred="true" type="number">
+									<typ:number-val>15.92</typ:number-val>
+								</typ:o_per_inc-MAGI-FPL_percent>
+								<typ:o_per_spouse-is-PCR-under-42CFR435.4 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_spouse-is-PCR-under-42CFR435.4>
+								<typ:o_per_elig-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-Medicaid>
+								<typ:o_per_MAGI-Medicaid-det-date inferred="true" type="datetime">
+									<typ:datetime-val>2022-03-03T10:20:33</typ:datetime-val>
+								</typ:o_per_MAGI-Medicaid-det-date>
+								<typ:rb_per_SSN-provided inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_SSN-provided>
+								<typ:o_per_elig-attested-MAGI-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-Medicaid>
+								<typ:o_per_ins-enrolled inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_ins-enrolled>
+								<typ:o_per_elig-attested-MAGI-PCR inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PCR>
+								<typ:o_per_post-determination-MIChild-check-for-existing-insurance-per-R005.062.000 inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_post-determination-MIChild-check-for-existing-insurance-per-R005.062.000>
+								<typ:o_per_meets-MAGI-Medicaid-citizen-alien-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-citizen-alien-status>
+								<typ:o_per_meets-MAGI-Medicaid-program inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-program>
+								<typ:o_per_elig-attested-MAGI-U19 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-U19>
+								<typ:o_per_meets-MAGI-MIChild-residency inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_meets-MAGI-MIChild-residency>
+								<typ:o_per_is-adult-under-42CFR435.119b inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_is-adult-under-42CFR435.119b>
+								<typ:o_per_pend-verify-residency inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-verify-residency>
+								<typ:o_per_meets-MAGI-MIChild-income inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_meets-MAGI-MIChild-income>
+								<typ:i_per_cit-lawful-pres inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_cit-lawful-pres>
+								<typ:o_per_inc-MAGI-Medicaid-monthly inferred="true" type="currency">
+									<typ:number-val>160.0</typ:number-val>
+								</typ:o_per_inc-MAGI-Medicaid-monthly>
+								<typ:o_per_pend-verify-income inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_pend-verify-income>
+								<typ:o_per_pend-missing-contact-info inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-missing-contact-info>
+								<typ:o_per_elig-MAGI-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-Medicaid>
+								<typ:io_per_RecentMedicalBills inferred="false" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:io_per_RecentMedicalBills>
+								<typ:o_per_elig-Medicaid-program inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-Medicaid-program>
+								<typ:rb_per_inc-agi-month inferred="true" type="currency">
+									<typ:number-val>160.0</typ:number-val>
+								</typ:rb_per_inc-agi-month>
+								<typ:o_per_requires-citizenship-validation-for-MIChild inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_requires-citizenship-validation-for-MIChild>
+								<typ:o_per_elig-MAGI-MIChild inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_elig-MAGI-MIChild>
+								<typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid>
+								<typ:o_per_MEC-dependent inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_MEC-dependent>
+								<typ:o_per_meets-MAGI-Medicaid-SSN-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-SSN-status>
+								<typ:o_per_app-pended-for-verification-per-R005.123.000 inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_app-pended-for-verification-per-R005.123.000>
+								<typ:o_per_8-usc-1613-5yr-ban-exempt inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_8-usc-1613-5yr-ban-exempt>
+								<typ:o_per_elig-HMP-attested-PCR inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-HMP-attested-PCR>
+								<typ:rb_per_provided-home-address inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_provided-home-address>
+								<typ:o_per_meets-MAGI-Medicaid-income inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-income>
+								<typ:o_per_verified-income-found inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_verified-income-found>
+								<typ:o_per_MAGI-MIChild-det-date inferred="false" type="datetime">
+									<typ:unknown-val />
+								</typ:o_per_MAGI-MIChild-det-date>
+								<typ:o_per_SSN-application-requires-post-determination-tracking-for-Medicaid-per-R005.069.002 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_SSN-application-requires-post-determination-tracking-for-Medicaid-per-R005.069.002>
+								<typ:o_per_MAGI-hh-size-best-program inferred="true" type="number">
+									<typ:number-val>1.0</typ:number-val>
+								</typ:o_per_MAGI-hh-size-best-program>
+								<typ:o_per_requires-post-determination-check-for-existing-family-planning-insurance-coverage-per-R005.133.003 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-check-for-existing-family-planning-insurance-coverage-per-R005.133.003>
+								<typ:o_per_pend-for-determination-of-same-sex-couple-eligibility inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-for-determination-of-same-sex-couple-eligibility>
+								<typ:o_per_pend-person inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_pend-person>
+								<typ:o_per_refer-for-nonMAGI-Medicaid-LTC inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_refer-for-nonMAGI-Medicaid-LTC>
+								<typ:rb_per_under-19 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_under-19>
+								<typ:o_per_elig-attested-MAGI-PW inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PW>
+								<typ:o_per_requires-lawful-presence-validation-for-MIChild inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_requires-lawful-presence-validation-for-MIChild>
+								<typ:o_per_age-19-to-44 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_age-19-to-44>
+								<typ:rb_per_citizenship-and-lawful-presence-verified inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:rb_per_citizenship-and-lawful-presence-verified>
+								<typ:o_per_meets-MAGI-MIChild-citizen-alien-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-citizen-alien-status>
+								<typ:rb_per_homeless inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_homeless>
+								<typ:o_per_elig-attested-MAGI-PlanFirst inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PlanFirst>
+								<typ:o_per_meets-MAGI-MIChild-SSN-status inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_meets-MAGI-MIChild-SSN-status>
+								<typ:o_per_elig-MAGI-FFC inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-FFC>
+								<typ:o_per_MAGI-hh-income-best-program inferred="true" type="currency">
+									<typ:number-val>1920.0</typ:number-val>
+								</typ:o_per_MAGI-hh-income-best-program>
+								<typ:o_per_post-determination-check-for-MA-address inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_post-determination-check-for-MA-address>
+								<typ:o_per_pend-verify-lawful-presence inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-verify-lawful-presence>
+								<typ:o_per_pend-unanswered-citizenship inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-unanswered-citizenship>
+								<typ:the_person inferred="true" type="text">
+									<typ:text-val>calo_jaxsed</typ:text-val>
+								</typ:the_person>
+								<typ:i_per_apply-for-coverage inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_apply-for-coverage>
+								<typ:o_per_elig-MAGI-Flint-eval inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-Flint-eval>
+								<typ:o_per_Medicaid-enrollment-end-date inferred="true" type="date">
+									<typ:date-val>2018-06-30</typ:date-val>
+								</typ:o_per_Medicaid-enrollment-end-date>
+								<typ:o_per_requires-post-determination-for-unspecified-relative inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-for-unspecified-relative>
+								<typ:o_per_send-retro-application inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_send-retro-application>
+								<typ:o_per_elig-attested-MAGI-MIChild inferred="false" type="boolean">
+									<typ:unknown-val />
+								</typ:o_per_elig-attested-MAGI-MIChild>
+								<typ:rb_per_SSN-ver-complete-per-R005.004.001 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_SSN-ver-complete-per-R005.004.001>
+								<typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid-per-R005.087.000 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid-per-R005.087.000>
+								<typ:o_per_requires-post-determination-verification-of-dependent-health-insurance-coverage inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-dependent-health-insurance-coverage>
+								<typ:o_per_elig-attested-MAGI-HMP inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-HMP>
+								<typ:o_per_inc-gross-monthly inferred="true" type="currency">
+									<typ:number-val>160.0</typ:number-val>
+								</typ:o_per_inc-gross-monthly>
+								<typ:o_per_MEC inferred="true" type="text">
+									<typ:text-val>Yes</typ:text-val>
+								</typ:o_per_MEC>
+								<typ:o_per_elig-attested-MAGI-MOMS inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-MOMS>
+								<typ:o_per_meets-MAGI-Medicaid-residency inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-residency>
+								<typ:o_per_requires-post-determination-verification-of-lawful-presence-for-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-lawful-presence-for-Medicaid>
+								<typ:i_per_dob type="date">
+									<typ:date-val>1977-02-02</typ:date-val>
+								</typ:i_per_dob>
+								<typ:i_per_gender type="text">
+									<typ:text-val>MALE</typ:text-val>
+								</typ:i_per_gender>
+								<typ:i_per_indian type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_indian>
+								<typ:i_per_ssn-has type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_ssn-has>
+								<typ:i_per_ins-empl-public type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_ins-empl-public>
+								<typ:i_per_incarcerated type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_incarcerated>
+								<typ:i_per_addr-res-city type="text">
+									<typ:text-val>Detroit</typ:text-val>
+								</typ:i_per_addr-res-city>
+								<typ:i_per_addr-res-state type="text">
+									<typ:text-val>MI</typ:text-val>
+								</typ:i_per_addr-res-state>
+								<typ:i_per_addr-res-street type="text">
+									<typ:text-val>1630 Liddesdale St</typ:text-val>
+								</typ:i_per_addr-res-street>
+								<typ:i_per_addr-res-zip type="text">
+									<typ:text-val>48217-1218</typ:text-val>
+								</typ:i_per_addr-res-zip>
+								<typ:i_per_arrival-prior-to-1996 type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_arrival-prior-to-1996>
+								<typ:i_per_SSN-verif-metadata type="text">
+									<typ:text-val>vm102339589</typ:text-val>
+								</typ:i_per_SSN-verif-metadata>
+								<typ:i_per_verif-metadata type="text">
+									<typ:text-val>SOM1HUB303102032IRS</typ:text-val>
+								</typ:i_per_verif-metadata>
+								<typ:i_per_member-of-federally-acknowledged-American-Indian-tribe type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_member-of-federally-acknowledged-American-Indian-tribe>
+								<typ:rb_per_Eligible-Immigration-Status-box-checked-on-application type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_Eligible-Immigration-Status-box-checked-on-application>
+								<typ:i_per_needs-LTC type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_needs-LTC>
+								<typ:i_per_in-foster-care-at-18 type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_in-foster-care-at-18>
+								<typ:i_per_name-first type="text">
+									<typ:text-val>calo</typ:text-val>
+								</typ:i_per_name-first>
+								<typ:i_per_name-last type="text">
+									<typ:text-val>jaxsed</typ:text-val>
+								</typ:i_per_name-last>
+								<typ:io_per_RecentMedicalBills type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:io_per_RecentMedicalBills>
+								<typ:i_per_SSN type="text">
+									<typ:text-val>371290475</typ:text-val>
+								</typ:i_per_SSN>
+								<typ:i_per_type-health-insurance-applicant-has-or-recently-lost type="text">
+									<typ:text-val>Federal</typ:text-val>
+								</typ:i_per_type-health-insurance-applicant-has-or-recently-lost>
+								<typ:i_per_addr-mail-city type="text">
+									<typ:text-val>Detroit</typ:text-val>
+								</typ:i_per_addr-mail-city>
+								<typ:i_per_addr-mail-state type="text">
+									<typ:text-val>MI</typ:text-val>
+								</typ:i_per_addr-mail-state>
+								<typ:i_per_addr-mail-street type="text">
+									<typ:text-val>1630 Liddesdale St</typ:text-val>
+								</typ:i_per_addr-mail-street>
+								<typ:i_per_student type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_student>
+								<typ:ii_per_apply-for-coverage type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:ii_per_apply-for-coverage>
+								<typ:ii_per_marital-status type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:ii_per_marital-status>
+								<typ:i_per_other-insurance-indicator type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_other-insurance-indicator>
+								<typ:i_per_addr-mail-zip type="text">
+									<typ:text-val>48217-1218</typ:text-val>
+								</typ:i_per_addr-mail-zip>
+								<typ:i_per_primary-caretaker-of-some-child type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_primary-caretaker-of-some-child>
+								<typ:i_per_has-no-fixed-address-indicator type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_has-no-fixed-address-indicator>
+								<typ:i_per_US-citizen-or-national type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_US-citizen-or-national>
+								<typ:i_per_a-US-citizen type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_a-US-citizen>
+								<typ:i_per_disabled type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_disabled>
+								<typ:i_per_elig-medicare type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_elig-medicare>
+								<typ:i_per_pregnant type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_pregnant>
+								<typ:io_per_ID type="text">
+									<typ:text-val>pe25655667</typ:text-val>
+								</typ:io_per_ID>
+								<typ:relationships>
+									<typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear state="known">
+										<typ:target instance-id="pe25655667" />
+									</typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear>
+								</typ:relationships>
+								<typ:list-program inferred="false">
+									<typ:program id="0x5302e54729f5f233">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR3419</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>TP08</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>54.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0x86425bc0b65ee7e3">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR3419</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+									<typ:program id="0xddcb9ab34bd7a4a6">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR2800,IR2850</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>195.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0xa68dbca122d07348">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR2800</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+											<typ:denialreason id="0xae46ff1079cb1d4a">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR2850</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+									<typ:program id="0x8173f4a3684d5628">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR1419</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>160.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0x2edd8e01a20138db">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR1419</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+									<typ:program id="0xb473582a110c3e9f">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR5419,IR5601</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>212.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0xb2ed634d4567a393">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR5419</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+											<typ:denialreason id="0x281be807e84135a8">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR5601</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+									<typ:program id="0x7c9f187a9c6dbece">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:uncertain-val />
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR4426,IR4418</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:uncertain-val />
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:uncertain-val />
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:uncertain-val />
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0x53fa21fd16c5ea00">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR4426</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+											<typ:denialreason id="0x3e6b5ef0c8e8c1d2">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR4418</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+									<typ:program id="0x7da4006d593608bf">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-HMP</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR8888,IR8889</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>I</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>AMPM</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>133.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val />
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-HMP</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0xd4aaed5b7f9f8769">
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-FLT</typ:text-val>
+										</typ:the_program>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>1.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="false" type="boolean">
+											<typ:unknown-val />
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_ineligible-reasons inferred="true" type="text">
+											<typ:text-val>IR7421,IR7850</typ:text-val>
+										</typ:o_p_ineligible-reasons>
+										<typ:o_per_p_MAGI-income-percent-of-FPL inferred="true" type="number">
+											<typ:number-val>15.92</typ:number-val>
+										</typ:o_per_p_MAGI-income-percent-of-FPL>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>400.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_MAGI-hh-magi inferred="true" type="currency">
+											<typ:number-val>1920.0</typ:number-val>
+										</typ:o_p_MAGI-hh-magi>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-FLT</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-household-rel inferred="true" state="known">
+												<typ:target instance-id="pe25655667" />
+											</typ:o_p_per-MAGI-household-rel>
+										</typ:relationships>
+										<typ:list-denialreason inferred="false">
+											<typ:denialreason id="0x5f7b98008e982045">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR7421</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+											<typ:denialreason id="0xc362ed90857346f2">
+												<typ:the_denial_reason type="text">
+													<typ:text-val>IR7850</typ:text-val>
+												</typ:the_denial_reason>
+											</typ:denialreason>
+										</typ:list-denialreason>
+									</typ:program>
+								</typ:list-program>
+								<typ:list-income inferred="false">
+									<typ:income id="Inc-pe25655667-2376156917f2591a5477e70ac141ac00">
+										<typ:o_inc_MAGI inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_inc_MAGI>
+										<typ:i_inc_type-work inferred="false" type="text">
+											<typ:unknown-val />
+										</typ:i_inc_type-work>
+										<typ:the_income_amount type="currency">
+											<typ:number-val>160.0</typ:number-val>
+										</typ:the_income_amount>
+										<typ:the_income_frequency type="text">
+											<typ:text-val>Monthly</typ:text-val>
+										</typ:the_income_frequency>
+										<typ:i_inc_income-from-American-Indian-or-Alaska-Native-sources type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:i_inc_income-from-American-Indian-or-Alaska-Native-sources>
+										<typ:i_inc_magi-type type="text">
+											<typ:text-val>SocialSecurity</typ:text-val>
+										</typ:i_inc_magi-type>
+									</typ:income>
+								</typ:list-income>
+								<typ:list-related-party inferred="false" />
+								<typ:list-expense inferred="false">
+									<typ:expense id="Exp-2376156917f2591a5477e71ac141ac00">
+										<typ:o_exp_MAGI inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_exp_MAGI>
+										<typ:the_expense_frequency type="text">
+											<typ:text-val>Monthly</typ:text-val>
+										</typ:the_expense_frequency>
+										<typ:the_expense_amount type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:the_expense_amount>
+										<typ:i_exp_magi-type type="text">
+											<typ:text-val>StudentLoanInterest</typ:text-val>
+										</typ:i_exp_magi-type>
+									</typ:expense>
+								</typ:list-expense>
+								<typ:list-benefit inferred="false" />
+								<typ:list-b-plan inferred="true">
+									<typ:b-plan id="0x70a7cdf71b7eacde" />
+								</typ:list-b-plan>
+								<typ:list-MAGI-household inferred="false">
+									<typ:MAGI-household id="Magi-hh-bb6b1e77-0355-447b-aa0a-9ad9e8ee2a5f">
+										<typ:o_per_mh_relationship inferred="true" type="text">
+											<typ:text-val>18</typ:text-val>
+										</typ:o_per_mh_relationship>
+										<typ:the_MAGI_household inferred="false" type="text">
+											<typ:text-val>pe25655667</typ:text-val>
+										</typ:the_MAGI_household>
+										<typ:o_per_mh_member-of-household inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_per_mh_member-of-household>
+										<typ:the_MAGI_household type="text">
+											<typ:text-val>pe25655667</typ:text-val>
+										</typ:the_MAGI_household>
+									</typ:MAGI-household>
+								</typ:list-MAGI-household>
+							</typ:person>
+						</typ:list-person>
+						<typ:list-povertyguideline inferred="true">
+							<typ:povertyguideline id="0x543c03e40a3ad1f0" />
+							<typ:povertyguideline id="0x617af391a99c03e6" />
+						</typ:list-povertyguideline>
+						<typ:list-physicalHousehold inferred="false">
+							<typ:physicalHousehold id="PHH-2376156917f2591a5477e6fac141ac00">
+								<typ:relationships>
+									<typ:ir_household-members state="known">
+										<typ:target instance-id="pe25655667" />
+									</typ:ir_household-members>
+								</typ:relationships>
+							</typ:physicalHousehold>
+						</typ:list-physicalHousehold>
+						<typ:list-taxreturn inferred="false">
+							<typ:taxreturn id="2376156917f2591a5477e6eac141ac00">
+								<typ:o_return_filing-status inferred="true" type="text">
+									<typ:text-val>1</typ:text-val>
+								</typ:o_return_filing-status>
+								<typ:o_return_tax-group-size inferred="true" type="number">
+									<typ:number-val>1.0</typ:number-val>
+								</typ:o_return_tax-group-size>
+								<typ:relationships>
+									<typ:o_return_tax-household-rel inferred="true" state="known">
+										<typ:target instance-id="pe25655667" />
+									</typ:o_return_tax-household-rel>
+									<typ:ir_return_tax-filer state="known">
+										<typ:target instance-id="pe25655667" />
+									</typ:ir_return_tax-filer>
+									<typ:ir_return_dependents state="known" />
+									<typ:ir_return_tax-filer-spouse state="known" />
+								</typ:relationships>
+							</typ:taxreturn>
+						</typ:list-taxreturn>
+						<typ:list-plan inferred="true">
+							<typ:plan id="0xd34d7d599709b61" />
+						</typ:list-plan>
+						<typ:list-verification inferred="false">
+							<typ:verification id="vm102664570">
+								<typ:i_verif_income-quarter type="text">
+									<typ:text-val>Incarceration</typ:text-val>
+								</typ:i_verif_income-quarter>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>SSA</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>vm102664570</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_response-code type="text">
+									<typ:text-val>999</typ:text-val>
+								</typ:i_verif_response-code>
+								<typ:i_verif_SSN-code type="text">
+									<typ:text-val>N</typ:text-val>
+								</typ:i_verif_SSN-code>
+								<typ:i_verif_successful type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_verif_successful>
+							</typ:verification>
+							<typ:verification id="vm102018591">
+								<typ:i_verif_income-quarter type="text">
+									<typ:text-val>TitleIIMonthlyIncome</typ:text-val>
+								</typ:i_verif_income-quarter>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>SSA</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_category type="text">
+									<typ:text-val>CurrentIncome</typ:text-val>
+								</typ:i_verif_category>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>vm102018591</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_SSN-code type="text">
+									<typ:text-val>P</typ:text-val>
+								</typ:i_verif_SSN-code>
+								<typ:i_verif_successful type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_verif_successful>
+							</typ:verification>
+							<typ:verification id="vm102339589">
+								<typ:i_verif_income-quarter type="text">
+									<typ:text-val>SSN</typ:text-val>
+								</typ:i_verif_income-quarter>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>SSA</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_category type="text">
+									<typ:text-val>SSN</typ:text-val>
+								</typ:i_verif_category>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>vm102339589</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_response-code type="text">
+									<typ:text-val>A</typ:text-val>
+								</typ:i_verif_response-code>
+								<typ:i_verif_SSN-code type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:i_verif_SSN-code>
+								<typ:i_verif_successful type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_verif_successful>
+								<typ:i_verif_US-Cit-code type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:i_verif_US-Cit-code>
+							</typ:verification>
+							<typ:verification id="vm103229905">
+								<typ:i_verif_income-quarter type="text">
+									<typ:text-val>Citizenship Status</typ:text-val>
+								</typ:i_verif_income-quarter>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>SSA</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_category type="text">
+									<typ:text-val>Citizenship</typ:text-val>
+								</typ:i_verif_category>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>vm103229905</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_response-code type="text">
+									<typ:text-val>999</typ:text-val>
+								</typ:i_verif_response-code>
+								<typ:i_verif_SSN-code type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:i_verif_SSN-code>
+								<typ:i_verif_successful type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_verif_successful>
+							</typ:verification>
+							<typ:verification id="vm102628960">
+								<typ:i_verif_income-quarter type="text">
+									<typ:text-val>CitizenshipLawfulPresence Status</typ:text-val>
+								</typ:i_verif_income-quarter>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>CMS</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_category type="text">
+									<typ:text-val>EligibleImmigrationStatus</typ:text-val>
+								</typ:i_verif_category>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>vm102628960</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_response-code type="text">
+									<typ:text-val>999</typ:text-val>
+								</typ:i_verif_response-code>
+								<typ:i_verif_SSN-code type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:i_verif_SSN-code>
+								<typ:i_verif_successful type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_verif_successful>
+							</typ:verification>
+							<typ:verification id="SOM1HUB303102032IRS">
+								<typ:i_verif_authority type="text">
+									<typ:text-val>IRS</typ:text-val>
+								</typ:i_verif_authority>
+								<typ:i_verif_ID type="text">
+									<typ:text-val>SOM1HUB303102032IRS</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_response-code type="text">
+									<typ:text-val>HE000032</typ:text-val>
+								</typ:i_verif_response-code>
+							</typ:verification>
+						</typ:list-verification>
+					</typ:global-instance>
+				</typ:assess-response>
+			</SOAP-ENV:Body>
+		</SOAP-ENV:Envelope>
+	</DeterminationsReasons>
+</EDResult>

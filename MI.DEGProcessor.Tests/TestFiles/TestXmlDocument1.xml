@@ -1,0 +1,721 @@
+﻿<EDResult>
+	<ATXML>
+		<exch:AccountTransferRequest xmlns:Q1="http://hix.cms.gov/0.1/hix-types" xmlns:Q3="http://niem.gov/niem/usps_states/2.0" xmlns:exch="http://at.dsh.cms.gov/exchange/1.0" xmlns:ext="http://at.dsh.cms.gov/extension/1.0" xmlns:fips_6-4="http://niem.gov/niem/fips_6-4/2.0" xmlns:hix-core="http://hix.cms.gov/0.1/hix-core" xmlns:hix-ee="http://hix.cms.gov/0.1/hix-ee" xmlns:hix-pm="http://hix.cms.gov/0.1/hix-pm" xmlns:i="http://niem.gov/niem/appinfo/2.0" xmlns:i2="http://niem.gov/niem/appinfo/2.1" xmlns:iso_3166="http://niem.gov/niem/iso_3166/2.0" xmlns:local="http://www.maximus.com/namespace" xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:niem-xsd="http://niem.gov/niem/proxy/xsd/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:scr="http://niem.gov/niem/domains/screening/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://at.dsh.cms.gov/exchange/1.0 ../XMLSchema/AT-062113/XMLschemas/ExchangeModel.xsd">
+			<ext:TransferHeader>
+				<ext:TransferActivity>
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>MIPET180426T13511742</nc:IdentificationID>
+					</nc:ActivityIdentification>
+					<nc:ActivityDate>
+						<nc:DateTime>2018-04-26T13:51:17</nc:DateTime>
+					</nc:ActivityDate>
+					<ext:TransferActivityReferralQuantity>1</ext:TransferActivityReferralQuantity>
+					<ext:RecipientTransferActivityCode>MedicaidCHIP</ext:RecipientTransferActivityCode>
+					<ext:RecipientTransferActivityStateCode>MI</ext:RecipientTransferActivityStateCode>
+				</ext:TransferActivity>
+			</ext:TransferHeader>
+			<hix-core:Sender s:id="Sender">
+				<hix-core:InformationExchangeSystemCategoryCode>CHIPAgency</hix-core:InformationExchangeSystemCategoryCode>
+				<hix-core:InformationExchangeSystemStateCode>MI</hix-core:InformationExchangeSystemStateCode>
+			</hix-core:Sender>
+			<hix-core:Receiver s:id="Receiver">
+				<hix-core:InformationExchangeSystemCategoryCode>MedicaidAgency</hix-core:InformationExchangeSystemCategoryCode>
+				<hix-core:InformationExchangeSystemStateCode>MI</hix-core:InformationExchangeSystemStateCode>
+			</hix-core:Receiver>
+			<hix-ee:InsuranceApplication s:id="PE000163">
+				<hix-core:ApplicationCreation>
+					<nc:ActivityDate>
+						<nc:Date>2018-04-26</nc:Date>
+					</nc:ActivityDate>
+				</hix-core:ApplicationCreation>
+				<hix-core:ApplicationSubmission>
+					<nc:ActivityDate>
+						<nc:Date>2018-04-26</nc:Date>
+					</nc:ActivityDate>
+				</hix-core:ApplicationSubmission>
+				<hix-core:ApplicationUpdate s:id="application_delivery">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>application_delivery</nc:IdentificationID>
+						<nc:IdentificationCategoryText>On-line</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="application_source">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>application_source</nc:IdentificationID>
+						<nc:IdentificationCategoryText>On-line</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="ApplicationType">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>ApplicationType</nc:IdentificationID>
+						<nc:IdentificationCategoryText>PE</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyType">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyType</nc:IdentificationID>
+						<nc:IdentificationCategoryText>
+							CMH
+						</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyIDNumber">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyIDNumber</nc:IdentificationID>
+						<nc:IdentificationCategoryText>1049833</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyName">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyName</nc:IdentificationID>
+						<nc:IdentificationCategoryText>Al Bays Training Agency</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyAddressStreet">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyAddressStreet</nc:IdentificationID>
+						<nc:IdentificationCategoryText>123 Training Site</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyAddressCity">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyAddressCity</nc:IdentificationID>
+						<nc:IdentificationCategoryText>East Lansing</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyAddressZip">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyAddressZip</nc:IdentificationID>
+						<nc:IdentificationCategoryText>48823</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyCounty">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyCounty</nc:IdentificationID>
+						<nc:IdentificationCategoryText>Ingham</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyContactPersonFirst">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyContactPersonFirst</nc:IdentificationID>
+						<nc:IdentificationCategoryText>DAVID</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyContactPersonMiddle">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyContactPersonMiddle</nc:IdentificationID>
+						<nc:IdentificationCategoryText/>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyContactPersonLast">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyContactPersonLast</nc:IdentificationID>
+						<nc:IdentificationCategoryText>TESTING</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyPhoneNumber">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyPhoneNumber</nc:IdentificationID>
+						<nc:IdentificationCategoryText>2222222222</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationUpdate s:id="AgencyEmailAddress">
+					<nc:ActivityIdentification>
+						<nc:IdentificationID>AgencyEmailAddress</nc:IdentificationID>
+						<nc:IdentificationCategoryText>d2@test.com</nc:IdentificationCategoryText>
+					</nc:ActivityIdentification>
+				</hix-core:ApplicationUpdate>
+				<hix-core:ApplicationIdentification>
+					<nc:IdentificationID>PE000163</nc:IdentificationID>
+				</hix-core:ApplicationIdentification>
+				<hix-ee:InsuranceApplicant>
+					<hix-core:RoleOfPersonReference s:ref="Applicant"/>
+					<hix-ee:InsuranceApplicantFixedAddressIndicator>false</hix-ee:InsuranceApplicantFixedAddressIndicator>
+					<hix-ee:InsuranceApplicantParentCaretakerIndicator>true</hix-ee:InsuranceApplicantParentCaretakerIndicator>
+					<hix-ee:MedicaidMAGIEligibility>
+						<hix-ee:EligibilityDetermination>
+							<nc:ActivityDate>
+								<nc:DateTime>2018-04-26T13:51:17</nc:DateTime>
+							</nc:ActivityDate>
+						</hix-ee:EligibilityDetermination>
+						<hix-ee:MedicaidMAGIResidencyEligibilityBasis>
+							<hix-ee:EligibilityBasisStatusCode>NotApplicable</hix-ee:EligibilityBasisStatusCode>
+							<hix-ee:EligibilityBasisDetermination>
+								<nc:ActivityDate>
+									<nc:DateTime>2018-04-26T13:51:17</nc:DateTime>
+								</nc:ActivityDate>
+							</hix-ee:EligibilityBasisDetermination>
+						</hix-ee:MedicaidMAGIResidencyEligibilityBasis>
+					</hix-ee:MedicaidMAGIEligibility>
+					<hix-ee:ReferralActivity>
+						<nc:ActivityDate>
+							<nc:DateTime>2018-04-26T13:51:17</nc:DateTime>
+						</nc:ActivityDate>
+						<hix-ee:ReferralActivitySenderReference s:ref="Sender"/>
+						<hix-ee:ReferralActivityReceiverReference s:ref="Receiver"/>
+						<hix-ee:ReferralActivityStatus>
+							<hix-core:StatusIndicator>true</hix-core:StatusIndicator>
+							<hix-ee:ReferralActivityStatusCode>Initiated</hix-ee:ReferralActivityStatusCode>
+							<hix-ee:ReferralActivityOverallVerificationStatusCode>P</hix-ee:ReferralActivityOverallVerificationStatusCode>
+						</hix-ee:ReferralActivityStatus>
+						<hix-ee:ReferralActivityReasonCode>WaitingPeriodException</hix-ee:ReferralActivityReasonCode>
+						<hix-ee:ReferralActivityEligibilityReasonReference s:ref="PE000163"/>
+						<hix-ee:ReferralActivityAdditionalDocumentationIndicator>false</hix-ee:ReferralActivityAdditionalDocumentationIndicator>
+					</hix-ee:ReferralActivity>
+					<hix-ee:InsuranceApplicantFosterCareIndicator>true</hix-ee:InsuranceApplicantFosterCareIndicator>
+				</hix-ee:InsuranceApplicant>
+				<hix-ee:InsuranceApplicationRequestingFinancialAssistanceIndicator>true</hix-ee:InsuranceApplicationRequestingFinancialAssistanceIndicator>
+				<hix-ee:InsuranceApplicationCoverageRenewalYearQuantity>1</hix-ee:InsuranceApplicationCoverageRenewalYearQuantity>
+				<hix-ee:SSFSigner>
+					<hix-core:RoleOfPersonReference s:ref="Applicant"/>
+					<hix-ee:Signature>
+						<hix-core:SignatureName>
+							<nc:PersonFullName>DAVIDTESTINGIGNORE</nc:PersonFullName>
+						</hix-core:SignatureName>
+						<hix-core:SignatureDate>
+							<nc:Date>2018-04-26</nc:Date>
+						</hix-core:SignatureDate>
+					</hix-ee:Signature>
+					<hix-ee:SSFAttestation>
+						<hix-ee:SSFAttestationCollectionsAgreementIndicator>true</hix-ee:SSFAttestationCollectionsAgreementIndicator>
+						<hix-ee:SSFAttestationMedicaidObligationsIndicator>true</hix-ee:SSFAttestationMedicaidObligationsIndicator>
+						<hix-ee:SSFAttestationNonPerjuryIndicator>true</hix-ee:SSFAttestationNonPerjuryIndicator>
+						<hix-ee:SSFAttestationNotIncarceratedIndicator>true</hix-ee:SSFAttestationNotIncarceratedIndicator>
+						<hix-ee:SSFAttestationInformationChangesIndicator>true</hix-ee:SSFAttestationInformationChangesIndicator>
+					</hix-ee:SSFAttestation>
+				</hix-ee:SSFSigner>
+				<hix-ee:InsuranceApplicationRequestingMedicaidIndicator>false</hix-ee:InsuranceApplicationRequestingMedicaidIndicator>
+				<hix-ee:SSFPrimaryContact>
+					<hix-core:RoleOfPersonReference s:ref="Applicant"/>
+					<hix-ee:SSFPrimaryContactPreferenceCode>Mail</hix-ee:SSFPrimaryContactPreferenceCode>
+				</hix-ee:SSFPrimaryContact>
+				<hix-ee:InsuranceApplicationTaxReturnAccessIndicator>false</hix-ee:InsuranceApplicationTaxReturnAccessIndicator>
+			</hix-ee:InsuranceApplication>
+			<hix-core:Person s:id="Applicant">
+				<nc:PersonBirthDate>
+					<nc:Date>1971-05-27</nc:Date>
+				</nc:PersonBirthDate>
+				<nc:PersonName>
+					<nc:PersonGivenName>Faybo</nc:PersonGivenName>
+					<nc:PersonMiddleName>Rash</nc:PersonMiddleName>
+					<nc:PersonSurName>Fayfay</nc:PersonSurName>
+				</nc:PersonName>
+				<nc:PersonSexText>Male</nc:PersonSexText>
+				<nc:PersonSSNIdentification>
+					<nc:IdentificationID>183135128</nc:IdentificationID>
+				</nc:PersonSSNIdentification>
+				<nc:PersonUSCitizenIndicator>true</nc:PersonUSCitizenIndicator>
+				<hix-core:TribalAugmentation>
+					<hix-core:PersonAmericanIndianOrAlaskaNativeIndicator>false</hix-core:PersonAmericanIndianOrAlaskaNativeIndicator>
+					<nc:LocationStateUSPostalServiceCode>MI</nc:LocationStateUSPostalServiceCode>
+				</hix-core:TribalAugmentation>
+				<hix-core:PersonAugmentation>
+					<hix-core:PersonContactInformationAssociation>
+						<hix-core:ContactInformation>
+							<nc:ContactMailingAddress s:metadata="Verification1">
+								<nc:StructuredAddress>
+									<nc:LocationStreet>
+										<nc:StreetFullText>6190 Mountainside CR</nc:StreetFullText>
+									</nc:LocationStreet>
+									<nc:AddressSecondaryUnitText>45E</nc:AddressSecondaryUnitText>
+									<nc:LocationCityName>PORT HURON</nc:LocationCityName>
+									<nc:LocationCountyName>Saint Clair</nc:LocationCountyName>
+									<nc:LocationCountyCode>147</nc:LocationCountyCode>
+									<nc:LocationStateUSPostalServiceCode>MI</nc:LocationStateUSPostalServiceCode>
+									<nc:LocationPostalCode>48315-1155</nc:LocationPostalCode>
+								</nc:StructuredAddress>
+							</nc:ContactMailingAddress>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Home</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonContactInformationAssociation>
+						<nc:ContactInformationIsPrimaryIndicator>true</nc:ContactInformationIsPrimaryIndicator>
+						<hix-core:ContactInformation>
+							<nc:ContactTelephoneNumber>
+								<nc:FullTelephoneNumber>
+									<nc:TelephoneNumberFullID/>
+								</nc:FullTelephoneNumber>
+							</nc:ContactTelephoneNumber>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Home</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonContactInformationAssociation>
+						<hix-core:ContactInformation>
+							<nc:ContactEmailID>ignoremipetest3892@maximus.com</nc:ContactEmailID>
+						</hix-core:ContactInformation>
+						<hix-core:ContactInformationCategoryCode>Home</hix-core:ContactInformationCategoryCode>
+					</hix-core:PersonContactInformationAssociation>
+					<hix-core:PersonPregnancyStatus>
+						<hix-core:StatusIndicator>false</hix-core:StatusIndicator>
+						<hix-core:PregnancyStatusExpectedBabyQuantity>0</hix-core:PregnancyStatusExpectedBabyQuantity>
+					</hix-core:PersonPregnancyStatus>
+					<hix-core:PersonIdentification s:id="EligibleForBCCPThroughCDC">
+						<nc:IdentificationID>EligibleForBCCPThroughCDC</nc:IdentificationID>
+						<nc:IdentificationCategoryText>true</nc:IdentificationCategoryText>
+					</hix-core:PersonIdentification>
+					<hix-core:PersonIdentification s:id="IsEnrolledInMedicare">
+						<nc:IdentificationID>IsEnrolledInMedicare</nc:IdentificationID>
+						<nc:IdentificationCategoryText>true</nc:IdentificationCategoryText>
+					</hix-core:PersonIdentification>
+					<hix-core:PersonIdentification s:id="AttestedInsuranceCoverageLevel">
+						<nc:IdentificationID>AttestedInsuranceCoverageLevel</nc:IdentificationID>
+						<nc:IdentificationCategoryText>Comprehensive</nc:IdentificationCategoryText>
+					</hix-core:PersonIdentification>
+					<hix-core:PersonIdentification s:id="ImpactedByFlintWaterVerif">
+						<nc:IdentificationID>ImpactedByFlintWaterVerif</nc:IdentificationID>
+						<nc:IdentificationCategoryText>A</nc:IdentificationCategoryText>
+					</hix-core:PersonIdentification>
+				</hix-core:PersonAugmentation>
+			</hix-core:Person>
+			<hix-core:VerificationMetadata s:id="Verification1">
+				<hix-core:AddressVerificationCode>ValidMatch</hix-core:AddressVerificationCode>
+				<hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>SSA</hix-core:VerificationAuthorityTDS-FEPS-AlphaCode>
+				<hix-core:VerificationDate>
+					<nc:DateTime>2018-04-26T13:51:17</nc:DateTime>
+				</hix-core:VerificationDate>
+				<hix-core:VerificationRequestingSystem>
+					<hix-core:InformationExchangeSystemCategoryCode>Exchange</hix-core:InformationExchangeSystemCategoryCode>
+				</hix-core:VerificationRequestingSystem>
+			</hix-core:VerificationMetadata>
+			<ext:PhysicalHousehold>
+				<hix-ee:HouseholdIncome>
+					<hix-core:IncomeAmount>24338</hix-core:IncomeAmount>
+				</hix-ee:HouseholdIncome>
+				<hix-ee:HouseholdSizeQuantity>6</hix-ee:HouseholdSizeQuantity>
+				<hix-ee:HouseholdMemberReference s:ref="Applicant"/>
+			</ext:PhysicalHousehold>
+		</exch:AccountTransferRequest>
+	</ATXML>
+	<DeterminationsReasons>
+		<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:i18n="http://www.w3.org/2005/09/ws-i18n" xmlns:typ="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types">
+			<SOAP-ENV:Header>
+				<i18n:international>
+					<i18n:locale>en_US</i18n:locale>
+					<i18n:tz>GMT-0400</i18n:tz>
+				</i18n:international>
+			</SOAP-ENV:Header>
+			<SOAP-ENV:Body>
+				<typ:assess-response>
+					<typ:global-instance>
+						<typ:o_g_elig-presumptive-expires inferred="true" type="date">
+							<typ:date-val>2018-05-31</typ:date-val>
+						</typ:o_g_elig-presumptive-expires>
+						<typ:o_g_elig-presumptive-begins inferred="true" type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:o_g_elig-presumptive-begins>
+						<typ:o_g_rulebase_date_and_version inferred="true" type="text">
+							<typ:text-val>02 March 2018 Release 18.03 Version 1.0</typ:text-val>
+						</typ:o_g_rulebase_date_and_version>
+						<typ:o_g_assessment-date inferred="true" type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:o_g_assessment-date>
+						<typ:io_g_submission-date inferred="false" type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:io_g_submission-date>
+						<typ:io_g_creation-date type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:io_g_creation-date>
+						<typ:io_g_submission-date type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:io_g_submission-date>
+						<typ:io_g_transfer-date type="date">
+							<typ:date-val>2018-04-26</typ:date-val>
+						</typ:io_g_transfer-date>
+						<typ:i_g_app-type type="text">
+							<typ:text-val>PE</typ:text-val>
+						</typ:i_g_app-type>
+						<typ:i_g_SSFSigner-ID type="text">
+							<typ:text-val>Applicant</typ:text-val>
+						</typ:i_g_SSFSigner-ID>
+						<typ:i_g_household-wishes-to-be-eval-Medicaid type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:i_g_household-wishes-to-be-eval-Medicaid>
+						<typ:i_g_application-signature type="text">
+							<typ:text-val>DAVIDTESTINGIGNORE</typ:text-val>
+						</typ:i_g_application-signature>
+						<typ:this_State_abbrv type="text">
+							<typ:text-val>MI</typ:text-val>
+						</typ:this_State_abbrv>
+						<typ:io_g_application_id type="text">
+							<typ:text-val>MIPET180426T13511742</typ:text-val>
+						</typ:io_g_application_id>
+						<typ:io_g_number_of_applicants type="number">
+							<typ:number-val>1.0</typ:number-val>
+						</typ:io_g_number_of_applicants>
+						<typ:io_g_mapper-version type="text">
+							<typ:text-val>MapperV_R17.06_B000</typ:text-val>
+						</typ:io_g_mapper-version>
+						<typ:io_g_point-of-origin-system type="text">
+							<typ:text-val>CHIPAgency</typ:text-val>
+						</typ:io_g_point-of-origin-system>
+						<typ:list-person inferred="false">
+							<typ:person id="Applicant">
+								<typ:o_per_MEC-dependent inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_MEC-dependent>
+								<typ:the_person inferred="true" type="text">
+									<typ:text-val>Faybo_Rash_Fayfay</typ:text-val>
+								</typ:the_person>
+								<typ:o_per_requires-post-determination-verification-of-dependent-health-insurance-coverage inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-dependent-health-insurance-coverage>
+								<typ:o_per_MEC inferred="true" type="text">
+									<typ:text-val>Yes</typ:text-val>
+								</typ:o_per_MEC>
+								<typ:o_per_elig-HMP-attested-PCR inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-HMP-attested-PCR>
+								<typ:o_per_post-determination-check-for-MA-address inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_post-determination-check-for-MA-address>
+								<typ:o_per_elig-MAGI-Flint-eval inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-MAGI-Flint-eval>
+								<typ:o_per_Medicaid-coverage-level inferred="true" type="text">
+									<typ:text-val>Full</typ:text-val>
+								</typ:o_per_Medicaid-coverage-level>
+								<typ:rb_per_under-19 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_under-19>
+								<typ:o_per_MOMS-presumptive inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_MOMS-presumptive>
+								<typ:rb_per_age-in-years inferred="true" type="number">
+									<typ:number-val>46.0</typ:number-val>
+								</typ:rb_per_age-in-years>
+								<typ:o_per_elig-presumptive-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+
+								</typ:o_per_elig-presumptive-Medicaid>
+								<typ:i_per_gender type="text">
+									<typ:text-val>MALE</typ:text-val>
+								</typ:i_per_gender>
+								<typ:i_per_dob type="date">
+									<typ:date-val>1971-05-27</typ:date-val>
+								</typ:i_per_dob>
+								<typ:i_per_pregnant type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_pregnant>
+								<typ:i_per_name-first type="text">
+									<typ:text-val>Faybo</typ:text-val>
+								</typ:i_per_name-first>
+								<typ:i_per_name-middle type="text">
+									<typ:text-val>Rash</typ:text-val>
+								</typ:i_per_name-middle>
+								<typ:i_per_name-last type="text">
+									<typ:text-val>Fayfay</typ:text-val>
+								</typ:i_per_name-last>
+								<typ:i_per_no-child-expecting type="number">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:i_per_no-child-expecting>
+								<typ:i_per_a-US-citizen type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_a-US-citizen>
+								<typ:i_per_ssn-has type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_ssn-has>
+								<typ:i_per_indian type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_indian>
+								<typ:i_per_US-citizen-or-national type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_US-citizen-or-national>
+								<typ:i_per_addr-res-street type="text">
+									<typ:text-val>6190 Mountainside CR</typ:text-val>
+								</typ:i_per_addr-res-street>
+								<typ:i_per_addr-res-city type="text">
+									<typ:text-val>PORT HURON</typ:text-val>
+								</typ:i_per_addr-res-city>
+								<typ:i_per_addr-res-state type="text">
+									<typ:text-val>MI</typ:text-val>
+								</typ:i_per_addr-res-state>
+								<typ:i_per_addr-res-zip type="text">
+									<typ:text-val>48315-1155</typ:text-val>
+								</typ:i_per_addr-res-zip>
+								<typ:i_per_addr-res-apt type="text">
+									<typ:text-val>45E</typ:text-val>
+								</typ:i_per_addr-res-apt>
+								<typ:i_per_IsEnrolledInMedicare type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_IsEnrolledInMedicare>
+								<typ:i_per_SSN type="text">
+									<typ:text-val>183135128</typ:text-val>
+								</typ:i_per_SSN>
+								<typ:ii_per_apply-for-coverage type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:ii_per_apply-for-coverage>
+								<typ:io_per_ID type="text">
+									<typ:text-val>Applicant</typ:text-val>
+								</typ:io_per_ID>
+								<typ:i_per_in-foster-care-at-18 type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_in-foster-care-at-18>
+								<typ:i_per_verification-type-for-individuals-impacted-by-Flint-water type="text">
+									<typ:text-val>A</typ:text-val>
+								</typ:i_per_verification-type-for-individuals-impacted-by-Flint-water>
+								<typ:i_per_comprehensive-health-insurance-indicator type="text">
+									<typ:text-val>Comprehensive</typ:text-val>
+								</typ:i_per_comprehensive-health-insurance-indicator>
+								<typ:i_per_primary-caretaker-of-some-child type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_primary-caretaker-of-some-child>
+								<typ:i_per_EligibleForBCCPThroughCDC type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_EligibleForBCCPThroughCDC>
+								<typ:i_per_has-no-fixed-address-indicator type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_has-no-fixed-address-indicator>
+								<typ:relationships>
+									<typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear state="known">
+									</typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear>
+								</typ:relationships>
+								<typ:list-program inferred="false">
+									<typ:program id="0x89af9f013e6a64ed">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>195.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0xa8b5aacc44ed38e9">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>160.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0x25d8d9dfbf24662f">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>54.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0xad01a28c2e2fe70a">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>AMPM</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-HMP</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>133.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-HMP</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0x29e812c80283fbea">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:uncertain-val/>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0xc2e3831e8822a50b">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>BCCP</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>BCCP</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:uncertain-val/>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>BCCP</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0xe594232c75bb04d8">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>212.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+									<typ:program id="0xb2c66c8a720c99d4">
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-FLT</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>400.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:o_p_elig-presumptive inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_elig-presumptive>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-FLT</typ:text-val>
+										</typ:the_program>
+									</typ:program>
+								</typ:list-program>
+								<typ:list-income inferred="false">
+								</typ:list-income>
+								<typ:list-related-party inferred="false">
+								</typ:list-related-party>
+								<typ:list-expense inferred="false">
+								</typ:list-expense>
+								<typ:list-benefit inferred="false">
+								</typ:list-benefit>
+								<typ:list-b-plan inferred="true">
+									<typ:b-plan id="0x34ff85d774aa55a5">
+									</typ:b-plan>
+								</typ:list-b-plan>
+								<typ:list-MAGI-household inferred="false">
+									<typ:MAGI-household id="Magi-hh-bbbb76a6-67f0-4926-b28e-18b261a3ee1c">
+										<typ:the_MAGI_household type="text">
+											<typ:text-val>Applicant</typ:text-val>
+										</typ:the_MAGI_household>
+									</typ:MAGI-household>
+								</typ:list-MAGI-household>
+							</typ:person>
+						</typ:list-person>
+						<typ:list-povertyguideline inferred="true">
+							<typ:povertyguideline id="0x7b3cdc5d0255b630">
+							</typ:povertyguideline>
+							<typ:povertyguideline id="0xa1b3f4cbc7e382ad">
+							</typ:povertyguideline>
+						</typ:list-povertyguideline>
+						<typ:list-physicalHousehold inferred="false">
+							<typ:physicalHousehold id="PHH-4ca3c99116301a0e60b7fffac1417d00">
+								<typ:i_hh_attested-size type="number">
+									<typ:number-val>6.0</typ:number-val>
+								</typ:i_hh_attested-size>
+								<typ:i_hh_attested-income type="currency">
+									<typ:number-val>24338.0</typ:number-val>
+								</typ:i_hh_attested-income>
+								<typ:relationships>
+									<typ:ir_household-members state="known">
+										<typ:target instance-id="Applicant"/>
+									</typ:ir_household-members>
+								</typ:relationships>
+							</typ:physicalHousehold>
+						</typ:list-physicalHousehold>
+						<typ:list-taxreturn inferred="false">
+						</typ:list-taxreturn>
+						<typ:list-verification inferred="false">
+							<typ:verification id="Verification1">
+								<typ:i_verif_ID type="text">
+									<typ:text-val>Verification1</typ:text-val>
+								</typ:i_verif_ID>
+								<typ:i_verif_authority type="text">
+									<typ:text-val>SSA</typ:text-val>
+								</typ:i_verif_authority>
+							</typ:verification>
+						</typ:list-verification>
+						<typ:list-plan inferred="true">
+							<typ:plan id="0x3d76d7719769100d">
+							</typ:plan>
+						</typ:list-plan>
+					</typ:global-instance>
+				</typ:assess-response>
+			</SOAP-ENV:Body>
+		</SOAP-ENV:Envelope>
+	</DeterminationsReasons>
+</EDResult>

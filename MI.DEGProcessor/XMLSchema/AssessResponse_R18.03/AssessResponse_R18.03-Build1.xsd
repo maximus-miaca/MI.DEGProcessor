@@ -1,0 +1,2041 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:i18n="http://www.w3.org/2005/09/ws-i18n" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:typ="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types" elementFormDefault="qualified" version="1.0">
+	<!--  Assess Request and response  -->
+	<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+	<xsd:element name="assess-request" type="AssessRequest"/>
+	<xsd:element name="assess-response" type="AssessResponse"/>
+	<xsd:complexType name="AssessResponse">
+		<xsd:sequence>
+			<xsd:element name="events" type="ListEventsType" minOccurs="0"/>
+			<xsd:element name="global-instance" type="GlobalInstanceType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AssessRequest">
+		<xsd:sequence>
+			<xsd:element name="config" type="AssessmentConfiguration" minOccurs="0"/>
+			<xsd:element name="global-instance" type="GlobalInstanceType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--  XSD types for the list goals action  -->
+	<!--  List Goals Request and response  -->
+	<xsd:element name="list-goals-response" type="ListGoalsResponse"/>
+	<xsd:element name="list-goals-request">
+		<xsd:complexType/>
+	</xsd:element>
+	<xsd:complexType name="ListGoalsResponse">
+		<xsd:sequence>
+			<xsd:element name="entity" type="ListGoalsEntityType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- list goals outputs an entity and attributes but has different required attributes  -->
+	<xsd:complexType name="ListGoalsEntityType">
+		<xsd:sequence>
+			<xsd:element name="attribute" type="ListGoalsAttributeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="entity-id" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListGoalsAttributeType">
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="type" type="AttributeTypeEnum" use="required"/>
+		<xsd:attribute name="text" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<!-- XSD Types for the Assessment Configuration  -->
+	<xsd:complexType name="AssessmentConfiguration">
+		<xsd:sequence>
+			<xsd:element name="show-silent" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="show-invisible" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="show-properties" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="show-events" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="resolve-indecision-relationships" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="outcome" type="ResponseOutcome" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResponseOutcome">
+		<xsd:sequence>
+			<xsd:element name="entity" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="attribute-outcome" type="OutcomeType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="relationship-outcome" type="OutcomeType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:string" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--
+
+<xsd:complexType name="AttributeOutcome">
+	<xsd:complexContent>
+		<xsd:extension base="OutcomeType">
+   	 		<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+    	</xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="RelationshipOutcome">
+	<xsd:complexContent>
+		<xsd:extension base="OutcomeType">
+   	 		<xsd:attribute name="state" type="StateEnum" use="optional"/>
+    	</xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType> -->
+	<xsd:complexType name="OutcomeType">
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+		<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+		<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="OutcomeStyleEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="value-only"/>
+			<xsd:enumeration value="decision-report"/>
+			<xsd:enumeration value="base-attributes"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AttributeTypeEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="boolean"/>
+			<xsd:enumeration value="text"/>
+			<xsd:enumeration value="number"/>
+			<xsd:enumeration value="currency"/>
+			<xsd:enumeration value="date"/>
+			<xsd:enumeration value="datetime"/>
+			<xsd:enumeration value="timeofday"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StateEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="known"/>
+			<xsd:enumeration value="unknown"/>
+			<xsd:enumeration value="uncertain"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="UnknownValue"/>
+	<xsd:complexType name="UncertainValue"/>
+	<!-- XSD Types for Assess Error Response  -->
+	<!--  error response  -->
+	<xsd:element name="error-response" type="Error"/>
+	<xsd:complexType name="Error">
+		<xsd:sequence>
+			<xsd:element name="code" type="xsd:string"/>
+			<xsd:element name="message" type="xsd:string"/>
+			<xsd:element name="events" type="ListEventsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- rulebase event types  -->
+	<xsd:complexType name="RulebaseEventType">
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string"/>
+			<xsd:element name="parameters">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="value" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="entity-id" type="xsd:string" use="required"/>
+		<xsd:attribute name="instance-id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListEventsType">
+		<xsd:sequence>
+			<xsd:element name="event" type="RulebaseEventType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- decision report types  -->
+	<xsd:complexType name="DecisionReportType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="relationship-node" type="RelationshipNodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="attribute-node" type="AttributeNodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="already-proven-node" type="AlreadyProvenNodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attribute name="report-style" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeNodeType">
+		<xsd:sequence>
+			<!-- node attribute value -->
+			<xsd:choice minOccurs="0">
+				<xsd:element name="boolean-val" type="xsd:boolean"/>
+				<xsd:element name="date-val" type="xsd:date"/>
+				<xsd:element name="datetime-val" type="xsd:dateTime"/>
+				<xsd:element name="time-val" type="xsd:time"/>
+				<xsd:element name="number-val" type="xsd:decimal"/>
+				<xsd:element name="text-val" type="xsd:string"/>
+				<xsd:element name="uncertain-val" type="UncertainValue"/>
+				<xsd:element name="unknown-val" type="UnknownValue"/>
+			</xsd:choice>
+			<xsd:element name="change-point" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:choice minOccurs="0">
+						<xsd:element name="boolean-val" type="xsd:boolean"/>
+						<xsd:element name="date-val" type="xsd:date"/>
+						<xsd:element name="datetime-val" type="xsd:dateTime"/>
+						<xsd:element name="time-val" type="xsd:time"/>
+						<xsd:element name="number-val" type="xsd:decimal"/>
+						<xsd:element name="text-val" type="xsd:string"/>
+						<xsd:element name="uncertain-val" type="UncertainValue"/>
+						<xsd:element name="unknown-val" type="UnknownValue"/>
+					</xsd:choice>
+					<xsd:attribute name="date" type="xsd:date"/>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- node attribute custom properties  -->
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+			<!-- child nodes  -->
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="relationship-node" type="RelationshipNodeType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="attribute-node" type="AttributeNodeType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="already-proven-node" type="AlreadyProvenNodeType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<!-- node id  -->
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<!-- node entity instance  -->
+		<xsd:attribute name="entity-id" type="xsd:string" use="required"/>
+		<xsd:attribute name="instance-id" type="xsd:string" use="required"/>
+		<!-- will only show up if outcome is unknown and resolve-rels is true. Used to indicate whether or not the entity instance
+         actually exists in the session or was created to backwards chain unknown relationships -->
+		<xsd:attribute name="hypothetical-instance" type="xsd:boolean" use="required"/>
+		<!-- node attribute id & type -->
+		<xsd:attribute name="attribute-id" type="xsd:string" use="required"/>
+		<xsd:attribute name="type" type="AttributeTypeEnum" use="required"/>
+		<!-- node attribute current text  -->
+		<xsd:attribute name="text" type="xsd:string" use="required"/>
+		<!-- true if the attribute is inferred  -->
+		<xsd:attribute name="inferred" type="xsd:boolean" use="required"/>
+		<!--only provided if start relevance != ChangePointDate.EARLIEST -->
+		<xsd:attribute name="start-relevance" type="xsd:date" use="optional"/>
+		<!--only provided if end relevance != ChangePointDate.LATEST -->
+		<xsd:attribute name="end-relevance" type="xsd:date" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="RelationshipNodeType">
+		<xsd:sequence>
+			<!--Relationship decision nodes now include targets. If the relationship is inferred this will be
+            Relationship.getAllKnownTargets otherwise it's Relationship.getAllTargets -->
+			<xsd:element name="target" type="RelationshipTargetType" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- node relationship properties  -->
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+			<!-- child nodes  -->
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="relationship-node" type="RelationshipNodeType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="attribute-node" type="AttributeNodeType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="already-proven-node" type="AlreadyProvenNodeType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<!-- node id  -->
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<!-- node relationship id  -->
+		<xsd:attribute name="relationship-id" type="xsd:string" use="required"/>
+		<!-- node relationship source instance -->
+		<xsd:attribute name="source-entity-id" type="xsd:string" use="required"/>
+		<xsd:attribute name="source-instance-id" type="xsd:string" use="required"/>
+		<!-- will only show up if outcome is unknown and resolve-rels is true. Used to indicate whether or not the source entity instance
+         actually exists in the session or was created to backwards chain unknown relationships -->
+		<xsd:attribute name="hypothetical-instance" type="xsd:boolean" use="required"/>
+		<!-- node relationship target entity  -->
+		<xsd:attribute name="target-entity-id" type="xsd:string" use="required"/>
+		<!--  relationship state - known, unknown or uncertain  -->
+		<xsd:attribute name="state" type="StateEnum" use="required"/>
+		<!-- true if the relationship is inferred  -->
+		<xsd:attribute name="inferred" type="xsd:boolean" use="required"/>
+		<!--only provided if start relevance != ChangePointDate.EARLIEST -->
+		<xsd:attribute name="start-relevance" type="xsd:date" use="optional"/>
+		<!--only provided if end relevance != ChangePointDate.LATEST -->
+		<xsd:attribute name="end-relevance" type="xsd:date" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="AlreadyProvenNodeType">
+		<!-- this attribute's value is the id of the node that has already been proven -->
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<!-- property types  -->
+	<xsd:complexType name="ListCustomPropertiesType">
+		<xsd:sequence>
+			<xsd:element name="property" type="CustomPropertyType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustomPropertyType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="key" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="booleanDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="boolean-val" type="xsd:boolean"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="booleanChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="booleanDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="booleanAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="booleanDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="booleanChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="dateDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="date-val" type="xsd:date"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="dateChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="dateDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="dateAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="dateDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="dateChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="datetimeDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="datetime-val" type="xsd:dateTime"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="datetimeChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="datetimeDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="datetimeAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="datetimeDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="datetimeChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="timeDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="time-val" type="xsd:time"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="timeChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="timeDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="timeAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="timeDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="timeChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="numberDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="number-val" type="xsd:decimal"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="numberChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="numberDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="numberAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="numberDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="numberChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="textDataType">
+		<xsd:choice minOccurs="0">
+			<xsd:element name="text-val" type="xsd:string"/>
+			<xsd:element name="uncertain-val" type="UncertainValue"/>
+			<xsd:element name="unknown-val" type="UnknownValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="textChangePoint">
+		<xsd:complexContent>
+			<xsd:extension base="textDataType">
+				<xsd:attribute name="date" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="textAttributeType">
+		<xsd:complexContent>
+			<xsd:extension base="textDataType">
+				<xsd:sequence>
+					<xsd:element name="change-point" type="textChangePoint" minOccurs="0"
+                                 maxOccurs="unbounded"/>
+					<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+					<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+					<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+					<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+				</xsd:sequence>
+				<!--this property is returned for each attribute in a response -->
+				<xsd:attribute name="type" type="AttributeTypeEnum" use="optional"/>
+				<!--this property will only be provided in a response for relationship outcomes -->
+				<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+				<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+				<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+				<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GlobalInstanceType">
+		<xsd:all>
+			<xsd:element name="i_g_SSFSigner-ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_app-contains-signature" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_app-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_application-signature" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_eligibility-being-determined" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_household-wishes-to-be-eval-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_g_req-iap" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_application_id" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_creation-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_mapper-version" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_number_of_applicants" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_point-of-origin-system" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_submission-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_g_transfer-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_application-pended-contains-more-than-1-tax-return" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_application-pended-due-to-invalid-relationships" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_application-pended-primary-applicant-claimed-as-dependent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_assessment-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_attested-income-not-reasonably-compatible-with-trusted-sources" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_elig-presumptive-begins" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_elig-presumptive-expires" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_error-pend-reason" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_pend-application" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_pend-for-determination-of-same-sex-couple-eligibility" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_pend-to-resolve-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_required-verification-data-received" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_rulebase_date_and_version" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_send-custodial-parent-notice" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_send-tax-filer-notice-R005.020.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_the-app-valid-per-R005.123.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_g_transfer-to-exchange" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_20-cycle-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2012-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2012-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2013-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2013-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2014-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2014-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2015-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2015-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2016-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2016-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2017-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2017-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2018-fpl-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_2018-fpl-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_FPL-limit-MAGI-PlanFirst" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_FPL-limit-for-Flint" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_PE-determination-requested" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_PG-assessment-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_addt-gross-inc-allow-for-adjusted-earned-inc-cap-for-gross-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_addt-gross-inc-allow-for-adjusted-earned-inc-cap-for-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_addt-gross-inc-allow-for-adjusted-earned-inc-cap-for-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_addt-gross-inc-allow-for-adjusted-earned-inc-cap-for-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_addt-gross-inc-allow-for-adjusted-earned-inc-cap-for-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_app-for-CH" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_app-for-PRN" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_app-for-RN" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_app-for-RT" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_app-from-FFM" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_application-sig-non-null" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_assessment-date-is-within-Bridges-window-for-testing-new-FPL-and-tax-filing-thresholds" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_assessment-date-is-within-Bridges-window-for-testing-new-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_attested-income-reasonably-compatible-with-trusted-source" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-amt-RSDI-or-RRB-inc-married-pers-filing-jointly-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-amt-RSDI-or-RRB-inc-married-pers-filing-separately-living-with-spouse-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-amt-RSDI-or-RRB-inc-married-pers-filing-separately-not-living-with-spouse-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-amt-RSDI-or-RRB-inc-single-pers-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-gross-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_base-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_date-PE-determination-was-made" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_date-one-month-after-PE-was-determined" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_discrepancy-in-lawful-presence-between-self-attested-and-trusted-sources-per-R005.124.003" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-cap-for-gross-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-cap-for-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-cap-for-gross-inc-filing-limit-married-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-cap-for-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-cap-for-gross-inc-filing-limit-single-dependents-who-are-neither-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-filing-limit-married-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-filing-limit-married-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-filing-limit-single-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_earned-inc-filing-limit-single-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_exp-amt-pg-per-appl" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_expense-frequency-cannot-be-paid-daily-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_full-determination-requested" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-head-of-household-filers-65-or-older" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-head-of-household-filers-under-65" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-married-filing-jointly-filers-both-65-or-older" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-married-filing-jointly-filers-both-under-65" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-married-filing-jointly-filers-one-65-or-older" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-married-filing-separately-filers" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-qualifying-widow-dependent-child-filers-65-or-older" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-qualifying-widow-dependent-child-filers-under-65" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-single-filers-65-or-older" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_gross-inc-filing-limit-single-filers-under-65" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_last-day-of-the-month-following-the-month-PE-was-determined" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_multiple-SSN-verif-values-err-should-be-displayed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_multiple-tax-return-years-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_num-people-on-app" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_number-of-tax-returns" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_pe-applicants-sex-text-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_pe-attested-caretaker-IsEnrolledInMedicare-attested-foster-care-indicator-EligibleForBCCPThroughCDC-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_pe-not-exactly-one-applicant-and-one-household-missing-input-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_splan-chip-addl" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_state-fpl-limit-MIChild" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_state-fpl-limit-ind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_tax_year" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_there-are-verification-results" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unborn-children-included-in-MAGI-household-under-42-CFR-435.603b" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unearned-inc-filing-limit-depedents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unearned-inc-filing-limit-married-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unearned-inc-filing-limit-married-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unearned-inc-filing-limit-single-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unearned-inc-filing-limit-single-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_g_unknown-text-value" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_FPL-amt-each-addl-person-under-42-CFR-435-603-h" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_FPL-amt-one-person-under-42-CFR-435-603-h" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rg_g_cannot-be-dependent-on-more-than-1-tax-return-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rg_g_cannot-be-related-to-self-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rg_g_cannot-have-more-than-1-spouse-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rg_g_pe-app-date-name-dob-citizen-lawful-hh-income-hh-size-missing-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rg_g_pe-hame-address-state-mail-address-state-missing-error" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_g_current-poverty-guideline-end-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_g_current-poverty-guideline-fpl-1-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_g_current-poverty-guideline-fpl-addl-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_g_current-poverty-guideline-start-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_g_current-poverty-guideline-yr" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_benefit_year" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_service_area_of_the_Exchange" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="this_State" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="this_State_abbrv" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="this_State_government" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="this_year" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="ir_g_valid-tax-returns" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr_g_pg_current-yr" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr_g_pg_prior-yr" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="list-person" type="personEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-physicalHousehold" type="physicalHouseholdEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-plan" type="planEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-povertyguideline" type="povertyguidelineEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-taxreturn" type="taxreturnEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-verification" type="verificationEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="personEntityListType">
+		<xsd:sequence>
+			<xsd:element name="person" type="personInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="personInstanceType">
+		<xsd:all>
+			<xsd:element name="i_p_SSA-basis-of-need" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_42-cfr-435-403-h-3" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_42-cfr-435-403-i-3" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_AlienAdmissionStatus" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_AlienTypeDocument" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_AnsweredIsUSCitizenQuestion" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_BlindnessOrDisabilityEligibilityBasisIndicator" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_CMS-DHS-COA-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_CMS-DHS-document-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_EligibleForBCCPThroughCDC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_IsAlienMilitaryService" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_IsEnrolledInMedicare" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_IsVictimOfTrafficking" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_MAGIMedicaid-citizen-immigrant-elig-basis-status-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_MAGIMedicaid-ssn-valid-elig-basis-status-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_Medicaid-inelig-disregard" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_SSN" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_SSN-verif-metadata" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_US-citizen-or-national" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_a-US-citizen" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_a-national" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-mail-apt" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-mail-city" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-mail-state" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-mail-street" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-mail-zip" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-prev-state" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-absent-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-apt" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-city" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-state" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-street" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_addr-res-zip" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_alt-this-state-placed-resi" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_annual-income-verified" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_applied-Medicare" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_apply-for-coverage" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_arrival-prior-to-1996" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_attested-MA-address-on-addr-list" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_attests-having-health-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_authorized-rep" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_cit-lawful-pres" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_cit-lawful-pres-period" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_citizenship" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_comprehensive-health-insurance-indicator" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_current-enrolled-prog-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_date-of-US-entry" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_date-of-asylum-parolee-LPR-status" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_deem-elig-for-SSI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_deem-elig-for-SSI-1619a" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_deem-elig-for-SSI-1619b" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_disabled" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_dob" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_document-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_document-type-other" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_elig-medicare" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ent-this-state-for-job" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_enter-this-state-with-job" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_entitled-or-enrolled-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_female" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_foster-care" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_gender" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_has-access-to-coverage-under-state-emp-plan" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_has-no-fixed-address-indicator" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_hub-cit-5yr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_hub-cit-5yr-met" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_hub-cit-qual" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_immigration-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_in-foster-care-at-18" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_inc-indian-month" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_inc-indian-this" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_inc-sch-month" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_inc-sch-this" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_incarcerated" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_incarcerated-pend" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_indian" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-access" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-cobra" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-affordable" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-enrolled" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-enrolled-checkbox" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-min-val" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-offered" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-empl-public" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-ind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-other-min-ess-cov" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins-public-cont-10" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ins_grandfathered" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_intent-before-21" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_intent-incap" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_intent-res-this-state" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_legally-emancipated" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_male" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_marital-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_mec-exempt-5000ae1" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_mec-exempt-5000ae5" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_med-cndt-prevent-emply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_member-of-federally-acknowledged-American-Indian-tribe" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_name-first" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_name-last" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_name-middle" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_name-suffix" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_needs-LTC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_no-child-expecting" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_non-cit-ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_other-insurance-indicator" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_pregnancy-due-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_pregnant" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_primary-caretaker-of-some-child" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_primary-indicator" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_qhp-level" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_qual-non-citz-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_rec_SSI_prev" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_recv-med-part-A" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_req-hix" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_req-iap" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_req-medical" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_req-non-MAGI-med" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-agreement" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-agreement-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-disputed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-foster-license" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-foster-unrelated" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-inst-by-govt" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-inst-by-govt-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_res-inst-par-res-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_sch-grad-before-19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ssn-elig" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ssn-has" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ssn-non-work" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ssn-sect-adheres" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ssn-sect-member" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_stu-secondary-or-vocati" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_student" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-dep-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-dependent-indicator" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-exemption-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-filers-same-hix" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-filing-indicator" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_tax-req-file-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_type-health-insurance-applicant-has-or-recently-lost" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_verif-metadata" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_verification-type-for-individuals-impacted-by-Flint-water" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_vio-aptc-not-file" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ward-state" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_ward-state-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_per_will-apply-ssn" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ii_per_apply-for-coverage" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ii_per_born-to-Medicaid-mother" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ii_per_marital-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_per_ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_per_RecentMedicalBills" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_8-usc-1613-5yr-ban-exempt" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_FPL-best-program" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MAGI-MIChild-det-date" type="datetimeAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MAGI-Medicaid-det-date" type="datetimeAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MAGI-hh-income-best-program" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MAGI-hh-size-best-program" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MEC" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MEC-dependent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_MOMS-presumptive" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_Medicaid-coverage-level" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_Medicaid-enrollment-end-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_Medicaid-renewal-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_Medicaid-start-date-test" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_SSN-application-requires-post-determination-tracking-for-Medicaid-per-R005.069.002" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_age-19-to-44" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_app-pended-for-verification-per-R005.123.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-HMP-attested-PCR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-MAGI-FFC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-MAGI-Flint-eval" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-MAGI-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-MAGI-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-Medicaid-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-HMP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-MOMS" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-PCR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-PW" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-PlanFirst" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-attested-MAGI-U19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-magi-michild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_elig-presumptive-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_eligible-MAGI-FFC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_eligible-for-ESO" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_exp-MAGI-Medicaid-monthly" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_inc-MAGI-FPL_percent" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_inc-MAGI-Medicaid-annual" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_inc-MAGI-Medicaid-monthly" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_inc-gross-monthly" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_inc_MAGI-Medicad-annual-603e" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_ineg_SSI_after_1977" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_ins-enrolled" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_is-PCR-under-42CFR435.110b" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_is-adult-under-42CFR435.119b" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_is-child-under-42CFR457.10" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_lacks-coverage-under-42CFR457.310b2" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-MIChild-SSN-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-MIChild-citizen-alien-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-MIChild-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-MIChild-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-MIChild-residency" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-Medicaid-SSN-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-Medicaid-citizen-alien-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-Medicaid-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-Medicaid-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-MAGI-Medicaid-residency" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_meets-residency-requirement-per-CC945" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_most-beneficial-TOA" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-for-determination-of-same-sex-couple-eligibility" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-missing-contact-info" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-person" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-unanswered-citizenship" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-verify-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-verify-lawful-presence" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_pend-verify-residency" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_person-referred-non-MAGI-determination" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_post-determination-MIChild-check-for-existing-insurance-per-R005.062.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_post-determination-check-for-MA-address" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_post-determination-check-for-existing-dependent-insurance-coverage" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_post-determination-check-for-existing-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_refer-for-nonMAGI-Medicaid-LTC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-additional-citizenship-validation-for-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-citizenship-validation-for-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-lawful-presence-validation-for-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-check-for-existing-family-planning-insurance-coverage-per-R005.133.003" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-for-unspecified-relative" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-verification-of-citizenship-for-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-verification-of-citizenship-for-Medicaid-per-R005.087.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-verification-of-dependent-health-insurance-coverage" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_requires-post-determination-verification-of-lawful-presence-for-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_send-retro-application" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_spouse-is-PCR-under-42CFR435.4" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_verified-income-found" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_age-in-days" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per-age-under-16" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per-considered-to-be-living-or-intending-to-reside-in-the-state" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per-qualified-alien-under-8USC1641" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per-yr-amt-attest-RSDI-taxable-per-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per-yr-amt-attest-RSDI-taxable-per-915-for-501" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_1-month-or-younger" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_18-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_22yr-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_42-CFR-435-c-satisfied" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_44-years-or-younger" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_50yr-or-less" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_64-yrs-or-younger" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_8-usc-1613-5yr-ban" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Afghan-admitted-with-special-immigration-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Amerasian-born-in-Vietnam-or-related-to-same-under-8USC1612-a2Av" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Amerasian-under-P.L.-100-202-of-2000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Bridges-indicator-that-the-person-answered-the-citizenship-question-is-present" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-SAVE-Step-2-started" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-DS2019" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-I20" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-I327" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-I571" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-I94" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-doc-type-TemporaryI551Stamp" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-results-from-SAVE-Step-1" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_CMS-DHS-results-from-SAVE-Step-2" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Eligible-Immigration-Status-box-checked-on-application" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_FPL-amt-addl-people-for-26-CFR-1-36B-1" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_FPL-amt-one-person-for-26-CFR-1-36B-1" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_IRS-Pub-501-table1-applies" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_IRS-Pub-501-table2-applies" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Iraqi-admitted-with-special-immigration-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_LIF-eligible-1-of-past-3-months" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-converted-PCR-monthly-income-limit-for-hh-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-converted-U21-monthly-income-limit-for-hh-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-hh-contains-tax-filer-claiming-them-as-dependent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-hh-inc-this-yr-under-42-CFR-435.603-d" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-hh-size-for-PCR" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-hh-size-for-U21" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_MAGI-household-contains-parent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Medicaid-attestation-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Medicaid-enrollment-start-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SAVE-Step-indicator" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SAVE-Step-return-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SSA_need_blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SSA_need_disab" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SSN-provided" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SSN-ver-complete-per-R005.004.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_SSN-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_Southeast-Asian-admitted-with-special-immigration-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_State-lawful-presence-verification-is-missing" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_State-lawful-presence-verification-is-no" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_State-lawful-presence-verification-is-yes" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_U21" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_U21-on-or-post-April-1-2016" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_U21-pre-April-1-2016" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_a-citizen-us-ter" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_ackd-access-to-coverage-under-state-plan" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_addr-found-on-Flint-list" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_adjusted-inc-gross-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_adjusted-inc-gross-inc-filing-limit-married-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_adjusted-inc-gross-inc-filing-limit-married-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_adjusted-inc-gross-inc-filing-limit-single-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_adjusted-inc-gross-inc-filing-limit-single-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-1-yr-or-less" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-16-17-or-18" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-16-or-younger" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-18-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-18-or-younger" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-above-1-less-than-16" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-in-years" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_age-under-18" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_aged-out-of-foster-care" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_alien-been-battered-or-subjected-to-extreme-cruelty" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_alien-granted-conditional-entry-under-INA-section-203a7" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_alien-paroled-for-at-least-one-year-under-INA-section-212d5" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_alien-paroled-less-than-one-year-under-INA-section-212d5" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_alien-type-or-document" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amount-to-sub-from-unearned-income-for-ssi-under-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-line-A-work-sheet-A-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-line-B-work-sheet-A-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-line-C-work-sheet-A-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-line-D-work-sheet-A-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-line-E-work-sheet-A-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-pers-attested-inc-calc-taxable-percentage-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_amt-single-pers-attested-inc-calc-taxable-perc-for-IRS-Pub915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_annual-MAGI-hh-income-under-42-CFR-435-603h" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_annual-hh-magi-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_app-contains-persons-addr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_app-contains-persons-name" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_applicant-contains-SSN" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_applying-for-PE" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-SSN-inconsistent-with-trusted-source" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-annual-MAGI-hh-inc-wout-exp-adj-greater-than-0" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-annual-gross-inc-wout-exp-adj-for-the-yr" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-document-type-supported-by-CMS-HUB-verification" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-having-government-MEC-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-hh-income-zero" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-income-is-zero" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-income-was-verified-through-Bridges" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-tax-hh-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-tax-hh-income-within-10-pct-verified-tax-hh-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-total-RSDI-or-RRB-inc-taxable-per-IRS-Pub-915" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-total-RSDI-or-Railroad-Retirement-Benefits-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-total-earned-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-total-inc-excl-RSDI-RRB-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attested-total-unearned-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attests-having-eligible-immigration-status" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attests-having-eligible-immigration-status-missing" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_attests-to-U.S.-citizenship" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_base-amt-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_battered-alien-under-8USC1641c" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_best-fit-program" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_between-18-and-22" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cit-qual-alien-usc" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizen-box-not-checked" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizen-immigrant-status-verified-thru-HUB" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizenship-and-lawful-presence-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizenship-verification-preformed-by-State-eligibility-system" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizenship-verified-by-State-eligibility-system" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_citizenship-verified-thru-Hub" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_claimed-as-tax-dependent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_claimed-as-tax-dependent-by-parent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-adult-non-tax-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-adult-non-tax-filer-hh-rules-apply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-adult-tax-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-child-non-tax-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-child-non-tax-filer-hh-rules-apply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-child-tax-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-considered-a-child" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-considered-an-adult" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-dependent-child-claimed-by-non-custodial-parent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-dependent-child-claimed-by-someone-other-than-a-spouse-or-parent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-dependent-child-living-with-both-parent-that-are-not-filing-jointly" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-dependent-exception-applies" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-dependent-hh-rules-apply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms-tax-filer-hh-rules-apply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cms_considered-a-tax-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_confirmed-pregnant" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_confrmed-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_considered-65-or-older-for-tax-purposes-for-this-yr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_considered-married-for-IRS-Pub-915" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_considered-single-for-IRS-Pub-915" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_considered-under-65-for-tax-purposes-for-this-yr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_cuban-haitian-entrant" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_currently-enrolled-in-Medicare" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_currently-receiving-Medicaid-or-CHIP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_date-of-entry-with-alien-status-5-years-ago-or-more" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_determination-for-MIChild-renewal" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_determined-that-persons-attested-insurance-is-comprehensive" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_doc-type-supports-ESO" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_doc-type-supports-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-inc-for-this-yr-more-earned-inc-filing-limit-for-dependents-who-are-neither-65-or-older-nor-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-inc-for-this-yr-more-earned-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-inc-for-this-yr-more-earned-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-inc-for-this-yr-more-earned-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-inc-for-this-yr-more-earned-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-income-under-IRS-Pub-501" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_earned-income-under-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eceiving-state-suppl-payment" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligibility-basis-MAGI-FFC-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligibility-basis-MAGI-PCR-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligibility-basis-MAGI-PW-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligibility-basis-MAGI-PlanFirst-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligibility-basis-MAGI-U19-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligible-MIChild-per-CC1681" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligible-MIChild-under-XXI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_eligible-PlanFirst-per-R005.133.00x" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_enrolled-grandfathered-plan-that-prov-MEC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_enrolled-mec-under-26-USC-5000A-f" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_exempt-from-SSN-per-R005.124.004.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-alone-but-expects-to-be-tax-dependent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-status-head-of-household" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-status-married-filing-jointly" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-status-married-filing-separately" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-status-qualifying-widow-with-dependent-child" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_filing-status-single" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_former-foster-child" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_granted--asylum-under-INA-section-208" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-filing-limit-dependents-who-are-neither-65-or-older-nor-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr--under-less-than-gross-inc-filing-limit-single-filers-under-65" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-head-of-household-65-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-head-of-household-under-65" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-married-filing-jointly-both-65-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-married-filing-jointly-both-under-65" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-married-filing-jointly-one-65-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-married-filing-separately" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-qualifying-widow-with-dependent-child-filers-65-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-qualifying-widow-with-dependent-child-filers-under-65" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-less-than-gross-inc-filing-limit-single-filers-65-or-older" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-more-gross-inc-filing-limit-for-dependents-who-are-neither-65-or-older-nor-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-more-gross-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-more-gross-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-more-gross-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-for-this-yr-more-gross-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-gross-inc-filing-limit-married-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-gross-inc-filing-limit-married-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-gross-inc-filing-limit-single-dependents-who-are-65-or-older-and-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-inc-gross-inc-filing-limit-single-dependents-who-are-65-or-older-or-blind" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_gross-income-under-IRS-Pub-501" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-alien-type-or-document-of-Machine-Readable-Immigrant-Visa" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-alien-type-or-document-of-Permanent-Resident-Card" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-alien-type-or-document-of-Temporary-I-551-Stamp" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-attested-to-having-comprehensive-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-attested-to-having-comprehensive-or-limit-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-been-impacted-by-Flint-water" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-dependents-that-have-not-applied-for-coverage-and-do-not-have-health-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-dependents-without-healthcare" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-fixed-addr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-recv-MAGI-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_has-ssi-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_home-addresss-in-MI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_homeless" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_id-info-complete-per-R005.123.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_immigration-status-doc-type-qualifies-for-full-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_immigration-status-document-cannot-be-used-for-full-Medicaid-vs-ESO-decision" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_inc-agi-month" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_inc-agi-this" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_incarcerated" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_ineligible--PlanFirst-due-to-govt-insurance" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_insurance-provides-minimum-essential-coverage" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_is-an-adult" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_is-more-than-18" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_joint-gross-income-under-IRS-Pub-501" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_lawful-presence-verification-preformed-by-state-eligibility-system" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_lawful-presence-verified-by-CMS-DHS" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_lawfully-present" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_lives-with-spouse" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_mailing-address-in-MI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_married" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-PE-Flint-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-fin-and-non-fin-requirements-for-HMP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-fin-and-non-fin-requirements-for-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-fin-and-non-fin-requirements-for-PCR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-fin-and-non-fin-requirements-for-PW" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-fin-and-non-fin-requirements-for-U19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-non-fin-requirements-for-FFC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-non-fin-requirements-for-Flint-Medicaid-Waiver-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-presumptive-citizen-alien-status-requirement" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-presumptive-residency-requiremnt" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-qualified-military-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_met-5-year-bar-for-full_Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_mfs-living-with-spouse" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_mother-enrolled-in-Medicaid-during-birth" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_newborn" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_non-citz" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_non-immigrant-temporarily-in-US-for-specific-purpose" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_non-qualified-alien-per-R005.094.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_number-additional-members-in-MAGI-hh-for-PCR-beyond-10" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_number-additional-members-in-MAGI-hh-for-U21-beyond-10" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_perc-of-pers-attested-RSDI-or-RRB-inc-taxable-for-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_permanent-resident-alien-with-I-151-Alien-Registration-Receipt-Card" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_permanent-resident-alien-with-class-code-I551-other-than-RE-AM-or-AS" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_permanent-resident-alien-with-class-code-RE-AS-SI-or-SQ-on-I551" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_person-application-filer" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_person-is-pregnant-or-post-partum" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_person-under-Medicaid-Child-Age" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_possible-date-enrolment" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_primary" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_private-health-insurance-provides-full-benefits" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_provided-home-address" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_provided-immigration-documents" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_qualified-alien-per-R005.091.00x" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_qualified-military-alien-under-8USC1613" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_ben_HIX_prog" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_ben_IAP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_ben_med_prog" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_cost_share_red" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_med_care" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_medicare_sav_prog" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_priv_ins_ben" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rec_tax_cred" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-MAGI-FLT" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-MAGI-HMP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-MAGI-PCR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-MAGI-PW" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-MAGI-U19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-comprehensive-health-insurance-for-PE" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-fed-payment-foster-care-or-adoption-assistance-IV-E" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-nonappropriate-fund-coverage" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_receiving-state-suppl-payment-from-state" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_recv-med-ben-alt-state" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_refugee-admitted-under-INA-section-207" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_required-provide-ssn" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_required-to-file-tax-return-this-year" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_required-to-filer-tax-return-for-this-yr-under-IRS-Pub-501-Table-1" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_required-to-filer-tax-return-for-this-yr-under-IRS-Pub-501-Table-2" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_res-inst-inmate" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_res-inst-mental" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_res-institution" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_res-move-to" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_resident-of-American-Samoa" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rules-can-determine-if-Eligible-Immigration-Status-box-checked" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_rules-can-determine-if-US-Citizen-box-checked" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_single" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_someone-born-in-Canada-who-is-at-least-50-percent-American-Indian" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_source-sys-requested-Medicaid-renewal" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_splan-mcaid-deprived" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_splan-req-chip-addl" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_ssi-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_subject-to-5-year-bar--for-full-medicaid-per-R005.093.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_subject-to-5-year-bar-for-full_Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_tax-file-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_tax-filing-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_tax-hh-modified-adjusted-gross-income-under-26-CFR-1.36B-1-per-trusted-sources" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_tax-joint-this" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_under-19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_under-22" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_under-26-yrs-age" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_under-65yr" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_undocumented-alien" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-inc-for-this-yr-more-than-unearned-inc-filing-limit-for-dependents-who-are-neither-65-or-older-nor-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-inc-for-this-yr-more-unearned-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-inc-for-this-yr-more-unearned-inc-filing-limit-for-married-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-inc-for-this-yr-more-unearned-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-and-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-inc-for-this-yr-more-unearned-inc-filing-limit-for-single-dependents-who-are-neither-65-or-older-or-blind" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-income-under-IRS-Pub-501" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_unearned-income-under-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_ver_MAGI_income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Attested" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Expired" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Failed-System-Match" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Manual-Review-SPO" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Match-Verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Not-Impacted-Verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-OIG-Verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-SPO-Verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-System" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-VCL-Overdue" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verification-type-for-Flint-water-Validated-Children-Services" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verified-MAGI-household-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_verified-tax-hh-inc-more-10-percent-higher-than-pers-attested-tax-hh-inc" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_victim-of-trafficking-certified-by-ORR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_victim-of-trafficking-under-PL-106-386-of-2000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_yearly-amt-of-pers-attested-RSDI-or-RRB-inc-taxable-per-IRS-Pub-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_p_recv-bccp" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_p_recv-magi-ffc" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_p_recv-magi-planfirst" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_FPL" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_MAGI-HH-total-countable-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_MAGI-HH-total-earned-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_MAGI-HH-total-unearned-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_MAGI-household-total" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_best-prog-FPL-limit" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7200" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7302" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7421" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7500" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7703" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-FLT-IR7850" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_denied-HMP-6603" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_most-beneficial-pgm-ESO" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_most-beneficial-pgm-attested-hh-inc-fpl-PE" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_most-beneficial-pgm-category-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_most-beneficial-pgm-fpl-without-5-disregard" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_most-beneficial-pgm-newly-eligible" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_tax-rules-apply" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_per_total-num-people-MAGI-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_person" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="currenttaxpayerswhoexpecttoclaimthepersonthisyear" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="currenttaxpayerswhoexpecttoclaimthepersonthisyear_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="household_peoplewholiveinthehousehold_rev" type="RelationshipToOneType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_caretakers" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_live-with" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_people-taken-care-of" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_primary-caretaker" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_r-dependents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_r-landlord-hh" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_r-live-with" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_r-tax-dep" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_r-tax-exempt-this" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_tax-dep" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_tax-exempt-this" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-per_tenant-hh" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_per-rp_r-reverse-rp" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="magihousehold_magihouseholdspeople_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="or_per-bp_r-group-filing" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="or_per-bp_r-group-hh" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleexcludedfromthepersonsmagiincomegroupunder42cfr435603d" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleexcludedfromthepersonstaxhouseholdunder26cfr136b1e1" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleforwhomthepersonexpectstoclaimapersonalexemptiondeductiononthepersonstaxreturnforthebenefityear" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleforwhomthepersonisunsurewhethertheywillclaimapersonalexemptiondeductiononthepersonstaxreturnforthisyear" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleforwhomthepersonmayfileanapplication" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peopleincludedinthepersonsfilinggroups" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peoplewiththesameaddressastheperson" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peoplewiththesameapplicationgroupastheperson" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peopleexcludedfromthepersonsmagiincomegroupunder42cfr435603d_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peopleexcludedfromthepersonstaxhouseholdunder26cfr136b1e1_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peopleforwhomthepersonexpectstoclaimapersonalexemptiondeductiononthepersonstaxreturnforthebenefityear_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peopleforwhomthepersonisunsurewhethertheywillclaimapersonalexemptiondeductiononthepersonstaxreturnforthisyear_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peopleincludedinthepersonsfilinggroups_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peoplewiththesameaddressastheperson_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_peoplewiththesameapplicationgroupastheperson_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsapplicationgroup_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsbrothersorsistersinlaw_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personscousins_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsdependentchildrenunder42cfr4354_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsinvalidrelationships_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsmagihouseholdunder42cfr435603f_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsmagiincomegroupunder42cfr435603d_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsnoncitizensponsors_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsnoncustodialparents_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsotherrelativesper42cfr4354_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personssiblings_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsspouses_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsspousesthatlivetogetherper42cfr435603f4_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personstaxhouseholdunder26cfr136b1e1_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsunrelatedhouseholdmember_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_personsunspecifiedrelationships_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_taxpayerswhoexpecttoclaimthepersonspersonalexemptiondeductionforthebenefityear_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsadoptedchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsadoptiveparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsapplicationfilers" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsapplicationgroup" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsattestedchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsattestedparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsauntsoruncles" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsbiologicalchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsbiologicalparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsbrothersorsistersinlaw" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personscaretakerrelatives" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personschildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personschildrenbymarriage" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personscousins" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsdependentchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsdependentchildrenunder42cfr4354" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsdependentchildrenunderstaterulesformec" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsfilinggroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsgrandchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsgrandparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personshouseholdgroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsinvalidrelationships" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsmagihouseholdunder42cfr435603f" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsmagiincomegroupunder42cfr435603d" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsniecesornephews" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsnoncitizensponsors" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsnoncustodialparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsotherrelativesper42cfr4354" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsparentcaretakersunderstaterulesformec" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsparentsbymarriage" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsparentsinlaw" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personssiblings" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personssonsordaughtersinlaw" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsspouses" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsspousesthatlivetogetherper42cfr435603f4" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsstepchildren" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsstepparents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personstaxfilerunder26cfr136b1" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personstaxhouseholdunder26cfr136b1" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personstaxhouseholdunder26cfr136b1e1" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsunrelatedhouseholdmembers" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsunspecifiedrelationships" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_othermembersofthepersonsmagihouseholdfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsfilinggroupfortheprogramunderfederalpolicy_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personshouseholdgroupfortheprogramunderfederalpolicy_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsincomegroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsincomegroupfortheprogramunderfederalpolicy_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsmagihouseholdfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsmagiincomegroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr-per-caretaker_of_per" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr-per-per_act_as_caretaker" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr-plan-plan_per_may_enroll" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxpayerswhoexpecttoclaimthepersonspersonalexemptiondeductionforthebenefityear" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxpayerswhoexpecttoclaimthepersonthisyear" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxpayerswhoexpecttoclaimthepersonthisyear_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturn_dependentsonthetaxreturn_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturn_taxfileronthetaxreturn_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturn_taxfilerspouseonthetaxreturn_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturn_taxreturnhousehold_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturnsforwhichthepersonisadependent" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="taxreturnsforwhichthepersonisataxfilerorfilerspouse" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="list-MAGI-household" type="MAGI-householdEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-b-plan" type="b-planEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-benefit" type="benefitEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-expense" type="expenseEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-income" type="incomeEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-program" type="programEntityListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="list-related-party" type="related-partyEntityListType" minOccurs="0" maxOccurs="1"/>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="MAGI-householdEntityListType">
+		<xsd:sequence>
+			<xsd:element name="MAGI-household" type="MAGI-householdInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="MAGI-householdInstanceType">
+		<xsd:all>
+			<xsd:element name="o_per_mh_member-of-household" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_mh_relationship" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_MAGI_household" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="t_rr_pers-magi-hh-member" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="b-planEntityListType">
+		<xsd:sequence>
+			<xsd:element name="b-plan" type="b-planInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="b-planInstanceType">
+		<xsd:all>
+			<xsd:element name="io_bp_contact-ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_adult" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_assess-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_benefit-amt" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_eligibility" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_level" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_pend" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_program" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_bp_type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="eligibleprogramsforthepersonsbenefitplan" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="or_bp-per_group-filing" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="or_bp-per_group-hh" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="or_bp-pl_r-b-plans" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsforthepersonsbenefitplan" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="benefitEntityListType">
+		<xsd:sequence>
+			<xsd:element name="benefit" type="benefitInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="benefitInstanceType">
+		<xsd:all>
+			<xsd:element name="i_b_date-end" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_b_date-start" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_b_reason-lost-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_b_source-state" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_b_source-sys-requested-renewal-of-benefit" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_b_MAGI-category-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_b_TOA-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_b_auto-renewed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_b_benefit-is-MAGI-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_b_category" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_b_provides-MIChild-benefits" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_b_benefit-bccp" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_b_benefit-magi-ffc" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rp_b_benefit-magi-planfirst" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_benefit" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="ir_ben-ben_r-same-type" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_ben-ben_same-type" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsetforthebenefit" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="expenseEntityListType">
+		<xsd:sequence>
+			<xsd:element name="expense" type="expenseInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="expenseInstanceType">
+		<xsd:all>
+			<xsd:element name="i_exp_magi-amt-month" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_exp_magi-amt-year" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_exp_magi-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_exp_MAGI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_exp_expense-instance-valid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_expense" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_expense_amount" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_expense_days_per_week_paid" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_expense_frequency" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_expense_type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="incomeEntityListType">
+		<xsd:sequence>
+			<xsd:element name="income" type="incomeInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="incomeInstanceType">
+		<xsd:all>
+			<xsd:element name="i_inc_income-from-American-Indian-or-Alaska-Native-sources" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_inc_magi-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_inc_no-hr-week" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_inc_no-pay-expec-per-yr" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_inc_type-work" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_inc_variable-indicator" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="io_inc_ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_inc_MAGI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc-monthly-amount-MAGI-countable" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc-yr-amount-MAGI-countable-excl-RSDI-RRB-inc" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc-yr-amount-MAGI-countable-per-915" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_RSDI-or-Railroad-Retirement-Benefits" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_countable-MAGI" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_earned-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_entered-in-Yearly-Income-box" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_income-is-monthly-item-to-be-ignored" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_income-item-total-yearly-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-MAGI-self-employment-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-10-times-per-year" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-11-times-per-year" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-13-times-per-year" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-annually" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-at-least-once-per-month" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-daily" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-hourly" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-irregularly" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-once" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-once-every-other-month" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-once-every-other-week" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-once-per-month" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-once-per-week" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-quarterly" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-semi-annually" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-twice-per-month" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_is-paid-twice-per-year" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_magi-amt-month" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_magi-amt-year" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_recipient-of-income-indicated-their-income-varies-from-month-to-month" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_inc_unearned-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="t_inc_type-description" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_income" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_income_amount" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_income_days_per_week_worked" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_income_frequency" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_income_type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="programEntityListType">
+		<xsd:sequence>
+			<xsd:element name="program" type="programInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="programInstanceType">
+		<xsd:all>
+			<xsd:element name="i_per-recv_same-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-MIChild-Medicaid-ineligiblity-reason" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-category-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-hh-magi" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-hh-magi_int" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-household-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGI-income-within-FPL-limit" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_MAGIMedicaid-meets-all-req" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_TOA-code-per-r005.403.001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_best-benefits" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_elig-presumptive" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_ineligible-reasons" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_newly-eligible-for-program-per-R005.122.00x" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_per-highest-income-standard" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_requires-citizenship-validation-per-R005.097.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_p_requires-immigration-validation-per-R005.098.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_p_MAGI-income-percent-of-FPL" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_per_p_effective-MAGI-income-FPL-percentage" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb-bccp-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb-magi-ffc-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb-magi-planfirst-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_26-CFR-1-36B-1-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-110-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-116-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-118-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-119-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-403-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-406-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-406-c-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-603-b-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-603-d-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-603-f-applies-to-prog" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-603-h-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-603-i-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-435-910-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-310-a-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-310-b-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-310-c-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-310-d-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-315-a-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-320-a-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-320-c-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-320-e-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_42-CFR-457-340-b-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_45-CFR-155-305-a-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_45-CFR-155-305-f-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_45-CFR-155-305-g-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_45-CFR-155-350-a-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_45-CFR-155-350-b-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_FPL-percent-lim" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_FPL-percent-lim-Fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_FPL-percent-min" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_MAGI-FLT-applies-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_PG-MAGI-hh-poverty-line" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_PG-MAGI-hh-poverty-line-prior-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_PG-federal-pl-for-26-CFR-1-36B-1" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_PG-federal-pl-for-MAGI-hh-prior-yr" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_PG-num-addl-people" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_SOM-MIChild-applies-to-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_adjust-inc-under-Fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_adjusted-inc-lim-exists-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_adult-group-spplies-to-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_an-adult-program" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_attested-income-for-the-program-within-FPL-limit" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_attested-tax-hh-income-for-the-program-is-reasonably-compatible-with-trusted-sources" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_category" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_citz-alien-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_countable-inc-lim-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_countable-inc-under-Fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_eligible-for-adult-medicaid-per-R005.057.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_eligible-per-SOM-MICild-specific-requirement" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-financial" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-inc-other" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-nonfin-citizen" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-nonfin-other" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-nonfin-res" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-nonfin-ssn" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-nonfinancial" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_f-req-res-other" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_fed-poverty-line-for-persons-MAGI-hh-for-prog" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_financial-req-exist-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_has-fpl-limit" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_hh-MAGI-income-for-the-program-as-percentage-of-FPL-per-trusted-source" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_hh-income-verified" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_household-income-for-the-program-was-verified-through-the-Hub" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_inc-grp-deduc-expen-fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_incl-unborn-children" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_income-eligible-without-5pct-disregard-per-R005.122.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-BCCP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-FFC" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-FLT" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-HMP" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-MIChild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-Medicaid" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-PCR" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-PW" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-PlanFirst" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-MAGI-U19" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-a-MAGI-Medicaid-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-a-MIChild-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_is-a-medical-pgm" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-HMP-HMP-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-BCCP-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-FFC-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-MIChild-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-PCR-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-PW-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-U19-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-non-pgm-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-PE-pgm-specific-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_meets-all-prog-elig-reqs-other-than-citizen-alien-status-reqs" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_no-ineligibility-reasons" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_number-ineligibility-reasons-for-program" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_number-of-people-in-MAGI-inc-grp-for-program" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-ctble-inc-fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-ctble-res-fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-grp-inc-deduc-fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-inc-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-nonfin-elig-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_other-res-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_otherwise-elig" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_otherwise-elig-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_per-eligible" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_per_hh-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_person-eligible-for-program-per-R005.065.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_person-eligible-for-program-per-R005.067.000" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_person-eligible-for-program-per-R005.069.001" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_person-eligible-per-F088" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_pg-fpl-amt-magi-hh-incl-addl-ppl" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_pg-fpl-amt-magi-hh-incl-addl-ppl-prior-yr" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_pgm-provides-best-benefits-presumptively" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_pgm-provides-best-benefits-with-full-determination" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_pgm-rank-amoing-presumptive-pgms" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_program-ineligibility-reason-string" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_rank-med" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_res-limit-fed" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_residency-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_resource-lim-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_ssn-req-fed" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_tax-hh-MAGI-income-for-the-program-per-trusted-sources" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_the-res-limit" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_p_verified-income-for-program-within-FPL-limit" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_ineligible-for-the-program-because-of-income" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_meets-MAGI-U19-HKEM-requirements" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_p_FPL-percentage-for-program-possibly-including-5-percent-disregard" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_per_p_FPL-percentage-for-the-program-without-5-percent-disregard" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_person_otherwise-eligible-per-CC925" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_program" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="benefitsetfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="o_p_per-MAGI-household-rel" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="othermembersofthepersonsmagihouseholdfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsbenefitplan_eligibleprogramsforthepersonsbenefitplan_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsbenefitplan_programsforthepersonsbenefitplan_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsfilinggroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsfilinggroupfortheprogramunderfederalpolicy" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personshouseholdgroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personshouseholdgroupfortheprogramunderfederalpolicy" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsincomegroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsincomegroupfortheprogramunderfederalpolicy" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsincomegroupsprogramsetfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="personsmagiincomegroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="presumptiveprogramsthatprovideahigherlevelofbenefitsthantheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_personsincomegroupsprogramsetfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_presumptiveprogramsthatprovideahigherlevelofbenefitsthantheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programsetforthepersonsfilinggroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programsetforthepersonsincomegroupfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programsetfortheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programsthatprovideahigherlevelofbenefitsthantheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programsthatprovidethesametypeofbenefitsastheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="program_programswiththesameprogramtypeastheprogram_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsetforthepersonsfilinggroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsetforthepersonsincomegroupfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsetfortheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsthatprovideahigherlevelofbenefitsthantheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programsthatprovidethesametypeofbenefitsastheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="programswiththesameprogramtypeastheprogram" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="list-denialreason" type="denialreasonEntityListType" minOccurs="0" maxOccurs="1"/>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="denialreasonEntityListType">
+		<xsd:sequence>
+			<xsd:element name="denialreason" type="denialreasonInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="denialreasonInstanceType">
+		<xsd:all>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4418" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4426" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FFC-IR4703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7421" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-FLT-IR7850" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6464" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6602" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6603" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-HMP-IR6851" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5419" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5601" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5602" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5603" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-MIChild-IR5703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3419" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PCR-IR3703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2601" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2800" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-PW-IR2850" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1001" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1200" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1302" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1419" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1500" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-for-U19-IR1703" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-FFC" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-FLT" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-HMP" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-MIChild" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-PCR" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-PW" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_dr_denial-reason-string-code-for-U19" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_denial_reason" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="denialreason_denialreasonswithahigherrank_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="denialreasonswithahigherrank" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="related-partyEntityListType">
+		<xsd:sequence>
+			<xsd:element name="related-party" type="related-partyInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="related-partyInstanceType">
+		<xsd:all>
+			<xsd:element name="i_rel_relationship" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_rp_caretaker-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_rp_prim-caretaker-rel" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_rp_tax-dep" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb-rp_is-former-spouse" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-1st-cousin" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-aunt-or-uncle" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-cousin" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-foster-child" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-grandchild" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-grandparent" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-grandparent-aunt-cousin-niece-nephew" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-niece-or-nephew" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-primary-caretaker" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_rp_is-unspecified-relative" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_related_party" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="ir_rp-per_target" type="RelationshipToOneType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="physicalHouseholdEntityListType">
+		<xsd:sequence>
+			<xsd:element name="physicalHousehold" type="physicalHouseholdInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="physicalHouseholdInstanceType">
+		<xsd:all>
+			<xsd:element name="i_hh_attested-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_hh_attested-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="physicalHousehold" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_hh_size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="ir_household-members" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="planEntityListType">
+		<xsd:sequence>
+			<xsd:element name="plan" type="planInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="planInstanceType">
+		<xsd:all>
+			<xsd:element name="o_pl_case-type" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="the_plan" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="or_pl-bp_b-plans" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="rbr-plan-per_may_enroll_in_plan" type="RelationshipToOneType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="povertyguidelineEntityListType">
+		<xsd:sequence>
+			<xsd:element name="povertyguideline" type="povertyguidelineInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="povertyguidelineInstanceType">
+		<xsd:all>
+			<xsd:element name="rb_pl_end-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-1-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-2-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-3-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-4-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-5-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-6-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-7-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-8-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_fpl-addl-per-hh" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_guideline-in-effect-at-beginning-of-open-enrollment" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_poverty-guideline-yr" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_pl_start-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="global_currentyearpovertyguideline_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="global_prioryearpovertyguideline_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="taxreturnEntityListType">
+		<xsd:sequence>
+			<xsd:element name="taxreturn" type="taxreturnInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="taxreturnInstanceType">
+		<xsd:all>
+			<xsd:element name="i_return_MAGI-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_return_filing-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_return_tax-year" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_return_filing-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="o_return_tax-group-size" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_return_MAGI-income" type="numberAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_return_ignored-per-CC1005" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="taxreturn" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="ir_g_r-valid-tax-returns" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_return_dependents" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_return_tax-filer" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="ir_return_tax-filer-spouse" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="o_return_tax-household-rel" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="peoplefilingasfilerorspouseinthetaxreturn" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+						<xsd:element name="person_taxreturnsforwhichthepersonisadependent_rev" type="RelationshipType" minOccurs="0" maxOccurs="1"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="verificationEntityListType">
+		<xsd:sequence>
+			<xsd:element name="verification" type="verificationInstanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="verificationInstanceType">
+		<xsd:all>
+			<xsd:element name="i_verif_5yearBar-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_5yearBarMet-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_CMS-DHS-return-status" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_CMS-DHS-step-indicator" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_ID" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_LawfulPresence-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_QualNonCit-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_SSN-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_US-Cit-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_authority" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_category" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_grant-date" type="dateAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_response-code" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="i_verif_successful" type="booleanAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rb_verif_source-verification-block" type="textAttributeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="relationships" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:all/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<!-- relationship types  -->
+	<xsd:complexType name="RelationshipType">
+		<xsd:sequence>
+			<xsd:element name="target" type="RelationshipTargetType" minOccurs="0" maxOccurs="unbounded"/>
+			<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+			<!--this element will only appear in a response for attribute outcome attributes whose outcome style is not 'value-only' -->
+			<xsd:element name="decision-report" type="DecisionReportType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="state" type="StateEnum"/>
+		<!--this property will only be provided in a response for relationship outcomes -->
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+		<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+		<xsd:attribute name="outcome-style" type="OutcomeStyleEnum" use="optional"/>
+		<xsd:attribute name="unknown-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+		<xsd:attribute name="known-outcome-style" type="OutcomeStyleEnum" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="RelationshipTargetType">
+		<!--the value of this attribute must match the id one of the specified entity instances -->
+		<xsd:attribute name="instance-id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="RelationshipToOneType">
+		<xsd:sequence>
+			<xsd:element name="target" type="RelationshipTargetType" minOccurs="0" maxOccurs="1"/>
+			<!--this element will only be provided if the 'show-events' attribute is true in the assessment configuration options -->
+			<xsd:element name="properties" type="ListCustomPropertiesType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="state" type="StateEnum"/>
+		<!--this property will only be provided in a response for relationship outcomes -->
+		<xsd:attribute name="inferred" type="xsd:boolean" use="optional"/>
+		<!--the following properties are used to configure relationship outcomes. The requestor must either specify the 'outcome-style' property or both the 'unknown-outcome-style' and the 'known-outcome-style' -->
+	</xsd:complexType>
+</xsd:schema>

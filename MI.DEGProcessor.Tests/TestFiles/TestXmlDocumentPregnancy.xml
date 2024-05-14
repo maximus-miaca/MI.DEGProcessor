@@ -1,0 +1,1120 @@
+﻿<EDResult>
+	<ATXML>
+		<ns8:AccountTransferRequest xmlns:ns10="http://niem.gov/niem/appinfo/2.1" xmlns:ns2="http://hix.cms.gov/0.1/hix-core" xmlns:ns3="http://at.dsh.cms.gov/extension/1.0" xmlns:ns4="http://niem.gov/niem/niem-core/2.0" xmlns:ns5="http://hix.cms.gov/0.1/hix-ee" xmlns:ns6="http://niem.gov/niem/domains/screening/2.1" xmlns:ns7="http://hix.cms.gov/0.1/hix-pm" xmlns:ns8="http://at.dsh.cms.gov/exchange/1.0" xmlns:ns9="http://niem.gov/niem/appinfo/2.0">
+			<ns3:TransferHeader>
+				<ns3:TransferActivity>
+					<ns4:ActivityIdentification>
+						<ns4:IdentificationID>MIMBM140125T16030781</ns4:IdentificationID>
+					</ns4:ActivityIdentification>
+					<ns4:ActivityDate>
+						<ns4:DateTime>2014-01-25T16:03:08.606</ns4:DateTime>
+					</ns4:ActivityDate>
+					<ns3:TransferActivityReferralQuantity>1</ns3:TransferActivityReferralQuantity>
+					<ns3:RecipientTransferActivityCode>MedicaidCHIP</ns3:RecipientTransferActivityCode>
+					<ns3:RecipientTransferActivityStateCode>MI</ns3:RecipientTransferActivityStateCode>
+				</ns3:TransferActivity>
+			</ns3:TransferHeader>
+			<ns2:Sender xmlns:NS1="http://niem.gov/niem/structures/2.0" NS1:id="Sender">
+				<ns2:InformationExchangeSystemCategoryCode>MedicaidAgency</ns2:InformationExchangeSystemCategoryCode>
+				<ns2:InformationExchangeSystemStateCode>MI</ns2:InformationExchangeSystemStateCode>
+			</ns2:Sender>
+			<ns2:Receiver xmlns:NS2="http://niem.gov/niem/structures/2.0" NS2:id="Receiver">
+				<ns2:InformationExchangeSystemCategoryCode>MedicaidAgency</ns2:InformationExchangeSystemCategoryCode>
+				<ns2:InformationExchangeSystemStateCode>MI</ns2:InformationExchangeSystemStateCode>
+			</ns2:Receiver>
+			<ns5:InsuranceApplication xmlns:NS3="http://niem.gov/niem/structures/2.0" NS3:id="MIMBM140125T16030781">
+				<ns2:ApplicationCreation>
+					<ns4:ActivityIdentification>
+						<ns4:IdentificationID>MIMBM140125T16030781</ns4:IdentificationID>
+					</ns4:ActivityIdentification>
+					<ns4:ActivityDate>
+						<ns4:Date>2014-01-25</ns4:Date>
+					</ns4:ActivityDate>
+				</ns2:ApplicationCreation>
+				<ns2:ApplicationSubmission>
+					<ns4:ActivityIdentification>
+						<ns4:IdentificationID>MIMBM140125T16030781</ns4:IdentificationID>
+					</ns4:ActivityIdentification>
+					<ns4:ActivityDate>
+						<ns4:Date>2014-01-25</ns4:Date>
+					</ns4:ActivityDate>
+				</ns2:ApplicationSubmission>
+				<ns2:ApplicationIdentification>
+					<ns4:IdentificationID>T18303294</ns4:IdentificationID>
+				</ns2:ApplicationIdentification>
+				<ns5:InsuranceApplicant NS3:id="Applicant3034704631IND1">
+					<ns2:RoleOfPersonReference NS3:ref="SELF3034704631IND1"/>
+					<ns5:InsuranceApplicantBlindnessOrDisabilityIndicator>false</ns5:InsuranceApplicantBlindnessOrDisabilityIndicator>
+					<ns5:InsuranceApplicantEligibleITUServicesIndicator>false</ns5:InsuranceApplicantEligibleITUServicesIndicator>
+					<ns5:InsuranceApplicantFixedAddressIndicator>true</ns5:InsuranceApplicantFixedAddressIndicator>
+					<ns5:InsuranceApplicantLongTermCareIndicator>false</ns5:InsuranceApplicantLongTermCareIndicator>
+					<ns5:InsuranceApplicantParentCaretakerIndicator>false</ns5:InsuranceApplicantParentCaretakerIndicator>
+					<ns5:InsuranceApplicantReceivedITUServicesIndicator>false</ns5:InsuranceApplicantReceivedITUServicesIndicator>
+					<ns5:InsuranceApplicantStudentIndicator>false</ns5:InsuranceApplicantStudentIndicator>
+					<ns5:CHIPEligibility>
+						<ns5:EligibilityIndicator>true</ns5:EligibilityIndicator>
+					</ns5:CHIPEligibility>
+					<ns5:MedicaidMAGIEligibility>
+						<ns5:EligibilityDetermination>
+							<ns4:ActivityDate>
+								<ns4:Date>2014-01-25</ns4:Date>
+							</ns4:ActivityDate>
+						</ns5:EligibilityDetermination>
+						<ns5:EligibilityIndicator>true</ns5:EligibilityIndicator>
+						<ns5:MedicaidMAGIResidencyEligibilityBasis>
+							<ns4:StatusDate>
+								<ns4:Date>2014-01-25</ns4:Date>
+							</ns4:StatusDate>
+							<ns2:StatusIndicator>true</ns2:StatusIndicator>
+							<ns5:EligibilityBasisStatusCode>Complete</ns5:EligibilityBasisStatusCode>
+							<ns5:EligibilityBasisDetermination>
+								<ns4:ActivityDate>
+									<ns4:Date>2014-01-25</ns4:Date>
+								</ns4:ActivityDate>
+							</ns5:EligibilityBasisDetermination>
+						</ns5:MedicaidMAGIResidencyEligibilityBasis>
+					</ns5:MedicaidMAGIEligibility>
+					<ns5:MedicaidEligibility>
+						<ns5:EligibilityIndicator>true</ns5:EligibilityIndicator>
+					</ns5:MedicaidEligibility>
+					<ns5:InsuranceApplicantFosterCareIndicator>false</ns5:InsuranceApplicantFosterCareIndicator>
+				</ns5:InsuranceApplicant>
+				<ns5:InsuranceApplicationRequestingFinancialAssistanceIndicator>true</ns5:InsuranceApplicationRequestingFinancialAssistanceIndicator>
+				<ns5:InsuranceApplicationCoverageRenewalYearQuantity>1</ns5:InsuranceApplicationCoverageRenewalYearQuantity>
+				<ns5:SSFSigner>
+					<ns2:RoleOfPersonReference NS3:ref="SELF3034704631IND1"/>
+					<ns5:Signature>
+						<ns2:SignatureName>
+							<ns4:PersonFullName>Sierra N Bayer</ns4:PersonFullName>
+						</ns2:SignatureName>
+						<ns2:SignatureDate>
+							<ns4:Date>2014-01-25</ns4:Date>
+						</ns2:SignatureDate>
+					</ns5:Signature>
+					<ns5:SSFSignerAuthorizedRepresentativeAssociation>
+						<ns5:Signature>
+							<ns2:SignatureDate>
+								<ns4:Date>2014-01-25</ns4:Date>
+							</ns2:SignatureDate>
+						</ns5:Signature>
+					</ns5:SSFSignerAuthorizedRepresentativeAssociation>
+					<ns5:SSFAttestation>
+						<ns5:SSFAttestationCollectionsAgreementIndicator>true</ns5:SSFAttestationCollectionsAgreementIndicator>
+						<ns5:SSFAttestationMedicaidObligationsIndicator>true</ns5:SSFAttestationMedicaidObligationsIndicator>
+						<ns5:SSFAttestationNonPerjuryIndicator>true</ns5:SSFAttestationNonPerjuryIndicator>
+						<ns5:SSFAttestationNotIncarceratedIndicator>true</ns5:SSFAttestationNotIncarceratedIndicator>
+						<ns5:SSFAttestationInformationChangesIndicator>true</ns5:SSFAttestationInformationChangesIndicator>
+					</ns5:SSFAttestation>
+				</ns5:SSFSigner>
+				<ns5:InsuranceApplicationAssisterAssociation>
+					<ns4:AssociationBeginDate>
+						<ns4:Date>2014-01-25</ns4:Date>
+					</ns4:AssociationBeginDate>
+				</ns5:InsuranceApplicationAssisterAssociation>
+				<ns5:InsuranceApplicationRequestingMedicaidIndicator>true</ns5:InsuranceApplicationRequestingMedicaidIndicator>
+				<ns5:SSFPrimaryContact>
+					<ns2:RoleOfPersonReference NS3:ref="SELF3034704631IND1"/>
+				</ns5:SSFPrimaryContact>
+				<ns5:InsuranceApplicationTaxReturnAccessIndicator>true</ns5:InsuranceApplicationTaxReturnAccessIndicator>
+			</ns5:InsuranceApplication>
+			<ns2:Person xmlns:NS4="http://niem.gov/niem/structures/2.0" NS4:id="SELF3034704631IND1">
+				<ns4:PersonAgeMeasure>
+					<ns4:MeasurePointValue>17</ns4:MeasurePointValue>
+				</ns4:PersonAgeMeasure>
+				<ns4:PersonBirthDate>
+					<ns4:Date>1996-04-24</ns4:Date>
+				</ns4:PersonBirthDate>
+				<ns4:PersonEthnicityText>Non Hispanic</ns4:PersonEthnicityText>
+				<ns4:PersonName>
+					<ns4:PersonGivenName>Sierra</ns4:PersonGivenName>
+					<ns4:PersonMiddleName>N</ns4:PersonMiddleName>
+					<ns4:PersonSurName>Bayer</ns4:PersonSurName>
+				</ns4:PersonName>
+				<ns4:PersonRaceText>White</ns4:PersonRaceText>
+				<ns4:PersonSexText>Female</ns4:PersonSexText>
+				<ns4:PersonUSCitizenIndicator>true</ns4:PersonUSCitizenIndicator>
+				<ns2:PersonAugmentation>
+					<ns2:PersonContactInformationAssociation>
+						<ns2:ContactInformation>
+							<ns4:ContactMailingAddress>
+								<ns4:StructuredAddress>
+									<ns4:LocationStreet>
+										<ns4:StreetFullText>1332 South White</ns4:StreetFullText>
+									</ns4:LocationStreet>
+									<ns4:LocationCityName>grand rapids</ns4:LocationCityName>
+									<ns4:LocationCountyName>Kent</ns4:LocationCountyName>
+									<ns4:LocationCountyCode>081</ns4:LocationCountyCode>
+									<ns4:LocationStateUSPostalServiceCode>MI</ns4:LocationStateUSPostalServiceCode>
+									<ns4:LocationCountryISO3166Alpha3Code>USA</ns4:LocationCountryISO3166Alpha3Code>
+									<ns4:LocationPostalCode>49534</ns4:LocationPostalCode>
+								</ns4:StructuredAddress>
+							</ns4:ContactMailingAddress>
+						</ns2:ContactInformation>
+						<ns2:ContactInformationCategoryCode>Home</ns2:ContactInformationCategoryCode>
+					</ns2:PersonContactInformationAssociation>
+					<ns2:PersonContactInformationAssociation>
+						<ns4:ContactInformationIsPrimaryIndicator>true</ns4:ContactInformationIsPrimaryIndicator>
+						<ns2:ContactInformation>
+							<ns4:ContactTelephoneNumber>
+								<ns4:FullTelephoneNumber>
+									<ns4:TelephoneNumberFullID>6163893319</ns4:TelephoneNumberFullID>
+								</ns4:FullTelephoneNumber>
+							</ns4:ContactTelephoneNumber>
+						</ns2:ContactInformation>
+						<ns2:ContactInformationCategoryCode>Mobile</ns2:ContactInformationCategoryCode>
+					</ns2:PersonContactInformationAssociation>
+					<ns2:PersonPregnancyStatus>
+						<ns2:StatusIndicator>true</ns2:StatusIndicator>
+						<ns2:PregnancyStatusExpectedBabyQuantity>1</ns2:PregnancyStatusExpectedBabyQuantity>
+					</ns2:PersonPregnancyStatus>
+					<ns2:PersonPreferredLanguage>
+						<ns4:LanguageName>English</ns4:LanguageName>
+						<ns4:PersonSpeaksLanguageIndicator>true</ns4:PersonSpeaksLanguageIndicator>
+						<ns4:PersonWritesLanguageIndicator>true</ns4:PersonWritesLanguageIndicator>
+					</ns2:PersonPreferredLanguage>
+					<ns2:USNaturalizedCitizenIndicator>false</ns2:USNaturalizedCitizenIndicator>
+					<ns2:PersonIdentification>
+						<ns4:IdentificationID>i_per_pregnancy_due_date</ns4:IdentificationID>
+						<ns4:IdentificationCategoryText>2014-06-27</ns4:IdentificationCategoryText>
+					</ns2:PersonIdentification>
+					<ns2:PersonMarriedIndicator>false</ns2:PersonMarriedIndicator>
+					<ns2:PersonUSVeteranIndicator>false</ns2:PersonUSVeteranIndicator>
+				</ns2:PersonAugmentation>
+			</ns2:Person>
+			<ns5:TaxReturn>
+				<ns5:TaxReturnFilingStatusCode>1</ns5:TaxReturnFilingStatusCode>
+				<ns5:TaxHousehold>
+					<ns5:PrimaryTaxFiler>
+						<ns2:RoleOfPersonReference xmlns:NS5="http://niem.gov/niem/structures/2.0" NS5:ref="SELF3034704631IND1"/>
+					</ns5:PrimaryTaxFiler>
+				</ns5:TaxHousehold>
+			</ns5:TaxReturn>
+			<ns3:PhysicalHousehold>
+				<ns5:HouseholdSizeQuantity>1</ns5:HouseholdSizeQuantity>
+				<ns5:HouseholdMemberReference xmlns:NS6="http://niem.gov/niem/structures/2.0" NS6:ref="SELF3034704631IND1"/>
+			</ns3:PhysicalHousehold>
+		</ns8:AccountTransferRequest>
+	</ATXML>
+	<DeterminationsReasons>
+		<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:i18n="http://www.w3.org/2005/09/ws-i18n" xmlns:typ="http://oracle.com/determinations/server/10.4/FullDetDesign/assess/types">
+			<SOAP-ENV:Header>
+				<i18n:international>
+					<i18n:locale>en_US</i18n:locale>
+					<i18n:tz>GMT-0500</i18n:tz>
+				</i18n:international>
+			</SOAP-ENV:Header>
+			<SOAP-ENV:Body>
+				<typ:assess-response>
+					<typ:global-instance>
+						<typ:o_g_send-custodial-parent-notice inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_send-custodial-parent-notice>
+						<typ:o_g_application-pended-contains-more-than-1-tax-return inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_application-pended-contains-more-than-1-tax-return>
+						<typ:o_g_the-app-valid-per-R005.123.001 inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:o_g_the-app-valid-per-R005.123.001>
+						<typ:o_g_application-pended-due-to-invalid-relationships inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_application-pended-due-to-invalid-relationships>
+						<typ:o_g_attested-income-not-reasonably-compatible-with-trusted-sources inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_attested-income-not-reasonably-compatible-with-trusted-sources>
+						<typ:io_g_number_of_applicants inferred="false" type="number">
+							<typ:number-val>1.0</typ:number-val>
+						</typ:io_g_number_of_applicants>
+						<typ:the_assessment_date inferred="true" type="date">
+							<typ:date-val>2014-01-25</typ:date-val>
+						</typ:the_assessment_date>
+						<typ:io_g_application_id inferred="false" type="text">
+							<typ:text-val>MIMBM140125T16030781</typ:text-val>
+						</typ:io_g_application_id>
+						<typ:rb_g_discrepancy-in-lawful-presence-between-self-attested-and-trusted-sources-per-R005.124.003 inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:rb_g_discrepancy-in-lawful-presence-between-self-attested-and-trusted-sources-per-R005.124.003>
+						<typ:o_g_required-verification-data-received inferred="true" type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:o_g_required-verification-data-received>
+						<typ:o_g_pend-application inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_pend-application>
+						<typ:io_g_point-of-origin-system inferred="false" type="text">
+							<typ:text-val>MedicaidAgency</typ:text-val>
+						</typ:io_g_point-of-origin-system>
+						<typ:o_g_rulebase_date_and_version inferred="true" type="text">
+							<typ:text-val>11 January 2014 Version 34</typ:text-val>
+						</typ:o_g_rulebase_date_and_version>
+						<typ:o_g_transfer-to-exchange inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_transfer-to-exchange>
+						<typ:o_g_pend-for-determination-of-same-sex-couple-eligibility inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_pend-for-determination-of-same-sex-couple-eligibility>
+						<typ:o_app_error-msg-text inferred="true" type="text">
+							<typ:text-val/>
+						</typ:o_app_error-msg-text>
+						<typ:o_g_application-pended-primary-applicant-claimed-as-dependent inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_application-pended-primary-applicant-claimed-as-dependent>
+						<typ:o_g_send-tax-filer-notice-R005.020.001 inferred="true" type="boolean">
+							<typ:boolean-val>false</typ:boolean-val>
+						</typ:o_g_send-tax-filer-notice-R005.020.001>
+						<typ:i_g_requested-assessment-date type="date">
+							<typ:date-val>2014-01-25</typ:date-val>
+						</typ:i_g_requested-assessment-date>
+						<typ:i_g_SSFSigner-ID type="text">
+							<typ:text-val>SELF3034704631IND1</typ:text-val>
+						</typ:i_g_SSFSigner-ID>
+						<typ:this_State_abbrv type="text">
+							<typ:text-val>MI</typ:text-val>
+						</typ:this_State_abbrv>
+						<typ:i_g_household-wishes-to-be-eval-Medicaid type="boolean">
+							<typ:boolean-val>true</typ:boolean-val>
+						</typ:i_g_household-wishes-to-be-eval-Medicaid>
+						<typ:i_g_app-date type="date">
+							<typ:date-val>2014-01-25</typ:date-val>
+						</typ:i_g_app-date>
+						<typ:i_g_application-signature type="text">
+							<typ:text-val>Sierra N Bayer</typ:text-val>
+						</typ:i_g_application-signature>
+						<typ:io_g_application_id type="text">
+							<typ:text-val>MIMBM140125T16030781</typ:text-val>
+						</typ:io_g_application_id>
+						<typ:io_g_number_of_applicants type="number">
+							<typ:number-val>1.0</typ:number-val>
+						</typ:io_g_number_of_applicants>
+						<typ:io_g_mapper-version type="text">
+							<typ:text-val>MapperV36.0</typ:text-val>
+						</typ:io_g_mapper-version>
+						<typ:io_g_point-of-origin-system type="text">
+							<typ:text-val>MedicaidAgency</typ:text-val>
+						</typ:io_g_point-of-origin-system>
+						<typ:list-person inferred="false">
+							<typ:person id="SELF3034704631IND1">
+								<typ:o_per_meets-MAGI-Medicaid-program inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-program>
+								<typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid-per-R005.087.000 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_requires-post-determination-verification-of-citizenship-for-Medicaid-per-R005.087.000>
+								<typ:o_per_meets-MAGI-MIChild-program inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-program>
+								<typ:o_per_pend-missing-contact-info inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-missing-contact-info>
+								<typ:o_per_post-determination-MIChild-check-for-existing-insurance-per-R005.062.000 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_post-determination-MIChild-check-for-existing-insurance-per-R005.062.000>
+								<typ:rb_per_SSN-provided inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_SSN-provided>
+								<typ:o_per_meets-MAGI-Medicaid-residency inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-residency>
+								<typ:o_per_elig-attested-MAGI-PlanFirst inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PlanFirst>
+								<typ:i_per_apply-for-coverage inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_apply-for-coverage>
+								<typ:o_per_is-child-under-42CFR457.10 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_is-child-under-42CFR457.10>
+								<typ:o_per_inc-MAGI-Medicaid-annual inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:o_per_inc-MAGI-Medicaid-annual>
+								<typ:o_per_MAGI-MIChild-det-date inferred="true" type="datetime">
+									<typ:datetime-val>2014-01-25T16:03:10</typ:datetime-val>
+								</typ:o_per_MAGI-MIChild-det-date>
+								<typ:o_per_MAGI-Medicaid-det-date inferred="true" type="datetime">
+									<typ:datetime-val>2014-01-25T16:03:10</typ:datetime-val>
+								</typ:o_per_MAGI-Medicaid-det-date>
+								<typ:o_per_is-PCR-under-42CFR435.110b inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_is-PCR-under-42CFR435.110b>
+								<typ:o_per_app-pended-for-verification-per-R005.123.000 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_app-pended-for-verification-per-R005.123.000>
+								<typ:o_per_elig-MAGI-MIChild inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-MIChild>
+								<typ:o_per_meets-MAGI-MIChild-income inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-income>
+								<typ:o_per_pend-for-determination-of-same-sex-couple-eligibility inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-for-determination-of-same-sex-couple-eligibility>
+								<typ:o_per_meets-MAGI-MIChild-SSN-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-SSN-status>
+								<typ:o_per_pend-verify-lawful-presence inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-verify-lawful-presence>
+								<typ:io_per_SSN-verified inferred="false" type="text">
+									<typ:unknown-val/>
+								</typ:io_per_SSN-verified>
+								<typ:rb_per_citizenship-and-lawful-presence-verified inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_citizenship-and-lawful-presence-verified>
+								<typ:o_per_meets-MAGI-Medicaid-SSN-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-SSN-status>
+								<typ:rb_per_SSN-ver-complete-per-R005.004.001 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_SSN-ver-complete-per-R005.004.001>
+								<typ:o_per_age-19-to-44 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_age-19-to-44>
+								<typ:o_per_refer-for-nonMAGI-Medicaid-LTC inferred="false" type="boolean">
+									<typ:unknown-val/>
+								</typ:o_per_refer-for-nonMAGI-Medicaid-LTC>
+								<typ:o_per_send-retro-application inferred="false" type="boolean">
+									<typ:unknown-val/>
+								</typ:o_per_send-retro-application>
+								<typ:o_per_elig-Medicaid-program inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-Medicaid-program>
+								<typ:o_per_pend-verify-income inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-verify-income>
+								<typ:rb_per_cit-qual-alien-usc inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:rb_per_cit-qual-alien-usc>
+								<typ:rb_per_under-19 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:rb_per_under-19>
+								<typ:rb_per_age-in-years inferred="true" type="number">
+									<typ:number-val>17.0</typ:number-val>
+								</typ:rb_per_age-in-years>
+								<typ:io_per_RecentMedicalBills inferred="false" type="boolean">
+									<typ:unknown-val/>
+								</typ:io_per_RecentMedicalBills>
+								<typ:o_per_verified-income-found inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_verified-income-found>
+								<typ:i_per_cit-lawful-pres inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_cit-lawful-pres>
+								<typ:o_per_meets-MAGI-MIChild-residency inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-residency>
+								<typ:o_per_lacks-coverage-under-42CFR457.310b2 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_lacks-coverage-under-42CFR457.310b2>
+								<typ:o_per_meets-MAGI-Medicaid-income inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-income>
+								<typ:o_per_elig-attested-MAGI-MOMS inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-MOMS>
+								<typ:o_per_pend-person inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_pend-person>
+								<typ:o_per_attested-eligble-for-ESO inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_attested-eligble-for-ESO>
+								<typ:o_per_8-usc-1613-5yr-ban-exempt inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_8-usc-1613-5yr-ban-exempt>
+								<typ:o_per_inc-gross-monthly inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:o_per_inc-gross-monthly>
+								<typ:o_per_elig-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-Medicaid>
+								<typ:o_per_requires-post-determination-check-for-existing-family-planning-insurance-coverage-per-R005.133.003 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-check-for-existing-family-planning-insurance-coverage-per-R005.133.003>
+								<typ:o_per_elig-attested-MAGI-MIChild inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-MIChild>
+								<typ:the_person inferred="true" type="text">
+									<typ:text-val>Sierra_N_Bayer</typ:text-val>
+								</typ:the_person>
+								<typ:o_per_elig-attested-MAGI-PCR inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PCR>
+								<typ:o_per_ins-enrolled inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_ins-enrolled>
+								<typ:rb_per_inc-agi-month inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:rb_per_inc-agi-month>
+								<typ:o_per_spouse-is-PCR-under-42CFR435.4 inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_spouse-is-PCR-under-42CFR435.4>
+								<typ:o_per_exp-MAGI-Medicaid-monthly inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:o_per_exp-MAGI-Medicaid-monthly>
+								<typ:o_per_meets-MAGI-MIChild-citizen-alien-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-MIChild-citizen-alien-status>
+								<typ:o_per_inc-MAGI-Medicaid-monthly inferred="true" type="currency">
+									<typ:number-val>0.0</typ:number-val>
+								</typ:o_per_inc-MAGI-Medicaid-monthly>
+								<typ:o_per_SSN-application-requires-post-determination-tracking-for-Medicaid-per-R005.069.002 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_SSN-application-requires-post-determination-tracking-for-Medicaid-per-R005.069.002>
+								<typ:o_per_elig-attested-MAGI-U19 inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-U19>
+								<typ:o_per_elig-attested-MAGI-IND inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-IND>
+								<typ:o_per_elig-attested-MAGI-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-Medicaid>
+								<typ:o_per_requires-post-determination-for-unspecified-relative inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_requires-post-determination-for-unspecified-relative>
+								<typ:o_per_meets-MAGI-Medicaid-citizen-alien-status inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_meets-MAGI-Medicaid-citizen-alien-status>
+								<typ:o_per_requires-citizenship-lawful-presence-validation-per-R005.087.000 inferred="false" type="boolean">
+									<typ:unknown-val/>
+								</typ:o_per_requires-citizenship-lawful-presence-validation-per-R005.087.000>
+								<typ:o_per_elig-MAGI-FFC inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-FFC>
+								<typ:o_per_is-adult-under-42CFR435.119b inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_is-adult-under-42CFR435.119b>
+								<typ:o_per_Medicaid-enrollment-end-date inferred="true" type="date">
+									<typ:date-val>2014-12-31</typ:date-val>
+								</typ:o_per_Medicaid-enrollment-end-date>
+								<typ:o_per_elig-attested-MAGI-PW inferred="true" type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:o_per_elig-attested-MAGI-PW>
+								<typ:o_per_elig-MAGI-Medicaid inferred="true" type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:o_per_elig-MAGI-Medicaid>
+								<typ:i_per_a-US-citizen type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_a-US-citizen>
+								<typ:i_per_gender type="text">
+									<typ:text-val>FEMALE</typ:text-val>
+								</typ:i_per_gender>
+								<typ:i_per_dob type="date">
+									<typ:date-val>1996-04-24</typ:date-val>
+								</typ:i_per_dob>
+								<typ:i_per_pregnant type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_pregnant>
+								<typ:i_per_disabled type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_disabled>
+								<typ:i_per_name-first type="text">
+									<typ:text-val>Sierra</typ:text-val>
+								</typ:i_per_name-first>
+								<typ:i_per_name-middle type="text">
+									<typ:text-val>N</typ:text-val>
+								</typ:i_per_name-middle>
+								<typ:i_per_name-last type="text">
+									<typ:text-val>Bayer</typ:text-val>
+								</typ:i_per_name-last>
+								<typ:i_per_no-child-expecting type="number">
+									<typ:number-val>1.0</typ:number-val>
+								</typ:i_per_no-child-expecting>
+								<typ:i_per_pregnancy-due-date type="date">
+									<typ:date-val>2014-06-27</typ:date-val>
+								</typ:i_per_pregnancy-due-date>
+								<typ:i_per_student type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_student>
+								<typ:ii_per_marital-status type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:ii_per_marital-status>
+								<typ:i_per_addr-res-street type="text">
+									<typ:text-val>1332 South White</typ:text-val>
+								</typ:i_per_addr-res-street>
+								<typ:i_per_addr-res-city type="text">
+									<typ:text-val>grand rapids</typ:text-val>
+								</typ:i_per_addr-res-city>
+								<typ:i_per_addr-res-state type="text">
+									<typ:text-val>MI</typ:text-val>
+								</typ:i_per_addr-res-state>
+								<typ:i_per_addr-res-zip type="text">
+									<typ:text-val>49534</typ:text-val>
+								</typ:i_per_addr-res-zip>
+								<typ:ii_per_military type="text">
+									<typ:text-val>false</typ:text-val>
+								</typ:ii_per_military>
+								<typ:ii_per_apply-for-coverage type="text">
+									<typ:text-val>Y</typ:text-val>
+								</typ:ii_per_apply-for-coverage>
+								<typ:io_per_ID type="text">
+									<typ:text-val>SELF3034704631IND1</typ:text-val>
+								</typ:io_per_ID>
+								<typ:i_per_needs-LTC type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_needs-LTC>
+								<typ:i_per_in-foster-care-at-18 type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_in-foster-care-at-18>
+								<typ:i_per_has-fixed-addr type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_has-fixed-addr>
+								<typ:i_per_US-citizen-or-national type="boolean">
+									<typ:boolean-val>true</typ:boolean-val>
+								</typ:i_per_US-citizen-or-national>
+								<typ:i_per_primary-caretaker-of-some-child type="boolean">
+									<typ:boolean-val>false</typ:boolean-val>
+								</typ:i_per_primary-caretaker-of-some-child>
+								<typ:relationships>
+									<typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear state="known">
+										<typ:target instance-id="SELF3034704631IND1"/>
+									</typ:currenttaxpayerswhoexpecttoclaimthepersonthisyear>
+								</typ:relationships>
+								<typ:list-program inferred="false">
+									<typ:program id="0xd35290284c548ba7">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>TP08</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>54.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PCR</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0xa20d1485e98ebc02">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>TP08</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>B</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:uncertain-val/>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>195.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PW</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0x7fe482acc68234ac">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>TP08</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:uncertain-val/>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>160.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-U19</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0xe0568bd843b46f6">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>212.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-MIChild</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0xd97495b6d605fbdd">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>MOMS</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-MOMS</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>195.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-MOMS</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0xbd4d85212df2c454">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>FCTM</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:uncertain-val/>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:uncertain-val/>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:uncertain-val/>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-FFC</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+									<typ:program id="0x22bd61207ce1f09c">
+										<typ:o_p_TOA-code-per-r005.403.001 inferred="true" type="text">
+											<typ:text-val>None</typ:text-val>
+										</typ:o_p_TOA-code-per-r005.403.001>
+										<typ:o_per_p_effective-MAGI-income-FPL-percentage inferred="true" type="number">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:o_per_p_effective-MAGI-income-FPL-percentage>
+										<typ:o_p_requires-immigration-validation-per-R005.098.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-immigration-validation-per-R005.098.000>
+										<typ:o_p_MAGI-income-within-FPL-limit inferred="true" type="boolean">
+											<typ:boolean-val>true</typ:boolean-val>
+										</typ:o_p_MAGI-income-within-FPL-limit>
+										<typ:o_p_MAGI-category-code inferred="true" type="text">
+											<typ:text-val>N/A</typ:text-val>
+										</typ:o_p_MAGI-category-code>
+										<typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason inferred="true" type="text">
+											<typ:text-val>The applicant does not meet program-specific requirements</typ:text-val>
+										</typ:o_p_MAGI-MIChild-Medicaid-ineligiblity-reason>
+										<typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-SSN-application-to-be-tracked-for-program-per-R005.069.000>
+										<typ:o_p_MAGI-household-size inferred="true" type="number">
+											<typ:number-val>2.0</typ:number-val>
+										</typ:o_p_MAGI-household-size>
+										<typ:o_p_per-highest-income-standard inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_per-highest-income-standard>
+										<typ:o_p_newly-eligible-for-program-per-R005.122.00x inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_newly-eligible-for-program-per-R005.122.00x>
+										<typ:the_program inferred="false" type="text">
+											<typ:text-val>MAGI-PlanFirst</typ:text-val>
+										</typ:the_program>
+										<typ:o_p_requires-citizenship-validation-per-R005.097.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_requires-citizenship-validation-per-R005.097.000>
+										<typ:rb_p_tax-hh-magi inferred="true" type="currency">
+											<typ:number-val>0.0</typ:number-val>
+										</typ:rb_p_tax-hh-magi>
+										<typ:o_p_MAGIMedicaid-meets-all-req inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_MAGIMedicaid-meets-all-req>
+										<typ:o_p_best-benefits inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:o_p_best-benefits>
+										<typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000 inferred="true" type="boolean">
+											<typ:boolean-val>false</typ:boolean-val>
+										</typ:rb_p_eligible-for-program-ESO-coverage-per-R005.084-085-086.000>
+										<typ:rb_p_FPL-percent-lim inferred="true" type="number">
+											<typ:number-val>236.0</typ:number-val>
+										</typ:rb_p_FPL-percent-lim>
+										<typ:the_program type="text">
+											<typ:text-val>MAGI-PlanFirst</typ:text-val>
+										</typ:the_program>
+										<typ:relationships>
+											<typ:o_p_per-MAGI-tax-household-rel inferred="true" state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:o_p_per-MAGI-tax-household-rel>
+											<typ:personscurrenthouseholdgroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrenthouseholdgroupfortheprogram>
+											<typ:personscurrentfilinggroupfortheprogram state="known">
+												<typ:target instance-id="SELF3034704631IND1"/>
+											</typ:personscurrentfilinggroupfortheprogram>
+											<typ:personscurrentneedgroupfortheprogram state="known">  </typ:personscurrentneedgroupfortheprogram>
+											<typ:personscurrentbenefitgroupfortheprogram state="known">  </typ:personscurrentbenefitgroupfortheprogram>
+											<typ:personscurrentfinancialgroupfortheprogram state="known">  </typ:personscurrentfinancialgroupfortheprogram>
+										</typ:relationships>
+									</typ:program>
+								</typ:list-program>
+								<typ:list-income inferred="false">        </typ:list-income>
+								<typ:list-related-party inferred="false">        </typ:list-related-party>
+								<typ:list-expense inferred="false">        </typ:list-expense>
+								<typ:list-benefit inferred="false">        </typ:list-benefit>
+								<typ:list-requested-benefit inferred="true">
+									<typ:requested-benefit id="0xed38513a572a2e77">          </typ:requested-benefit>
+								</typ:list-requested-benefit>
+								<typ:list-b-plan inferred="true">
+									<typ:b-plan id="0xaa4970305ba8f8fb">          </typ:b-plan>
+								</typ:list-b-plan>
+							</typ:person>
+						</typ:list-person>
+						<typ:list-povertyguideline inferred="true">
+							<typ:povertyguideline id="0x52b12b8ad710a0f4">      </typ:povertyguideline>
+							<typ:povertyguideline id="0x90e6eb364acf5bff">      </typ:povertyguideline>
+							<typ:povertyguideline id="0x6cc74a18d2e42027">      </typ:povertyguideline>
+						</typ:list-povertyguideline>
+						<typ:list-physicalHousehold inferred="false">
+							<typ:physicalHousehold id="3911b336143cac1cedc7f8bac1423c00">
+								<typ:i_hh_attested-size type="number">
+									<typ:number-val>1.0</typ:number-val>
+								</typ:i_hh_attested-size>
+								<typ:relationships>
+									<typ:ir_household-members state="known">
+										<typ:target instance-id="SELF3034704631IND1"/>
+									</typ:ir_household-members>
+								</typ:relationships>
+							</typ:physicalHousehold>
+						</typ:list-physicalHousehold>
+						<typ:list-taxreturn inferred="false">
+							<typ:taxreturn id="3911b336143cac1cedc7f8aac1423c00">
+								<typ:o_return_tax-group-size inferred="true" type="number">
+									<typ:number-val>1.0</typ:number-val>
+								</typ:o_return_tax-group-size>
+								<typ:i_return_filing-status type="text">
+									<typ:text-val>1</typ:text-val>
+								</typ:i_return_filing-status>
+								<typ:relationships>
+									<typ:o_return_tax-household-rel inferred="true" state="known">
+										<typ:target instance-id="SELF3034704631IND1"/>
+									</typ:o_return_tax-household-rel>
+									<typ:ir_return_tax-filer state="known">
+										<typ:target instance-id="SELF3034704631IND1"/>
+									</typ:ir_return_tax-filer>
+									<typ:ir_return_dependents state="known">  </typ:ir_return_dependents>
+									<typ:ir_return_tax-filer-spouse state="known">  </typ:ir_return_tax-filer-spouse>
+								</typ:relationships>
+							</typ:taxreturn>
+						</typ:list-taxreturn>
+						<typ:list-verification inferred="false">    </typ:list-verification>
+						<typ:list-plan inferred="true">
+							<typ:plan id="0xfb17a5fc8cfcd0f7">      </typ:plan>
+						</typ:list-plan>
+					</typ:global-instance>
+				</typ:assess-response>
+			</SOAP-ENV:Body>
+		</SOAP-ENV:Envelope>
+	</DeterminationsReasons>
+</EDResult>

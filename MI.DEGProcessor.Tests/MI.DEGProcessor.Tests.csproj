@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<Version>2.1.2</Version>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="TestFiles\TestXmlDocument1.xml" />
+	  <None Remove="TestFiles\TestXmlDocument2.xml" />
+	  <None Remove="TestFiles\TestXmlDocument3.xml" />
+	  <None Remove="TestFiles\TestXmlDocument4.xml" />
+	  <None Remove="TestFiles\TestXmlDocument5.xml" />
+	  <None Remove="TestFiles\TestXmlDocument6.xml" />
+	  <None Remove="TestFiles\TestXmlDocument7.xml" />
+	  <None Remove="TestFiles\TestXmlDocument8.xml" />
+	  <None Remove="TestFiles\TestXmlDocumentDateWithTimeZone.xml" />
+	  <None Remove="TestFiles\TestXmlDocumentFlint.xml" />
+	  <None Remove="TestFiles\TestXmlDocumentPregnancy.xml" />
+	  <None Remove="TestFiles\TestXmlDocuments.xml" />
+	  <None Remove="TestFiles\TestXmlDocumentSIT.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument1.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument2.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument3.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument4.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument5.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument6.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument7.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocument8.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocumentDateWithTimeZone.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocumentFlint.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocumentPregnancy.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocuments.xml" />
+	  <EmbeddedResource Include="TestFiles\TestXmlDocumentSIT.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.18" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.3.1" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.3.1" />
+		<PackageReference Include="coverlet.collector" Version="6.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\IGS.DataServices\IGS.DataServices.csproj" />
+		<ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
+		<ProjectReference Include="..\MI.Common\MI.Common.csproj" />
+		<ProjectReference Include="..\MI.DEGProcessor\MI.DEGProcessor.csproj" />
+	</ItemGroup>
+
+</Project>

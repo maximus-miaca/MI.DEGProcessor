@@ -1,0 +1,6 @@
+dotnet tool install --global dotnet-sonarscanner
+
+MI.DEGService
+dotnet sonarscanner begin /k:"MIACA:MI.DEGService" /d:sonar.host.url="https://maximus-miaca.codeshuttle.maximus.com/sonarqube"  /d:sonar.login="fc6b4df2196c71d6983861728e4aac4c53c9e3d8"
+dotnet build
+dotnet sonarscanner end /d:sonar.login="fc6b4df2196c71d6983861728e4aac4c53c9e3d8"

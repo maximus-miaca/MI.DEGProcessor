@@ -1,0 +1,46 @@
+{
+  "profiles": {
+    "MI.DEGProcessor": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "Environment": "DEV-Major",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7170;http://localhost:5285"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Environment": "DEV-Major",
+        "CONFIG_PATH": "miaca-s3-app-np.s3.amazonaws.com/dev-major/config",
+        "AWS_PROFILE": "maximus-miaca.AdministratorAccess"
+      },
+      "DockerfileRunArguments": "-v \"/c/users/135620/.aws:/root/.aws:ro\""
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:4676",
+      "sslPort": 44310
+    }
+  }
+}

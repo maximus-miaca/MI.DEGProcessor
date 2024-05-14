@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:exch="http://at.dsh.cms.gov/exchange/1.0" xmlns:ext="http://at.dsh.cms.gov/extension/1.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" xmlns:i2="http://niem.gov/niem/appinfo/2.1" xmlns:niem-xsd="http://niem.gov/niem/proxy/xsd/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://at.dsh.cms.gov/exchange/1.0" elementFormDefault="qualified" attributeFormDefault="qualified" version="1">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<i:ConformantIndicator>true</i:ConformantIndicator>
+		</xsd:appinfo>
+		<xsd:documentation>An exchange schema for transfer of an account from the Marketplace to Medicaid/CHIP or from Medicaid/CHIP to the Marketplace for an eligibility determination.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://at.dsh.cms.gov/extension/1.0" schemaLocation=".././XMLSchemas/Extension/ExtensionModel.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="../XMLschemas/subset/niem/appinfo/2.0/appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.1" schemaLocation="../XMLschemas/subset/niem/appinfo/2.1/appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/proxy/xsd/2.0" schemaLocation="../XMLschemas/subset/niem/proxy/xsd/2.0/xsd.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/structures/2.0" schemaLocation="../XMLschemas/subset/niem/structures/2.0/structures.xsd"/>
+	<xsd:element name="AccountTransferRequest" type="ext:AccountTransferRequestPayloadType" abstract="false" nillable="false"/>
+	<xsd:element name="AccountTransferResponse" type="ext:AccountTransferResponsePayloadType" abstract="false" nillable="false"/>
+</xsd:schema>
