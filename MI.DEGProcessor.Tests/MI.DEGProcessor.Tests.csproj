@@ -51,9 +51,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\IGS.DataServices\IGS.DataServices.csproj" />
-		<ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
-		<ProjectReference Include="..\MI.Common\MI.Common.csproj" />
+		<ProjectReference Include="..\external\IGS.DataServices\IGS.DataServices\IGS.DataServices.csproj" />
+		<ProjectReference Include="..\external\IGS.DataServices\IGS.Models\IGS.Models.csproj" />
+		<ProjectReference Include="..\external\MI.Common\MI.Common\MI.Common.csproj" />
 		<ProjectReference Include="..\MI.DEGProcessor\MI.DEGProcessor.csproj" />
 	</ItemGroup>
 

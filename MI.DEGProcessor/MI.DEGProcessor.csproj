@@ -46,13 +46,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IGS.DataServices\IGS.DataServices.csproj" />
-    <ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
-    <ProjectReference Include="..\MI.Common\MI.Common.csproj" />
-    <ProjectReference Include="..\ML.Common\ML.Common.csproj" />
-    <ProjectReference Include="..\ML.DataServices\ML.DataServices.csproj" />
-    <ProjectReference Include="..\ML.Models\ML.Models.csproj" />
-    <ProjectReference Include="..\NLog.MSMQ.Target.Core\NLog.MSMQ.Target.Core.csproj" />
+    <ProjectReference Include="..\external\IGS.DataServices\IGS.DataServices\IGS.DataServices.csproj" />
+    <ProjectReference Include="..\external\IGS.DataServices\IGS.Models\IGS.Models.csproj" />
+    <ProjectReference Include="..\external\MI.Common\MI.Common\MI.Common.csproj" />
+    <ProjectReference Include="..\external\MI.Common\ML.Common\ML.Common.csproj" />
+    <ProjectReference Include="..\external\ML.DataServices\ML.DataServices\ML.DataServices.csproj" />
+    <ProjectReference Include="..\external\ML.DataServices\ML.Models\ML.Models.csproj" />
+    <ProjectReference Include="..\external\MI.Common\NLog.MSMQ.Target.Core\NLog.MSMQ.Target.Core.csproj" />
   </ItemGroup>
 
 </Project>
