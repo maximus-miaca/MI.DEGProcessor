@@ -2,11 +2,14 @@
 	path = external/ML.DataServices
 	url = https://github.com/maximus-miaca/ML.DataServices.git
 	update = merge
+	branch = dev
 [submodule "external/IGS.DataServices"]
 	path = external/IGS.DataServices
 	url = https://github.com/maximus-miaca/IGS.DataServices.git
 	update = merge
+	branch = dev
 [submodule "external/MI.Common"]
 	path = external/MI.Common
 	url = https://github.com/maximus-miaca/MI.Common.git
 	update = merge
+	branch = dev
