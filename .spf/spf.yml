@@ -16,7 +16,7 @@ services:
           url: https://github.com/maximus-miaca/MI.DEGProcessor.git
 
     toolchain: [node]
-    requires: [aws-sns]
+    requires: [aws-s3,aws-sns]
 
     deployment:
       type: ecs
