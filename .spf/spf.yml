@@ -1,0 +1,50 @@
+---
+spf: partial
+
+services:
+  degprocessor-service:
+    abstract: true
+    documentation: |
+      DEG Processor extracts information from incoming ATXml documents, stores the information in the IGS database and stores the file in S3.
+      DEG Processor is triggered by incoming messages from DEG Service in the associated SQS Queue.
+    alias: http
+    health_check: /sitestatus/ping
+    extensions:
+      references:
+        links:
+        - name: source
+          url: https://github.com/maximus-miaca/MI.DEGProcessor.git
+
+    toolchain: [node]
+    requires: [aws-sns]
+
+    deployment:
+      type: ecs
+      release: v1
+      volumes:
+      - name: application_scratch
+        host: {}
+      definition:
+      - name: logprocessoraws
+        image: scm.artifactory.mars.pcf-maximus.com/codeshuttle/maximus-miaca/mi.degprocessor:0.0.0
+        cpu: 0.25
+        memory: 0.5
+        mountPoints:
+        - sourceVolume: application_scratch
+          containerPath: /var/scratch
+          readOnly: false
+        environment:
+        - name: SPF_NET_NAME
+          value: "{{ spf.netName }}"
+        - name: SPF_SERVICE_NAME
+          value: "{{ service.name }}"
+        - name: SPF_RESOURCE_NAME
+          value: "{{ resource.name }}"
+        - name: Environment
+          value: "{{ cfg.environment.Environment | mandatory('Environment') }}"
+        - name: SERVICE_ACCOUNT_ARN
+          value: "{{ cfg.environment.SERVICE_ACCOUNT_ARN | mandatory('SERVICE_ACCOUNT_ARN') }}"
+        - name: APP_SETTINGS_ARN
+          value: "{{ cfg.environment.APP_SETTINGS_ARN | mandatory('APP_SETTINGS_ARN') }}"
+        - name: CONNECTION_STRINGS_ARN
+          value: "{{ cfg.environment.CONNECTION_STRINGS_ARN | mandatory('CONNECTION_STRINGS_ARN') }}"

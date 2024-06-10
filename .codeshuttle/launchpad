@@ -1,0 +1,24 @@
+def config = generateConfig()
+config.project.types                       = ['spf', 'docker']
+config.pipeline.stages.quality.enabled     = false
+config.pipeline.stages.sastCheck.enabled   = false
+config.pipeline.stages.unitTest.enabled    = false
+config.pipeline.stages.autoVersion.branch = 'dev-cs'
+config.pipeline.stages.autoVersion.enabled = true
+config.pipeline.stages.quality.enabled     = false
+
+
+//===========PROJECT/PIPELINE OVERRIDES==============
+config.pipeline.debug.global        = true
+config.project.allowUncleanCheckout = true
+
+//===========STAGE DEFINITION========================
+config.pipeline.stages.build.enabled       = true
+config.pipeline.stages.unitTest.enabled    = false
+config.pipeline.stages.quality.enabled     = false
+config.pipeline.stages.retrieve.enabled    = false
+config.pipeline.stages.functional.enabled  = false
+config.pipeline.stages.publish.autoPublish = true
+
+ciPipeline(config)
+build job: 'maximus-miaca/miaca.spf.dev/dev', parameters: [booleanParam(name: 'FORCE_BUILD', value: true)], wait: false
