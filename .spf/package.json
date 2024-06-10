@@ -1,6 +1,6 @@
 {
   "name": "MI.DEGProcessor",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "degprocessor",
   "publishConfig": {
     "dependencies": {
