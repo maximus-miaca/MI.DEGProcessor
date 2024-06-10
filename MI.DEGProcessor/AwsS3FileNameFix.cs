@@ -23,7 +23,6 @@ namespace MI.DEGProcessor;
 public class AwsS3FileNameFix : BackgroundService
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-    private readonly        string _atXmlRootPath;
 
     private readonly string         _baseConnectionString;
     private readonly string         _bucketName;
@@ -34,13 +33,12 @@ public class AwsS3FileNameFix : BackgroundService
 
     public AwsS3FileNameFix()
     {
-        _bucketName   = GlobalAppSettings.Instance.AtXmlS3BucketName;
+        _bucketName   = Environment.GetEnvironmentVariable("ATXML_BUCKET");
         _bucketRegion = RegionEndpoint.GetBySystemName(GlobalAppSettings.Instance.AwsRegion);
 
         _baseConnectionString = SqlHelper.EnsureTrustedServerCertificate(GlobalConnectionStrings.Instance.MIACA_IGS);
         _logConnectionString  = SqlHelper.EnsureTrustedServerCertificate(GlobalConnectionStrings.Instance.MIACA_LOG);
         _lockingGuid          = CalculateLockingGuid(Environment.MachineName);
-        _atXmlRootPath        = GlobalAppSettings.Instance.AtXmlRootPath;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -580,7 +578,7 @@ public class AwsS3FileNameFix : BackgroundService
         try
         {
             var relativePath = CalculateTransferPath(createdOn);
-            var path         = $"{_atXmlRootPath}{relativePath}";
+            var path         = $"{relativePath}";
             var xmlName      = $"{applicationTransferId}.xml";
             var fileName     = $"{applicationTransferId}.zip";
             var finalPath    = $"{path}/{fileName}";

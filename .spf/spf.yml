@@ -48,3 +48,5 @@ services:
           value: "{{ cfg.environment.APP_SETTINGS_ARN | mandatory('APP_SETTINGS_ARN') }}"
         - name: CONNECTION_STRINGS_ARN
           value: "{{ cfg.environment.CONNECTION_STRINGS_ARN | mandatory('CONNECTION_STRINGS_ARN') }}"
+        - name: ATXML_BUCKET
+          value: "{{ cfg.environment.ATXML_BUCKET | mandatory('ATXML_BUCKET') }}" 

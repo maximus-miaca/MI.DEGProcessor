@@ -31,19 +31,15 @@ public class DEGController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<HttpResponseMessage> RetryBackfillMessagesAsync(string            region,
-                                                                      string            environment,
-                                                                      CancellationToken token)
+    public async Task<HttpResponseMessage> RetryBackfillMessagesAsync(string region, string environment, CancellationToken token)
     {
         var awsRegion = RegionEndpoint.GetBySystemName(region);
         var awsEnv    = environment.ToLower();
         var client    = new AmazonSQSClient(awsRegion);
         var request = new StartMessageMoveTaskRequest
                       {
-                          SourceArn =
-                              $"arn:aws:sqs:us-east-1:936161934601:xml-backfill-{awsEnv}-dlq",
-                          DestinationArn =
-                              $"arn:aws:sqs:us-east-1:936161934601:xml-backfill-{awsEnv}"
+                          SourceArn      = $"arn:aws:sqs:us-east-1:936161934601:xml-backfill-{awsEnv}-dlq",
+                          DestinationArn = $"arn:aws:sqs:us-east-1:936161934601:xml-backfill-{awsEnv}"
                       };
 
         var response = await client.StartMessageMoveTaskAsync(request, token);
@@ -51,27 +47,25 @@ public class DEGController : ControllerBase
         return new HttpResponseMessage(HttpStatusCode.OK);
     }
 
-    [HttpGet]
-    public async Task<HttpResponseMessage> TestSaveAtXml()
-    {
-        return await SaveAtXmlToDatabaseAsync(new AWSBackfillReceivedNotification
-                                              {
-                                                  ApplicationTransferId = 201298,
-                                                  S3Path =
-                                                      "dev-major/atxml/2022/10/05/15/201298.zip",
-                                                  AwsRegion    = "us-east-1",
-                                                  ReceivedDate = DateTimeOffset.Now
-                                              });
-    }
+    //[HttpGet]
+    //public async Task<HttpResponseMessage> TestSaveAtXml()
+    //{
+    //    return await SaveAtXmlToDatabaseAsync(new AWSBackfillReceivedNotification
+    //                                          {
+    //                                              ApplicationTransferId = 201298,
+    //                                              S3Path =
+    //                                                  "dev-major/atxml/2022/10/05/15/201298.zip",
+    //                                              AwsRegion    = "us-east-1",
+    //                                              ReceivedDate = DateTimeOffset.Now
+    //                                          });
+    //}
 
     [HttpPost]
-    public async Task<HttpResponseMessage> SaveAtXmlToDatabaseAsync(
-        [FromBody] AWSBackfillReceivedNotification recordToUpdate)
+    public async Task<HttpResponseMessage> SaveAtXmlToDatabaseAsync([FromBody] AWSBackfillReceivedNotification recordToUpdate)
     {
         try
         {
-            var result =
-                await ATXMLHelper.SaveAtXmlToDatabaseAsync(recordToUpdate.S3Path, recordToUpdate.ApplicationTransferId);
+            var result = await ATXMLHelper.SaveAtXmlToDatabaseAsync(recordToUpdate.S3Path, recordToUpdate.ApplicationTransferId);
 
             switch (result)
             {
@@ -117,8 +111,7 @@ public class DEGController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.Error($"Error processing record {recordReceived.StagingAtXmlId}. Message: {ex.Message} - StackTrace: {ex.StackTrace}",
-                          ex);
+            _logger.Error($"Error processing record {recordReceived.StagingAtXmlId}. Message: {ex.Message} - StackTrace: {ex.StackTrace}", ex);
             throw new Exception($"Error processing record {recordReceived.StagingAtXmlId}.", ex);
             //var response = new HttpResponseMessage(HttpStatusCode.NotAcceptable)
             //               {
@@ -133,8 +126,7 @@ public class DEGController : ControllerBase
 
     private ProcessingResult ProcessStagingAtXmlRecord(int stagingAtXmlid)
     {
-        var data =
-            new DataServices(SqlHelper.EnsureTrustedServerCertificate(GlobalConnectionStrings.Instance.MIACA_IGS));
+        var data      = new DataServices(SqlHelper.EnsureTrustedServerCertificate(GlobalConnectionStrings.Instance.MIACA_IGS));
         var degRecord = data.StagingAtxmls.FirstOrDefault(s => s.StagingAtxmlid == stagingAtXmlid);
 
         // Check to see if the record was already processed
@@ -163,10 +155,7 @@ public class DEGController : ControllerBase
                     }
                     else
                     {
-                        errorMessage = "Error processing XML: " +
-                                       workXml.ErrorMessage     +
-                                       Environment.NewLine      +
-                                       degRecord.WriteDetails();
+                        errorMessage = "Error processing XML: " + workXml.ErrorMessage + Environment.NewLine + degRecord.WriteDetails();
                         _logger.Error(workXml.Exception,
                                       errorMessage,
                                       new NLogExt
@@ -216,13 +205,10 @@ public class DEGController : ControllerBase
             }
             catch (Exception ex)
             {
-                errorMessage = "Exception updating Staging Table record:" +
-                               Environment.NewLine                        +
-                               degRecord.WriteDetails();
-                errorMessage += "\n  Status: " + degRecord.Status;
-                errorMessage += "\n  ApplicationTransferID: " +
-                                (info == null ? string.Empty : info.ApplicationTransferId.ToString());
-                errorMessage += "\n  ATXMLError: " + degRecord.ErrorMessage;
+                errorMessage =  "Exception updating Staging Table record:" + Environment.NewLine + degRecord.WriteDetails();
+                errorMessage += "\n  Status: "                             + degRecord.Status;
+                errorMessage += "\n  ApplicationTransferID: "              + (info == null ? string.Empty : info.ApplicationTransferId.ToString());
+                errorMessage += "\n  ATXMLError: "                         + degRecord.ErrorMessage;
                 _logger.Error(ex, errorMessage);
             }
 

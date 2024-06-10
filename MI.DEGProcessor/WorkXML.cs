@@ -1,7 +1,5 @@
 ﻿using System.Xml;
 using Amazon;
-using Amazon.S3;
-using Amazon.S3.Transfer;
 using IGS.DataServices;
 using IGS.Models.Entities;
 using IGS.Models.Helpers;
@@ -300,7 +298,7 @@ public class WorkXml
     private async Task<string> ExportToFileAsync(CancellationToken stoppingToken)
     {
         var relativePath = CalculateTransferPath(App.CreatedOn);
-        var path         = $"{GlobalAppSettings.Instance.AtXmlRootPath}{relativePath}";
+        var path         = $"{relativePath}";
         var xmlName      = $"{App.ApplicationTransferId}.xml";
         var fileName     = $"{App.ApplicationTransferId}.zip";
         var finalPath    = $"{path}/{fileName}";
@@ -308,9 +306,8 @@ public class WorkXml
         {
             using var streamToUpload = new MemoryStream(await Document.OuterXml.ZipAsync(xmlName));
 
-            var s3Client            = new AmazonS3Client(_bucketRegion);
-            var fileTransferUtility = new TransferUtility(s3Client);
-            await fileTransferUtility.UploadAsync(streamToUpload, GlobalAppSettings.Instance.AtXmlS3BucketName, finalPath, stoppingToken);
+            var bucketName = Environment.GetEnvironmentVariable("ATXML_BUCKET");
+            await AwsClientHelper.AwsTransferUtility.UploadAsync(streamToUpload, bucketName, finalPath, stoppingToken);
         }
         catch (Exception ex)
         {
