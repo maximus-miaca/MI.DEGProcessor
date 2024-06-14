@@ -50,3 +50,5 @@ services:
           value: "{{ cfg.environment.CONNECTION_STRINGS_ARN | mandatory('CONNECTION_STRINGS_ARN') }}"
         - name: ATXML_BUCKET
           value: "{{ cfg.environment.ATXML_BUCKET | mandatory('ATXML_BUCKET') }}" 
+        - name: DEG_TOPIC_ARN
+          value: "{{ cfg.environment.DEG_TOPIC_ARN | mandatory('DEG_TOPIC_ARN') }}"
