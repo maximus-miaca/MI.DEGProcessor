@@ -52,3 +52,5 @@ services:
           value: "{{ cfg.environment.ATXML_BUCKET | mandatory('ATXML_BUCKET') }}" 
         - name: DEG_TOPIC_ARN
           value: "{{ cfg.environment.DEG_TOPIC_ARN | mandatory('DEG_TOPIC_ARN') }}"
+        - name: LOG_SNS_ARN
+          value: "{{ cfg.environment.LOG_SNS_ARN | mandatory('LOG_SNS_ARN') }}"
