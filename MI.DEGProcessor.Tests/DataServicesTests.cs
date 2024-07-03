@@ -34,8 +34,9 @@ public class DataServicesTests
     {
         var cn  = new SqlConnection(SqlHelper.EnsureTrustedServerCertificate(connectionString));
         var cmd = cn.CreateCommand();
-        cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "SELECT * FROM StagingAtXmlResubmit WHERE BatchId = 1";
+        cmd.CommandTimeout = 360;
+        cmd.CommandType    = CommandType.Text;
+        cmd.CommandText    = "SELECT * FROM StagingAtXmlResubmit WHERE BatchId = 1 and stagingatxmlid = 73225877";
         cn.Open();
 
         var ids = new List<int>();
@@ -75,10 +76,10 @@ public class DataServicesTests
     {
         try
         {
-            var connectionString = "Data Source=uvaaummsql01mia.maxcorp.maximus;Initial Catalog=MIACA_IGS;Integrated Security=SSPI;";
-            var region           = "us-east-1";
-            var baseAddress      = new Uri("https://degp-uat.miaca.maximus.com/deg/");
-            var outputFilename   = "ffmresults_uat.csv";
+            var connectionString = "Data Source=miacaprod.maxcorp.maximus;Initial Catalog=MIACA_IGS;Integrated Security=SSPI;Connect Timeout=240";
+            var region           = "us-west-2";
+            var baseAddress      = new Uri("https://degp.miaca.maximus.com/deg/");
+            var outputFilename   = "ffmresults_prod.csv";
 
             try
             {
