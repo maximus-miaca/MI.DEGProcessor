@@ -9,24 +9,11 @@ using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.OpenApi.Models;
 using NLog;
-using NLog.Common;
 using NLog.Web;
-using LogLevel = NLog.LogLevel;
 
 try
 {
-    InternalLogger.LogLevel     = LogLevel.Debug;
-    InternalLogger.LogToConsole = true;
-    InternalLogger.LogFile      = "/logs/nlog-internal.txt";
-
     var builder = WebApplication.CreateBuilder(args);
-
-    builder.Services.AddHsts(options =>
-                             {
-                                 options.Preload           = true;
-                                 options.IncludeSubDomains = true;
-                                 options.MaxAge            = TimeSpan.FromDays(365);
-                             });
 
     builder.Services.AddHostedService<KerberosRenewalService>();
 
@@ -43,6 +30,13 @@ try
     builder.Host.UseNLog();
 
     var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+
+    builder.Services.AddHsts(options =>
+                             {
+                                 options.Preload           = true;
+                                 options.IncludeSubDomains = true;
+                                 options.MaxAge            = TimeSpan.FromDays(365);
+                             });
 
     builder.Services.AddControllers()
            .RegisterSiteStatusController()
