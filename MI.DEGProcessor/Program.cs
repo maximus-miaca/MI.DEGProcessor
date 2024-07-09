@@ -15,9 +15,9 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddHostedService<KerberosRenewalService>();
-
     AwsClientHelper.Initialize(builder.Configuration);
+
+    builder.Services.AddHostedService<KerberosRenewalService>();
 
     GlobalAppSettings.BuildConfigurationContainer(builder.Configuration);
     builder.Configuration.GetSection("ConnectionStrings").Bind(GlobalConnectionStrings.Instance);
