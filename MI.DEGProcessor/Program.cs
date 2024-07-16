@@ -20,9 +20,6 @@ try
     builder.Services.AddHostedService<KerberosRenewalService>();
 
     GlobalAppSettings.BuildConfigurationContainer(builder.Configuration);
-    builder.Configuration.GetSection("ConnectionStrings").Bind(GlobalConnectionStrings.Instance);
-    builder.Configuration.GetSection("AppSettings").Bind(DatabaseAccessAppSetting.Instance);
-    builder.Configuration.GetSection("AppSettings").Bind(GlobalAppSettings.Instance);
     builder.Configuration.GetSection("AppSettings").Bind(AppSettings.Instance);
 
     // Add services to the container.
