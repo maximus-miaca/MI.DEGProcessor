@@ -6,7 +6,11 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "Environment": "DEV-Major",
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ACCOUNT_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/svc-account",
+        "APP_SETTINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/app-settings",
+        "CONNECTION_STRINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/connection-strings",
+        "LOG_SNS_ARN": "arn:aws:sns:us-east-1:936161934601:miaca-design-dev-log-entry-topic"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7170;http://localhost:5285"
@@ -16,7 +20,11 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ACCOUNT_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/svc-account",
+        "APP_SETTINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/app-settings",
+        "CONNECTION_STRINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/connection-strings",
+        "LOG_SNS_ARN": "arn:aws:sns:us-east-1:936161934601:miaca-design-dev-log-entry-topic"
       }
     },
     "Docker": {
@@ -29,7 +37,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "Environment": "DEV-Major",
         "CONFIG_PATH": "miaca-s3-app-np.s3.amazonaws.com/dev-major/config",
-        "AWS_PROFILE": "maximus-miaca.AdministratorAccess"
+        "AWS_PROFILE": "maximus-miaca.AdministratorAccess",
+        "SERVICE_ACCOUNT_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/svc-account",
+        "APP_SETTINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/app-settings",
+        "CONNECTION_STRINGS_ARN": "arn:aws:ssm:us-east-1:936161934601:parameter/ops/vpc/miaca-design-dev/us-east-1/config/connection-strings",
+        "LOG_SNS_ARN": "arn:aws:sns:us-east-1:936161934601:miaca-design-dev-log-entry-topic"
       },
       "DockerfileRunArguments": "-v \"/c/users/135620/.aws:/root/.aws:ro\""
     }
